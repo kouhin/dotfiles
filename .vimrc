@@ -1,63 +1,32 @@
-if has('vim_starting')
-  set nocompatible
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+call plug#begin('~/.vim/plugged')
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle'))
+Plug 'Shougo/neocomplete'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/vimshell'
+Plug 'tpope/vim-fugitive'
+Plug 'kien/ctrlp.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'majutsushi/tagbar'
+Plug 'lukaszkorecki/CoffeeTags', { 'do': 'gem install CoffeeTags' }
+Plug 'altercation/vim-colors-solarized'
+Plug 'airblade/vim-gitgutter'
+Plug 'fatih/vim-go'
+Plug 'scrooloose/syntastic'
+Plug 'kchmck/vim-coffee-script'
+Plug 'wavded/vim-stylus'
+Plug 'digitaltoad/vim-jade'
+Plug 'burnettk/vim-angular'
+Plug 'Chiel92/vim-autoformat'
+Plug 'qstrahl/vim-matchmaker'
 
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" My Bundles here:
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'Shougo/vimproc.vim', {
-      \ 'build' : {
-      \     'windows' : 'tools\\update-dll-mingw',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'jistr/vim-nerdtree-tabs'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'lukaszkorecki/CoffeeTags', {
-      \ 'build' : {
-      \     'mac' : 'gem install CoffeeTags'
-      \     },
-      \ }
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'fatih/vim-go'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'wavded/vim-stylus'
-NeoBundle 'digitaltoad/vim-jade'
-NeoBundle 'burnettk/vim-angular'
-
-NeoBundle 'Chiel92/vim-autoformat'
-
-" Mark the same variable
-NeoBundle 'qstrahl/vim-matchmaker'
-
-" Required:
-call neobundle#end()
+call plug#end()
 
 " Required:
 filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
 
 " Basic config
 syntax on
