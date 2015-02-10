@@ -22,6 +22,8 @@ Plug 'digitaltoad/vim-jade'
 Plug 'burnettk/vim-angular'
 Plug 'Chiel92/vim-autoformat'
 Plug 'qstrahl/vim-matchmaker'
+Plug 'jceb/vim-orgmode'
+Plug 'vim-scripts/calendar.vim--Matsumoto'
 
 call plug#end()
 
