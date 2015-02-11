@@ -24,6 +24,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'qstrahl/vim-matchmaker'
 Plug 'jceb/vim-orgmode'
 Plug 'vim-scripts/calendar.vim--Matsumoto'
+Plug 'tpope/vim-speeddating'
 
 call plug#end()
 
