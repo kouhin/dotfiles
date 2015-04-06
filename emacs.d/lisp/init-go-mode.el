@@ -1,3 +1,9 @@
+;;; init-go-mode.el --- Init Go mode
+
+;;; Commentary:
+
+;;; Code:
+
 (require-package 'go-mode)
 (require 'go-mode-autoloads)
 (add-hook 'go-mode-hook '(lambda ()
@@ -29,3 +35,4 @@
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
 (provide 'init-go-mode)
+;;; init-go-mode.el ends here

@@ -1,4 +1,8 @@
-;;; find and load the correct package.el
+;;; init-elpa.el --- find and load the correct package.el
+
+;;; Commentary:
+
+;;; Code:
 
 ;; When switching between Emacs 23 and 24, we always use the bundled package.el in Emacs 24
 (let ((package-el-site-lisp-dir
@@ -89,3 +93,4 @@ Or, move the cl-lib.el to 'EMACS-INSTALLATION-PATH/lisp/emacs-lisp'")))
 
 
 (provide 'init-elpa)
+;;; init-elpa.el ends here

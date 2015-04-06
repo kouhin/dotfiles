@@ -19,5 +19,6 @@
 (require 'init-yasnippet)
 (require 'init-auto-complete)
 (require 'init-go-mode)
+(require 'init-flycheck)
 
 (provide 'init)

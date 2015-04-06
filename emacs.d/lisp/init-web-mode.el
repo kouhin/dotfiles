@@ -1,3 +1,9 @@
+;;; init-web-mode.el --- Init web-mode
+
+;;; Commentary:
+
+;;; Code:
+
 (require-package 'web-mode)
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -15,3 +21,5 @@
 
 
 (provide 'init-web-mode)
+
+;;; init-web-mode.el ends here

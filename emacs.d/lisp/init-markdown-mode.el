@@ -1,3 +1,9 @@
+;;; init-markdown-mode.el --- Init markdown-mode
+
+;;; Commentary:
+
+;;; Code:
+
 (require-package 'markdown-mode)
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
@@ -7,3 +13,4 @@
 
 (provide 'init-markdown-mode)
 
+;;; init-markdown-mode.el ends here

@@ -1,3 +1,10 @@
+;;; init-auto-complete.el --- Init auto-complete
+
+;;; Commentary:
+
+;;; Code:
+
+
 ;; should be loaded after yasnippet
 (require-package 'auto-complete)
 (require 'auto-complete-config)
@@ -25,3 +32,4 @@
                                 ac-source-yasnippet)))
 
 (provide 'init-auto-complete)
+;;; init-auto-complete.el ends here

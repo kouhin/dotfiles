@@ -1,6 +1,10 @@
-;;----------------------------------------------------------------------------
+;;; init-editing-utils.el --- Init editor settings
+
+;;; Commentary:
 ;; Some basic preferences
-;;----------------------------------------------------------------------------
+
+;;; Code:
+
 (setq-default
  blink-cursor-interval 0.4
  bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory)
@@ -23,3 +27,5 @@
  visible-bell t)
 
 (provide 'init-editing-utils)
+
+;;; init-editing-utils.el ends here
