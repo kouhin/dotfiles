@@ -167,3 +167,6 @@ auto/
 
 # auto complete
 ac-comphist.dat
+
+# smex
+smex-items

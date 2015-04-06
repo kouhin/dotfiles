@@ -1,5 +1,11 @@
-;;; This file bootstraps the configuration, which is divided into
-;;; a number of other files.
+;;; init.el --- bootstrap
+
+;;; Commentary:
+;; This file bootstraps the configuration, which is divided into
+;; a number of other files.
+
+
+;;; Code:
 
 (let ((minver "23.3"))
   (when (version<= emacs-version "23.1")
@@ -20,5 +26,8 @@
 (require 'init-auto-complete)
 (require 'init-go-mode)
 (require 'init-flycheck)
+(require 'init-smex)
 
 (provide 'init)
+
+;;; init.el ends here
