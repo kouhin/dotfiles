@@ -82,3 +82,4 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias brewup='brew update && brew upgrade && brew cleanup'
+alias e='emacs'
