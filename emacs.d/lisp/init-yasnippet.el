@@ -6,11 +6,7 @@
 
 (require-package 'yasnippet)
 (require 'yasnippet)
-;; make Ctrl-c k the only trigger key for yas
-(define-key yas-minor-mode-map (kbd "<tab>") nil)
-(define-key yas-minor-mode-map (kbd "TAB") nil)
-(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
-
+(add-hook 'web-mode-hook #'(lambda () (yas-activate-extra-mode 'html-mode)))
 (yas-global-mode t)
 
 (provide 'init-yasnippet)
