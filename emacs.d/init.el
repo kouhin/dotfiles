@@ -27,6 +27,7 @@
 (require 'init-go-mode)
 (require 'init-flycheck)
 (require 'init-smex)
+(require 'init-ido)
 
 (provide 'init)
 
