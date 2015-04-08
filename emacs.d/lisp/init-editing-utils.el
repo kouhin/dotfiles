@@ -27,6 +27,15 @@
  truncate-partial-width-windows nil
  visible-bell t)
 
+;; create auto-save file in ~/.emacs.d/backup
+(let (custom-backup-directory)
+  (setq custom-backup-directory "~/.emacs.d/backup")
+  (unless (file-exists-p custom-backup-directory)
+    (make-directory custom-backup-directory))
+  (setq auto-save-file-name-transforms
+      `((".*" ,(expand-file-name custom-backup-directory) t)))
+)
+
 (provide 'init-editing-utils)
 
 ;;; init-editing-utils.el ends here
