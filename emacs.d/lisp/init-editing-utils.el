@@ -28,13 +28,16 @@
  visible-bell t)
 
 ;; create auto-save file in ~/.emacs.d/backup
-(let (custom-backup-directory)
-  (setq custom-backup-directory "~/.emacs.d/backup")
-  (unless (file-exists-p custom-backup-directory)
-    (make-directory custom-backup-directory))
-  (setq auto-save-file-name-transforms
-      `((".*" ,(expand-file-name custom-backup-directory) t)))
-)
+
+(defconst emacs-tmp-dir "~/.emacs.d/tmp/")
+(unless (file-exists-p emacs-tmp-dir)
+  (make-directory emacs-tmp-dir t))
+(setq backup-directory-alist
+      `((".*" . ,emacs-tmp-dir)))
+(setq auto-save-file-name-transforms
+      `((".*" ,emacs-tmp-dir t)))
+(setq auto-save-list-file-prefix
+              emacs-tmp-dir)
 
 (provide 'init-editing-utils)
 
