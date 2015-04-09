@@ -11,6 +11,7 @@
 
 (require 'helm-config)
 (helm-mode t)
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 (require 'helm-descbinds)
 (helm-descbinds-mode t)
