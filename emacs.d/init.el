@@ -27,8 +27,8 @@
 (require 'init-auto-complete)
 (require 'init-go-mode)
 (require 'init-flycheck)
-(require 'init-smex)
-(require 'init-ido)
+;;(require 'init-smex)
+(require 'init-helm)
 
 (provide 'init)
 
