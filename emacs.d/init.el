@@ -18,8 +18,9 @@
      (expand-file-name "lisp" user-emacs-directory))
 
 (require 'init-elpa)    ;; 加载ELPA，并定义了require-package函数
-(require 'init-editing-utils)
 (require 'init-utils)
+(require 'init-editing-utils)
+(require 'init-git)
 (require 'init-web-mode)
 (require 'init-markdown-mode)
 (require 'init-yasnippet)

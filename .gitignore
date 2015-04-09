@@ -170,3 +170,5 @@ ac-comphist.dat
 
 # smex
 smex-items
+/emacs.d/ido.last
+/emacs.d/recentf
