@@ -32,5 +32,10 @@
 (require 'go-eldoc)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+;; helm-go-package
+(require-package 'helm-go-package)
+(eval-after-load 'go-mode
+    '(substitute-key-definition 'go-import-add 'helm-go-package go-mode-map))
+
 (provide 'init-go-mode)
 ;;; init-go-mode.el ends here
