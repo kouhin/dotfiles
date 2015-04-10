@@ -54,6 +54,7 @@ if has('gui_running')
   set guifont=Menlo:h12
 else
   set background=dark
+  let g:solarized_termcolors = 256
 endif
 colorscheme solarized
 
