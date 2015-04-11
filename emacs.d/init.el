@@ -29,6 +29,7 @@
 (require 'init-flycheck)
 (require 'init-helm)
 (require 'init-projectile)
+(require 'init-sws-mode)
 
 (provide 'init)
 

@@ -36,7 +36,12 @@
 (setq auto-save-file-name-transforms
       `((".*" ,emacs-tmp-dir t)))
 (setq auto-save-list-file-prefix
-              emacs-tmp-dir)
+	  emacs-tmp-dir)
+
+;; undo tree
+(require-package 'undo-tree)
+(require 'undo-tree)
+(global-undo-tree-mode)
 
 (provide 'init-editing-utils)
 
