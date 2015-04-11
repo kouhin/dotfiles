@@ -12,10 +12,13 @@
   "ace-jump-mode"
   "Ace jump back:-)"
   t)
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 (eval-after-load "ace-jump-mode"
   '(ace-jump-mode-enable-mark-sync))
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+(add-hook 'org-mode-hook
+		  (lambda ()
+			(local-set-key (kbd "\C-c SPC") 'ace-jump-mode)))
 
 ;; ace-window
 (require-package 'ace-window)
