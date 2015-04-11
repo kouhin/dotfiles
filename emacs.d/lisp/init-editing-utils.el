@@ -26,6 +26,11 @@
  truncate-partial-width-windows nil
  visible-bell t)
 
+(show-paren-mode t)
+(setq show-paren-delay 0)
+
+(cua-selection-mode t)
+
 ;; create auto-save file in ~/.emacs.d/backup
 
 (defconst emacs-tmp-dir "~/.emacs.d/tmp/")
@@ -37,6 +42,16 @@
       `((".*" ,emacs-tmp-dir t)))
 (setq auto-save-list-file-prefix
 	  emacs-tmp-dir)
+
+(when (fboundp 'global-prettify-symbols-mode)
+  (global-prettify-symbols-mode))
+
+;; highlight-symbol
+(require-package 'highlight-symbol)
+(require 'highlight-symbol)
+(add-to-list 'prog-mode-hook 'highlight-symbol-mode)
+(add-to-list 'prog-mode-hook 'highlight-symbol-nav-mode)
+(setq highlight-symbol-idle-delay 0.2)
 
 ;; undo tree
 (require-package 'undo-tree)

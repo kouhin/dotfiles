@@ -17,7 +17,7 @@
  'load-path
      (expand-file-name "lisp" user-emacs-directory))
 
-(require 'init-elpa)    ;; 加载ELPA，并定义了require-package函数
+(require 'init-elpa)
 (require 'init-utils)
 (require 'init-editing-utils)
 (require 'init-git)
@@ -30,6 +30,7 @@
 (require 'init-helm)
 (require 'init-projectile)
 (require 'init-sws-mode)
+(require 'init-ace-mode)
 
 (provide 'init)
 
