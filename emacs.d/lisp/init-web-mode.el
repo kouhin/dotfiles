@@ -19,10 +19,12 @@
 (add-to-list 'auto-mode-alist '("\\.scss?\\'" . web-mode))
 
 (require-package 'js2-mode)
+(require-package 'ac-js2)
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-hook 'js-mode-hook 'js2-minor-mode)
 (add-hook 'web-mode-hook 'js2-minor-mode)
+(add-hook 'js2-mode-hook 'ac-js2-mode)
 
 
 (provide 'init-web-mode)
