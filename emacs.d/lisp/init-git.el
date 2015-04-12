@@ -13,6 +13,10 @@
 
 (setq magit-last-seen-setup-instructions "1.4.0")
 
+(require-package 'magit-gitflow)
+(require 'magit-gitflow)
+(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+
 (provide 'init-git)
 
 ;;; init-git.el ends here
