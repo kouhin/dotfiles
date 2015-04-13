@@ -14,18 +14,16 @@
                            ))
 (add-hook 'before-save-hook 'gofmt-before-save)
 
-;; auto complete
-(require-package 'company)
-(require-package 'company-go)
-(require 'company)
-(require 'company-go)
-(setq company-tooltip-limit 20)                      ; bigger popup window
-(setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
-(setq company-echo-delay 0)                          ; remove annoying blinking
-(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
-(add-hook 'go-mode-hook (lambda ()
-                          (set (make-local-variable 'company-backends) '(company-go))
-                          (company-mode)))
+;;auto-complete
+(require-package 'go-autocomplete)
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
+(ac-config-default)
+(local-set-key (kbd "M-/") 'semantic-complete-analyze-inline)
+(local-set-key "." 'semantic-complete-self-insert)
+(local-set-key ">" 'semantic-complete-self-insert)
+
 
 ;; eldoc
 (require-package 'go-eldoc)
