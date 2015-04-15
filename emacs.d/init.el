@@ -35,6 +35,7 @@
 (require 'init-projectile)
 (require 'init-sws-mode)
 (require 'init-ace-mode)
+(require 'init-speedbar)
 
 (provide 'init)
 
