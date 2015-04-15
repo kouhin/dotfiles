@@ -11,6 +11,7 @@
                            (local-set-key (kbd "C-c C-g") 'go-goto-imports)
                            (local-set-key (kbd "C-c C-f") 'gofmt)
                            (local-set-key (kbd "C-c C-k") 'godoc)
+						   (setq gofmt-command "goimports")
                            ))
 (add-hook 'before-save-hook 'gofmt-before-save)
 
