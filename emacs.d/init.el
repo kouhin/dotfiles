@@ -24,18 +24,20 @@
 (require 'init-utils)
 (require 'init-exec-path)
 (require 'init-editing-utils)
-(require 'init-git)
-(require 'init-web-mode)
-(require 'init-markdown-mode)
-(require 'init-yasnippet)
 (require 'init-auto-complete)
-(require 'init-go-mode)
+(require 'init-yasnippet)
 (require 'init-flycheck)
+
 (require 'init-helm)
 (require 'init-projectile)
 (require 'init-sws-mode)
 (require 'init-ace-mode)
 (require 'init-speedbar)
+(require 'init-git)
+
+(require 'init-web-mode)
+(require 'init-markdown-mode)
+(require 'init-go-mode)
 
 (provide 'init)
 
