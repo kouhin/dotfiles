@@ -7,14 +7,14 @@
 
 (require 'speedbar)
 (require 'sr-speedbar)
+(require 'projectile-speedbar)
 
 (setq speedbar-show-unknown-files t)
 (setq speedbar-smart-directory-expand-flag t)
 (setq speedbar-use-images nil)
+(setq sr-speedbar-default-width 5)
+(setq sr-speedbar-max-width 5)
 (setq sr-speedbar-auto-refresh t)
-(setq sr-speedbar-max-width 30)
-(setq sr-speedbar-right-side nil)
-(setq sr-speedbar-width 30)
 
 (provide 'init-speedbar)
 
