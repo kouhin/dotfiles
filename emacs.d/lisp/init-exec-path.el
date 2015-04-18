@@ -6,9 +6,8 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-(let ((envs '("GOROOT" "GOPATH")))
+(let ((envs '("PATH" "MANPATH" "GOROOT" "GOPATH")))
     (exec-path-from-shell-copy-envs envs))
-
 
 (provide 'init-exec-path)
 ;;; init-exec-path.el ends here
