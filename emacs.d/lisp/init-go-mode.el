@@ -15,8 +15,15 @@
 (add-hook 'before-save-hook 'gofmt-before-save)
 
 ;;auto-complete
-(require-package 'go-autocomplete)
-(require 'go-autocomplete)
+;;(require-package 'go-autocomplete)
+;;(require 'go-autocomplete)
+
+(require-package 'company-go)
+(require 'company-go)
+
+(add-hook 'go-mode-hook (lambda ()
+						  (set (make-local-variable 'company-backends) '(company-go))
+						                            (company-mode)))
 
 ;; eldoc
 (require-package 'go-eldoc)

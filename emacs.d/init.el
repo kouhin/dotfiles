@@ -24,8 +24,8 @@
 (require 'init-utils)
 (require 'init-exec-path)
 (require 'init-editing-utils)
-(require 'init-auto-complete)
 (require 'init-yasnippet)
+(require 'init-company)
 (require 'init-flycheck)
 
 (require 'init-helm)
