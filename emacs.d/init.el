@@ -34,6 +34,7 @@
 (require 'init-ace-mode)
 (require 'init-speedbar)
 (require 'init-git)
+(require 'init-direx)
 
 (require 'init-web-mode)
 (require 'init-markdown-mode)
