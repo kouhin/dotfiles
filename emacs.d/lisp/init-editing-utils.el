@@ -4,7 +4,6 @@
 ;; Some basic preferences
 
 ;;; Code:
-
 (setq-default
  blink-cursor-interval 0.4
  bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory)
@@ -57,6 +56,11 @@
 (require-package 'undo-tree)
 (require 'undo-tree)
 (global-undo-tree-mode)
+
+;; rainbow-delimiters
+(require-package 'rainbow-delimiters)
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 (provide 'init-editing-utils)
 
