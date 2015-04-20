@@ -29,6 +29,7 @@
 (require 'init-flycheck)
 
 (require 'init-helm)
+(require 'init-popwin)
 (require 'init-projectile)
 (require 'init-sws-mode)
 (require 'init-ace-mode)
