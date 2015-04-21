@@ -14,6 +14,8 @@
 (push '("^\*helm.+\*$" :regexp t) popwin:special-display-config)
 (push '(direx:direx-mode :position left :width 25 :dedicated t)
 	  popwin:special-display-config)
+(push '("^\*go-direx:" :regexp t :position right :width 25 :dedicated t)
+	  popwin:special-display-config)
 
 (provide 'init-popwin)
 ;;; init-popwin.el ends here
