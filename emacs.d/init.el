@@ -37,9 +37,11 @@
 (require 'init-git)
 (require 'init-direx)
 
+;; Major modes
 (require 'init-web-mode)
 (require 'init-markdown-mode)
 (require 'init-go-mode)
+(require 'init-toml-mode)
 
 (provide 'init)
 
