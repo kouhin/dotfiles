@@ -11,6 +11,7 @@
 
 (popwin-mode 1)
 
+(push '("*Ibuffer*" :position bottom :dedicated t) popwin:special-display-config)
 (push '("^\*helm.+\*$" :regexp t) popwin:special-display-config)
 (push '(direx:direx-mode :position left :width 25 :dedicated t)
 	  popwin:special-display-config)

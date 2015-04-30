@@ -25,6 +25,7 @@ Plug 'qstrahl/vim-matchmaker'
 Plug 'jceb/vim-orgmode'
 Plug 'vim-scripts/calendar.vim--Matsumoto'
 Plug 'tpope/vim-speeddating'
+Plug 'bling/vim-airline'
 
 call plug#end()
 
@@ -45,6 +46,10 @@ set completeopt=menu,longest
 set noswapfile
 set mouse=a
 set clipboard=unnamed
+set laststatus=2
+set encoding=utf-8
+set t_Co=256
+let g:Powerline_symbols = 'fancy'
 
 imap jj <ESC>
 
@@ -70,7 +75,7 @@ let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.

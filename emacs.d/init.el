@@ -42,6 +42,8 @@
 (require 'init-markdown-mode)
 (require 'init-go-mode)
 (require 'init-toml-mode)
+(require 'init-org-mode)
+(require 'init-yaml-mode)
 
 (provide 'init)
 

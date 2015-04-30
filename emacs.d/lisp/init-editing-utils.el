@@ -15,6 +15,7 @@
  ediff-window-setup-function 'ediff-setup-windows-plain
  tab-width 4
  make-backup-files t
+ create-lockfiles nil
  mouse-yank-at-point t
  save-interprogram-paste-before-kill t
  scroll-preserve-screen-position 'always
@@ -28,7 +29,11 @@
 (show-paren-mode t)
 (setq show-paren-delay 0)
 
+;; cua-mode
 (cua-selection-mode t)
+
+;; ibuffer
+(global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
 
 ;; create auto-save file in ~/.emacs.d/backup
 
