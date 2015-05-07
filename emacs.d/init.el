@@ -44,6 +44,7 @@
 (require 'init-toml-mode)
 (require 'init-org-mode)
 (require 'init-yaml-mode)
+(require 'init-dockerfile-mode)
 
 (provide 'init)
 
