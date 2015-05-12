@@ -29,6 +29,11 @@
 (show-paren-mode t)
 (setq show-paren-delay 0)
 
+;; smooth-scroll
+(require-package 'smooth-scroll)
+(require 'smooth-scroll)
+(smooth-scroll-mode t)
+
 ;; cua-mode
 (cua-selection-mode t)
 
