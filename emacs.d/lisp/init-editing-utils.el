@@ -37,9 +37,6 @@
 ;; cua-mode
 (cua-selection-mode t)
 
-;; ibuffer
-(global-set-key (kbd "C-x C-b") 'ibuffer-other-window)
-
 ;; create auto-save file in ~/.emacs.d/backup
 
 (defconst emacs-tmp-dir "~/.emacs.d/tmp/")

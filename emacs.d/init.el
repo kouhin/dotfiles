@@ -24,6 +24,7 @@
 (require 'init-utils)
 (require 'init-exec-path)
 (require 'init-editing-utils)
+(require 'init-ibuffer)
 (require 'init-yasnippet)
 (require 'init-company)
 (require 'init-flycheck)
