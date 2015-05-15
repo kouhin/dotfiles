@@ -37,6 +37,7 @@
 (require 'init-speedbar)
 (require 'init-git)
 (require 'init-direx)
+(require 'init-tabbar)
 
 ;; Major modes
 (require 'init-web-mode)
