@@ -47,6 +47,8 @@
 (require 'init-org-mode)
 (require 'init-yaml-mode)
 (require 'init-dockerfile-mode)
+(require 'init-clojure)
+(require 'init-clojure-cider)
 
 (provide 'init)
 
