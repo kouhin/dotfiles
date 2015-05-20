@@ -48,8 +48,6 @@
 (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
 (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
 
-(add-to-list 'completion-styles 'initials t)
-
 (custom-set-faces
  '(company-preview
    ((t (:foreground "darkgray" :underline t))))
