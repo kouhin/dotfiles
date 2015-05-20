@@ -22,7 +22,9 @@
 (require 'company-go)
 
 (add-hook 'go-mode-hook (lambda ()
-						  (set (make-local-variable 'company-backends) '(company-go))
+						  (setq company-go-show-annotation t)
+						  (set (make-local-variable 'company-backends)
+							   '((company-go company-yasnippet)))
 						  (company-mode)))
 
 ;; eldoc
