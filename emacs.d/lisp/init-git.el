@@ -17,6 +17,9 @@
 (require 'magit-gitflow)
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
+;; git-gutter
+(require-package 'git-gutter)
+(global-git-gutter-mode t)
 (provide 'init-git)
 
 ;;; init-git.el ends here

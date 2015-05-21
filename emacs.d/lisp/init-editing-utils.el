@@ -67,7 +67,7 @@
 ;; rainbow-delimiters
 (require-package 'rainbow-delimiters)
 (require 'rainbow-delimiters)
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (provide 'init-editing-utils)
 
