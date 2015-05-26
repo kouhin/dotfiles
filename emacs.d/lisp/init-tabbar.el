@@ -68,8 +68,8 @@ are always included."
  :box nil)
 (setq tabbar-separator '(1.5))
 
-(global-set-key "\M-]" 'tabbar-forward)
-(global-set-key "\M-[" 'tabbar-backward)
+(global-set-key (kbd "C-x <right>") 'tabbar-forward)
+(global-set-key (kbd "C-x <left>") 'tabbar-backward)
 
 (tabbar-mode)
 

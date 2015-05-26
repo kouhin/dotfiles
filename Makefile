@@ -4,12 +4,14 @@ link:
 	ln -sf $(shell pwd)/bash_profile $(HOME)/.bash_profile
 	ln -sf $(shell pwd)/tmux.conf $(HOME)/.tmux.conf
 	ln -sf $(shell pwd)/emacs.d $(HOME)/.emacs.d
+	ln -sf $(shell pwd)/slate.js $(HOME)/.slate.js
 clean:
 	unlink $(HOME)/.vimrc
 	unlink $(HOME)/.zshrc
 	unlink $(HOME)/.bash_profile
 	unlink $(HOME)/.tmux.conf
 	unlink $(HOME)/.emacs.d
+	unlink $(HOME)/.slate.js
 init-go:
 	go get -u github.com/nsf/gocode
 	go get -u golang.org/x/tools/cmd/goimports
