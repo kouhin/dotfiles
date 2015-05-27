@@ -79,10 +79,10 @@ S.bnda({
 	"i:ctrl;cmd" : S.op("push", { "direction" : "up", "style" : "bar-resize:screenSizeY/2" }),
 	",:ctrl;cmd" : S.op("push", { "direction" : "down", "style" : "bar-resize:screenSizeY/2" }),
 	"k:ctrl;cmd" : S.op("move", { "x" : "screenOriginX", "y" : "screenOriginY", "width" : "screenSizeX", "height" : "screenSizeY"}),
-	"u:ctrl;cmd" : S.op("move", { "x" : "screenOriginX", "y" : "screenOriginY", "width" : "screenSizeX/2", "height" : "screenSizeY/2"}),
-	"o:ctrl;cmd" : S.op("move", { "x" : "screenSizeX/2", "y" : "screenOriginY", "width" : "screenSizeX/2", "height" : "screenSizeY/2"}),
-	"m:ctrl;cmd" : S.op("move", { "x" : "screenOriginX", "y" : "screenSizeY/2", "width" : "screenSizeX/2", "height" : "screenSizeY/2"}),
-	".:ctrl;cmd" : S.op("move", { "x" : "screenSizeX/2", "y" : "screenSizeY/2", "width" : "screenSizeX/2", "height" : "screenSizeY/2"}),
+	"u:ctrl;cmd" : S.op("corner", { "direction" : "top-left", "width" : "screenSizeX/2", "height" : "screenSizeY/2"}),
+	"o:ctrl;cmd" : S.op("corner", { "direction" : "top-right", "width" : "screenSizeX/2", "height" : "screenSizeY/2"}),
+	"m:ctrl;cmd" : S.op("corner", { "direction" : "bottom-left", "width" : "screenSizeX/2", "height" : "screenSizeY/2"}),
+	".:ctrl;cmd" : S.op("corner", { "direction" : "bottom-right", "width" : "screenSizeX/2", "height" : "screenSizeY/2"}),
 
 
 	// Nudge Bindings
@@ -92,8 +92,7 @@ S.bnda({
 	"down:ctrl;alt;cmd" : S.op("nudge", { "x" : "+0", "y" : "+10%" }),
 
 	// Throw Bindings
-	"n:ctrl;cmd" : S.op("throw", { "screen" : "right", "width" : "screenSizeX", "height" : "screenSizeY" }),
-	"p:ctrl;cmd" : S.op("throw", { "screen" : "left", "width" : "screenSizeX", "height" : "screenSizeY" }),
+	"n:ctrl;cmd" : S.op("throw", { "screen" : "next", "width" : "screenSizeX", "height" : "screenSizeY" }),
 
 	// Window Hints
 	"esc:cmd" : S.op("hint"),
