@@ -23,8 +23,7 @@
 (add-hook 'ibuffer-mode-hook
 		  '(lambda ()
 			 (ibuffer-auto-mode t)
-			 (ibuffer-switch-to-saved-filter-groups "default"))
-		  )
+			 (ibuffer-switch-to-saved-filter-groups "default")))
 
 (provide 'init-ibuffer)
 

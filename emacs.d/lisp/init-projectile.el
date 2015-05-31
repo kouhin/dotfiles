@@ -5,14 +5,8 @@
 
 ;;; Code:
 
-(require-package 'projectile)
-(require 'projectile)
-
-(projectile-global-mode)
-
-(require-package 'helm-projectile)
-(require 'helm-projectile)
-(helm-projectile-on)
+(el-get-bundle projectile
+  (add-hook 'prog-mode-hook 'projectile-mode))
 
 (provide 'init-projectile)
 

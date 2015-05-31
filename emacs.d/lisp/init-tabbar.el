@@ -1,11 +1,32 @@
 ;;; init-tabbar.el --- Init tabbar
 ;;; Commentary:
 ;;; Code:
-(require-package 'tabbar)
-(require 'tabbar)
+(el-get-bundle! tabbar
+  (global-set-key (kbd "C-x <right>") 'tabbar-forward)
+  (global-set-key (kbd "C-x <left>") 'tabbar-backward)
+  (with-eval-after-load-feature 'tabbar
+	;; disable group
+	(setq tabbar-buffer-groups-function nil)
 
-;; disable group
-(setq tabbar-buffer-groups-function nil)
+	;; set color
+	(set-face-attribute
+	 'tabbar-default nil
+	 :background "white"
+	 :height 1.0)
+	(set-face-attribute
+	 'tabbar-selected nil
+	 :background "black"
+	 :foreground "white"
+	 :weight 'bold
+	 :box nil)
+	(set-face-attribute
+	 'tabbar-unselected nil
+	 :background "white"
+	 :foreground "black"
+	 :box nil)
+	(setq tabbar-separator '(1.5))
+	))
+
 
 (defvar my-tabbar-displayed-buffers
   '("*scratch*")
@@ -50,32 +71,15 @@ are always included."
   (let ((tabbar-auto-scroll-flag t))
 	ad-do-it))
 
-;; set color
-(set-face-attribute
- 'tabbar-default nil
- :background "white"
- :height 1.0)
-(set-face-attribute
- 'tabbar-selected nil
- :background "black"
- :foreground "white"
- :weight 'bold
- :box nil)
-(set-face-attribute
- 'tabbar-unselected nil
- :background "white"
- :foreground "black"
- :box nil)
-(setq tabbar-separator '(1.5))
-
-(global-set-key (kbd "C-x <right>") 'tabbar-forward)
-(global-set-key (kbd "C-x <left>") 'tabbar-backward)
 
 (tabbar-mode)
 
 ;; Distinct same name buffers
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(require 'uniquify
+		 (with-eval-after-load-feature 'uniquify
+		   (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+		   ))
+
 
 (provide 'init-tabbar)
 ;;; init-tabbar.el ends here

@@ -4,22 +4,17 @@
 
 ;;; Code:
 
-(require-package 'magit)
-(require-package 'gitattributes-mode)
-(require-package 'gitconfig-mode)
-(require-package 'gitignore-mode)
+(el-get-bundle magit
+  (with-eval-after-load-feature 'magit
+	(setq magit-last-seen-setup-instructions "1.4.0")))
 
-(require 'magit)
-
-(setq magit-last-seen-setup-instructions "1.4.0")
-
-(require-package 'magit-gitflow)
-(require 'magit-gitflow)
-(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+(el-get-bundle magit-gitflow
+  (add-hook 'magit-mode-hook 'turn-on-magit-gitflow))
 
 ;; git-gutter
-(require-package 'git-gutter)
-(global-git-gutter-mode t)
+(el-get-bundle git-gutter
+  (add-hook 'prog-mode-hook 'git-gutter-mode))
+
 (provide 'init-git)
 
 ;;; init-git.el ends here

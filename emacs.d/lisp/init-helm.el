@@ -5,16 +5,12 @@
 
 ;;; Code:
 
-(require-package 'helm)
-(require-package 'helm-ag)
-(require-package 'helm-descbinds)
-
-(require 'helm-config)
-(helm-mode t)
-(global-set-key (kbd "M-x") 'helm-M-x)
-
-(require 'helm-descbinds)
-(helm-descbinds-mode t)
+(el-get-bundle helm
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (add-hook 'after-init-hook 'helm-mode)
+  (require 'helm-config))
+(el-get-bundle helm-ag)
+(el-get-bundle helm-descbinds)
 
 (provide 'init-helm)
 ;;; init-helm.el ends here

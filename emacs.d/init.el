@@ -7,11 +7,16 @@
 
 ;;; Code:
 
-(let ((minver "23.3"))
-  (when (version<= emacs-version "23.1")
-	(error "Your Emacs is too old -- this config requires v%s or higher" minver)))
-(when (version<= emacs-version "24")
-  (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer      (url-retrieve-synchronously
+							 "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+	(goto-char (point-max))
+	(eval-print-last-sexp)))
+
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+(el-get-bundle with-eval-after-load-feature)
 
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
@@ -20,8 +25,7 @@
  'load-path
      (expand-file-name "lisp" user-emacs-directory))
 
-(require 'init-elpa)
-(require 'init-utils)
+;(require 'init-utils)
 (require 'init-exec-path)
 (require 'init-editing-utils)
 (require 'init-ibuffer)
@@ -32,7 +36,6 @@
 (require 'init-helm)
 (require 'init-popwin)
 (require 'init-projectile)
-(require 'init-sws-mode)
 (require 'init-ace-mode)
 (require 'init-speedbar)
 (require 'init-git)
@@ -44,11 +47,8 @@
 (require 'init-markdown-mode)
 (require 'init-go-mode)
 (require 'init-toml-mode)
-(require 'init-org-mode)
 (require 'init-yaml-mode)
 (require 'init-dockerfile-mode)
-(require 'init-clojure)
-(require 'init-clojure-cider)
 
 (provide 'init)
 

@@ -6,17 +6,14 @@
 ;;; Code:
 
 ;; popwin
-(require-package 'popwin)
-(require 'popwin)
-
-(popwin-mode 1)
-
+(el-get-bundle! popwin)
 (push '("*Ibuffer*" :position bottom :dedicated t) popwin:special-display-config)
-(push '("^\*helm.+\*$" :regexp t) popwin:special-display-config)
 (push '(direx:direx-mode :position left :width 25 :dedicated t)
 	  popwin:special-display-config)
 (push '("^\*go-direx:" :regexp t :position right :width 25 :dedicated t)
 	  popwin:special-display-config)
+(popwin-mode 1)
+
 
 (provide 'init-popwin)
 ;;; init-popwin.el ends here

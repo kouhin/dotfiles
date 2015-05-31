@@ -30,9 +30,8 @@
 (setq show-paren-delay 0)
 
 ;; smooth-scroll
-(require-package 'smooth-scroll)
-(require 'smooth-scroll)
-(smooth-scroll-mode t)
+(el-get-bundle smooth-scroll
+  (smooth-scroll-mode t))
 
 ;; cua-mode
 (cua-selection-mode t)
@@ -53,21 +52,22 @@
   (global-prettify-symbols-mode))
 
 ;; highlight-symbol
-(require-package 'highlight-symbol)
-(require 'highlight-symbol)
-(add-to-list 'prog-mode-hook 'highlight-symbol-mode)
-(add-to-list 'prog-mode-hook 'highlight-symbol-nav-mode)
-(setq highlight-symbol-idle-delay 0.2)
+(el-get-bundle highlight-symbol
+  (add-to-list 'prog-mode-hook 'highlight-symbol-mode)
+  (add-to-list 'prog-mode-hook 'highlight-symbol-nav-mode)
+  (with-eval-after-load-feature 'highlight-symbol
+	(setq highlight-symbol-idle-delay 0.2)))
+
+
 
 ;; undo tree
-(require-package 'undo-tree)
-(require 'undo-tree)
-(global-undo-tree-mode)
+(el-get-bundle undo-tree
+  (add-hook 'prog-mode-hook 'undo-tree-mode))
+
 
 ;; rainbow-delimiters
-(require-package 'rainbow-delimiters)
-(require 'rainbow-delimiters)
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(el-get-bundle rainbow-delimiters
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (provide 'init-editing-utils)
 

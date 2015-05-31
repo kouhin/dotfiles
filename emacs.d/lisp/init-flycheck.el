@@ -5,9 +5,8 @@
 
 ;;; Code:
 
-(require-package 'flycheck)
-
-(add-hook 'after-init-hook #'global-flycheck-mode)
+(el-get-bundle flycheck
+  (global-flycheck-mode t))
 
 (provide 'init-flycheck)
 

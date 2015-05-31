@@ -1,49 +1,36 @@
 ;;; init-go-mode.el --- Init Go mode
-
 ;;; Commentary:
-
 ;;; Code:
+(el-get-bundle go-mode
+   (add-hook 'before-save-hook 'gofmt-before-save)
+  (with-eval-after-load-feature (go-mode company company-go)
 
-(require-package 'go-mode)
-(add-hook 'go-mode-hook '(lambda ()
-                           (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
-                           (local-set-key (kbd "C-c C-g") 'go-goto-imports)
-                           (local-set-key (kbd "C-c C-f") 'gofmt)
-                           (local-set-key (kbd "C-c C-k") 'godoc)
-						   (setq gofmt-command "goimports")
-                           ))
-(add-hook 'before-save-hook 'gofmt-before-save)
+	(setq gofmt-command "goimports")
+	(add-hook 'go-mode-hook (lambda ()
+							  (set (make-local-variable 'company-backends) '(company-go))
+							  (company-mode)
+							  ))))
 
-;;auto-complete
-;;(require-package 'go-autocomplete)
-;;(require 'go-autocomplete)
+(el-get-bundle go-company
+  (with-eval-after-load-feature 'company-go
+	(setq company-go-show-annotation t)))
 
-(require-package 'company-go)
-(require 'company-go)
+(el-get-bundle go-def)
+(el-get-bundle go-eldoc)
+(el-get-bundle go-errcheck)
+(el-get-bundle go-errcheck-el)
+(el-get-bundle go-imports)
+(el-get-bundle go-lint)
+(el-get-bundle go-oracle)
+(el-get-bundle go-rename)
+(el-get-bundle go-test)
+(el-get-bundle helm-go-package)
 
-(add-hook 'go-mode-hook (lambda ()
-						  (setq company-go-show-annotation t)
-						  (set (make-local-variable 'company-backends)
-							   '((company-go company-yasnippet)))
-						  (company-mode)))
+(el-get-bundle go-direx
+  :url "https://github.com/syohex/emacs-go-direx.git"
+  :features go-direx
+  (with-eval-after-load-feature 'go-direx
+	(define-key go-mode-map (kbd "C-c j") 'go-direx-pop-to-buffer)))
 
-;; eldoc
-(require-package 'go-eldoc)
-(require 'go-eldoc)
-(add-hook 'go-mode-hook 'go-eldoc-setup)
-
-;; go-direx
-(require-package 'go-direx)
-(require 'go-direx)
-(define-key go-mode-map (kbd "C-x j") 'go-direx-pop-to-buffer)
-
-;; helm-go-package
-(require-package 'helm-go-package)
-(eval-after-load 'go-mode
-  '(substitute-key-definition 'go-import-add 'helm-go-package go-mode-map))
-
-(require 'go-oracle)
-(require 'go-rename)
-(require 'go-errcheck)
 (provide 'init-go-mode)
 ;;; init-go-mode.el ends here

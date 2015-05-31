@@ -4,10 +4,11 @@
 
 ;;; Code:
 
-(require-package 'markdown-mode)
-(add-to-list 'auto-mode-alist '("\\.text\\'" . gfm-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . gfm-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
+(el-get-bundle markdown-mode
+  :prepare (add-to-list 'auto-mode-alist
+						'("\\.\\(md\\|mdown\\|markdown\\)\\'" . gfm-mode)))
+
+
 
 (provide 'init-markdown-mode)
 

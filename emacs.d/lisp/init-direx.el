@@ -4,9 +4,9 @@
 
 ;;; Code:
 
-(require-package 'direx)
-(require 'direx)
-(global-set-key (kbd "C-x C-j") 'direx:jump-to-directory-other-window)
+(el-get-bundle direx
+  (global-set-key (kbd "C-x j") 'direx:jump-to-directory-other-window))
+
 
 (provide 'init-direx)
 ;;; init-direx.el ends here

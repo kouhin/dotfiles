@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(require-package 'toml-mode)
+(el-get-bundle toml-mode)
 (provide 'init-toml-mode)
 
 ;;; init-toml-mode.el ends here
