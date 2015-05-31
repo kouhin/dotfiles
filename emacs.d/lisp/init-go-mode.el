@@ -21,7 +21,9 @@
 (el-get-bundle go-errcheck-el)
 (el-get-bundle go-imports)
 (el-get-bundle go-lint)
-(el-get-bundle go-oracle)
+(el-get-bundle go-oracle
+  :prepare (progn
+			 (autoload 'go-oracle-mode "oracle" nil t)))
 (el-get-bundle go-rename)
 (el-get-bundle go-test)
 (el-get-bundle helm-go-package)
