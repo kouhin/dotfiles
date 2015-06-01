@@ -2,14 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 (el-get-bundle go-mode
-   (add-hook 'before-save-hook 'gofmt-before-save)
-  (with-eval-after-load-feature (go-mode company company-go)
-
-	(setq gofmt-command "goimports")
-	(add-hook 'go-mode-hook (lambda ()
-							  (set (make-local-variable 'company-backends) '(company-go))
-							  (company-mode)
-							  ))))
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  (add-hook 'go-mode-hook (lambda ()
+							(set (make-local-variable 'company-backends)
+								          '((company-go :with company-yasnippet company-dabbrev-code)))))
+  (with-eval-after-load-feature 'go-mode
+	(setq gofmt-command "goimports")))
 
 (el-get-bundle go-company
   (with-eval-after-load-feature 'company-go

@@ -8,7 +8,7 @@
 (el-get-bundle company-mode
   (global-set-key (kbd "TAB") 'tab-indent-or-complete)
   (global-set-key (kbd "M-RET") 'company-complete-common-or-cycle)
-  (add-hook 'prog-mode-hook 'company-mode)
+  (global-company-mode t)
   (with-eval-after-load-feature 'company
 	(custom-set-faces
 	 '(company-preview
@@ -35,6 +35,10 @@
 	(define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
 	(define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
 	))
+
+(with-eval-after-load 'company-dabbrev
+  	(setq company-dabbrev-downcase nil
+		  company-dabbrev-ignore-case t))
 
 (defun check-expansion ()
   "Check expansion."
