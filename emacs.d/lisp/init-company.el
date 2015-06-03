@@ -6,9 +6,11 @@
 ;;; Code:
 
 (el-get-bundle company-mode
-  (global-set-key (kbd "TAB") 'tab-indent-or-complete)
-  (global-set-key (kbd "M-RET") 'company-complete-common-or-cycle)
-  (global-company-mode t)
+  (add-hook 'after-init-hook (lambda ()
+							   (global-company-mode)
+							   (global-set-key (kbd "TAB") 'tab-indent-or-complete)
+							   (global-set-key (kbd "M-RET") 'company-complete-common-or-cycle)
+							   ))
   (with-eval-after-load-feature 'company
 	(custom-set-faces
 	 '(company-preview
@@ -37,8 +39,8 @@
 	))
 
 (with-eval-after-load 'company-dabbrev
-  	(setq company-dabbrev-downcase nil
-		  company-dabbrev-ignore-case t))
+  (setq company-dabbrev-downcase nil
+		company-dabbrev-ignore-case t))
 
 (defun check-expansion ()
   "Check expansion."

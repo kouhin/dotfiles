@@ -62,7 +62,7 @@
 
 ;; undo tree
 (el-get-bundle undo-tree
-  (global-undo-tree-mode))
+  (add-hook 'after-init-hook 'global-undo-tree-mode))
 
 
 ;; rainbow-delimiters

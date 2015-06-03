@@ -6,7 +6,7 @@
 ;;; Code:
 
 (el-get-bundle flycheck
-  (global-flycheck-mode t))
+  (add-hook 'after-init-hook 'global-flycheck-mode))
 
 (provide 'init-flycheck)
 

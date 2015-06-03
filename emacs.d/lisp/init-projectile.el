@@ -6,9 +6,9 @@
 ;;; Code:
 
 (el-get-bundle projectile
-  (projectile-global-mode)
-  (with-eval-after-load-feature 'helm-projectile
-	(helm-projectile-on)))
+  (add-hook 'after-init-hook 'helm-projectile-on)
+  (with-eval-after-load-feature 'projectile
+	(projectile-global-mode)))
 
 (provide 'init-projectile)
 
