@@ -52,9 +52,10 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export GOPATH=$HOME/go
-export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:/usr/local/opt/go/libexec/bin:$PATH
+export PATH=$GOPATH/bin:$PATH
 export GOROOT=`go env GOROOT`
 export JAVA_HOME=`/usr/libexec/java_home`
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
