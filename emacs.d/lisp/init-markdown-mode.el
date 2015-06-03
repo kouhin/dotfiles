@@ -10,7 +10,10 @@
   :prepare (add-to-list 'auto-mode-alist
 						'("\\.\\(md\\|mdown\\|markdown\\)\\'" . gfm-mode)))
 
-
+(el-get-bundle gh-md
+  :url "https://github.com/emacs-pe/gh-md.el.git"
+  :type github
+  :pkgname "emacs-pe/gh-md.el")
 
 (provide 'init-markdown-mode)
 

@@ -29,7 +29,7 @@
 
 
 (defvar my-tabbar-displayed-buffers
-  '("*scratch*")
+  '("*scratch*" "*eshell*" "*shell*")
   "*Regexps matches buffer names always included tabs.")
 
 (defvar my-tabber-eliminate-major-mode
