@@ -24,7 +24,9 @@
  tooltip-delay 1.5
  truncate-lines nil
  truncate-partial-width-windows nil
- visible-bell t)
+ visible-bell t
+ scroll-step 1
+ scroll-conservatively 10000)
 
 (show-paren-mode t)
 (setq show-paren-delay 0)
