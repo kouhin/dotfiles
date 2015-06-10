@@ -26,7 +26,8 @@
  truncate-partial-width-windows nil
  visible-bell t
  scroll-step 1
- scroll-conservatively 10000)
+ scroll-conservatively 10000
+ vc-follow-symlinks t)
 
 (show-paren-mode t)
 (setq show-paren-delay 0)
