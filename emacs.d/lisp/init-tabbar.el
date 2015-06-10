@@ -8,23 +8,22 @@
 	;; disable group
 	(setq tabbar-buffer-groups-function nil)
 
-	;; set color
+	(setq tabbar-separator '(1.5))
 	(set-face-attribute
 	 'tabbar-default nil
-	 :background "white"
-	 :height 1.0)
-	(set-face-attribute
-	 'tabbar-selected nil
-	 :background "black"
-	 :foreground "white"
-	 :weight 'bold
-	 :box nil)
+	 :family (face-attribute 'default :family)
+	 :background (face-attribute 'mode-line-inactive :background)
+	 :height 0.9)
 	(set-face-attribute
 	 'tabbar-unselected nil
-	 :background "white"
-	 :foreground "black"
+	 :background (face-attribute 'mode-line-inactive :background)
+	 :foreground (face-attribute 'mode-line-inactive :foreground)
 	 :box nil)
-	(setq tabbar-separator '(1.5))
+	(set-face-attribute
+	 'tabbar-selected nil
+	 :background (face-attribute 'mode-line :background)
+	 :foreground (face-attribute 'mode-line :foreground)
+	 :box nil)
 	))
 
 
