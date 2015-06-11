@@ -7,28 +7,12 @@
   (with-eval-after-load-feature 'tabbar
 	;; disable group
 	(setq tabbar-buffer-groups-function nil)
-
-	(setq tabbar-separator '(1.5))
-	(set-face-attribute
-	 'tabbar-default nil
-	 :family (face-attribute 'default :family)
-	 :background (face-attribute 'mode-line-inactive :background)
-	 :height 0.9)
-	(set-face-attribute
-	 'tabbar-unselected nil
-	 :background (face-attribute 'mode-line-inactive :background)
-	 :foreground (face-attribute 'mode-line-inactive :foreground)
-	 :box nil)
-	(set-face-attribute
-	 'tabbar-selected nil
-	 :background (face-attribute 'mode-line :background)
-	 :foreground (face-attribute 'mode-line :foreground)
-	 :box nil)
-	))
+	(setq tabbar-separator '(1.0)))
+)
 
 
 (defvar my-tabbar-displayed-buffers
-  '("*scratch*" "*eshell*" "*shell*")
+  '("*scratch*" "*eshell*" "*shell*" "*GNU Emacs*")
   "*Regexps matches buffer names always included tabs.")
 
 (defvar my-tabber-eliminate-major-mode
