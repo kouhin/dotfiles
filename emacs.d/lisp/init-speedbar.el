@@ -2,19 +2,26 @@
 ;;; Commentary:
 ;;; Code:
 
-(el-get-bundle sr-speedbar
-  (with-eval-after-load-feature 'sr-speedbar
-	(setq sr-speedbar-default-width 5)
-	(setq sr-speedbar-max-width 5)
-	(setq sr-speedbar-auto-refresh t)
-	))
+(use-package sr-speedbar
+  :ensure t
+  :defer t
+  :config
+  (setq sr-speedbar-default-width 5)
+  (setq sr-speedbar-max-width 5)
+  (setq sr-speedbar-auto-refresh t))
 
-(el-get-bundle projectile-speedbar)
+(use-package projectile-speedbar
+  :ensure t
+  :defer t)
 
-(with-eval-after-load 'speedbar
+(use-package speedbar
+  :defer t
+  :config
   (setq speedbar-show-unknown-files t)
   (setq speedbar-smart-directory-expand-flag t)
   (setq speedbar-use-images nil))
+
+
 
 (provide 'init-speedbar)
 

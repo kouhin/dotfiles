@@ -6,28 +6,47 @@
 
 ;;; Code:
 
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(let ((minver "23.3"))
+  (when (version<= emacs-version "23.1")
+	(error "Your Emacs is too old -- this config requires v%s or higher" minver)))
+(when (version<= emacs-version "24")
+  (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer      (url-retrieve-synchronously
-							 "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
-	(goto-char (point-max))
-	(eval-print-last-sexp)))
+; Init package.el
+(require 'package)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+						 ("marmalade" . "https://marmalade-repo.org/packages/")
+						 ("melpa" . "http://melpa.org/packages/")
+						 ("org" . "http://orgmode.org/elpa/")))
+(package-initialize)
 
-(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
-(el-get-bundle with-eval-after-load-feature)
+(defun require-package (package &optional min-version no-refresh)
+    "Install given PACKAGE, optionally requiring MIN-VERSION.
+If NO-REFRESH is non-nil, the available package lists will not be
+re-downloaded in order to locate PACKAGE."
+	(if (package-installed-p package min-version)
+		t
+	  (if (or (assoc package package-archive-contents) no-refresh)
+		  (package-install package)
+		(progn
+		  (package-refresh-contents)
+		          (require-package package min-version t)))))
+
+; Install use-package
+(require-package 'use-package)
+(eval-when-compile
+  (require 'use-package))
+(require 'bind-key)
 
 (defconst *spell-check-support-enabled* t) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
 (when *is-a-mac*
-  (setq ns-function-modifer 'hyper)
+  (setq ns-function-modifier 'hyper)
   (setq ns-option-modifier 'meta)
   (setq ns-command-modifier 'super)
   (setq mac-function-modifier 'hyper)
   (setq mac-option-modifier 'meta)
-  (setq mac-command-modifier 'super)
-  (setq mac-pass-command-to-system nil)
-  (setq mac-pass-control-to-system nil))
+  (setq mac-command-modifier 'super))
 
 (add-to-list
  'load-path
@@ -56,6 +75,11 @@
 (require 'init-toml-mode)
 (require 'init-yaml-mode)
 (require 'init-dockerfile-mode)
+
+(use-package init-utils
+  :commands (byte-compile-init-dir remove-elc-on-save)
+  :init
+  (add-hook 'emacs-lisp-mode-hook 'remove-elc-on-save))
 
 (provide 'init)
 

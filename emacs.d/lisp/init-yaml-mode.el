@@ -2,11 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
-(el-get-bundle yaml-mode
-  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-  (add-hook 'yaml-mode-hook
-			'(lambda ()
-			   (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+(use-package yaml-mode
+  :ensure t
+  :defer t
+  :config
+  (bind-key "C-m" 'newline-and-indent yaml-mode-map))
 
 (provide 'init-yaml-mode)
 

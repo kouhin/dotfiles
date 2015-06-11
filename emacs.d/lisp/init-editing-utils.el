@@ -33,11 +33,20 @@
 (setq show-paren-delay 0)
 
 ;; smooth-scroll
-(el-get-bundle smooth-scroll
-  (smooth-scroll-mode t))
+(use-package smooth-scroll
+  :ensure t
+  :commands (smooth-scroll-mode)
+  :defer t
+  :init
+  (add-hook 'after-init-hook 'smooth-scroll-mode))
 
 ;; cua-mode
 (cua-selection-mode t)
+
+;; delete-selection-mode
+(delete-selection-mode)
+
+(global-auto-revert-mode t)
 
 ;; create auto-save file in ~/.emacs.d/backup
 
@@ -54,22 +63,39 @@
 (when (fboundp 'global-prettify-symbols-mode)
   (global-prettify-symbols-mode))
 
+;; meaningful names for buffers with the same name
+(use-package uniquify
+  :config
+  (setq uniquify-buffer-name-style 'forward)
+  (setq uniquify-separator "/")
+  (setq uniquify-after-kill-buffer-p t)    ; rename after killing uniquified
+  (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
+  )
+
+(set-default 'imenu-auto-rescan t)
+
 ;; highlight-symbol
-(el-get-bundle highlight-symbol
+(use-package highlight-symbol
+  :ensure t
+  :defer t
+  :init
   (add-to-list 'prog-mode-hook 'highlight-symbol-mode)
   (add-to-list 'prog-mode-hook 'highlight-symbol-nav-mode)
-  (with-eval-after-load-feature 'highlight-symbol
-	(setq highlight-symbol-idle-delay 0.2)))
-
-
+  :config
+  (setq highlight-symbol-idle-delay 0.2))
 
 ;; undo tree
-(el-get-bundle undo-tree
+(use-package undo-tree
+  :ensure t
+  :defer t
+  :init
   (add-hook 'after-init-hook 'global-undo-tree-mode))
 
-
 ;; rainbow-delimiters
-(el-get-bundle rainbow-delimiters
+(use-package rainbow-delimiters
+  :ensure t
+  :defer t
+  :init
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (provide 'init-editing-utils)

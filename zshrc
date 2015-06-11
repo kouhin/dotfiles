@@ -84,3 +84,5 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias brewup='brew update && brew upgrade --all && brew cleanup'
 alias e='emacsclient -nw'
+
+ulimit -n 65535
