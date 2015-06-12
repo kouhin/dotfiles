@@ -4,7 +4,6 @@
 ;; This file bootstraps the configuration, which is divided into
 ;; a number of other files.
 
-
 ;;; Code:
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -18,14 +17,22 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get-bundle with-eval-after-load-feature)
 
-(defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
+(defconst *spell-check-support-enabled* t) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
+(when *is-a-mac*
+  (setq ns-function-modifer 'hyper)
+  (setq ns-option-modifier 'meta)
+  (setq ns-command-modifier 'super)
+  (setq mac-function-modifier 'hyper)
+  (setq mac-option-modifier 'meta)
+  (setq mac-command-modifier 'super)
+  (setq mac-pass-command-to-system nil)
+  (setq mac-pass-control-to-system nil))
 
 (add-to-list
  'load-path
-     (expand-file-name "lisp" user-emacs-directory))
+ (expand-file-name "lisp" user-emacs-directory))
 
-;(require 'init-utils)
 (require 'init-exec-path)
 (require 'init-editing-utils)
 (require 'init-ibuffer)
