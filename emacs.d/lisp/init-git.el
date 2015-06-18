@@ -8,7 +8,7 @@
 (use-package magit
   :ensure t
   :defer t
-  :config
+  :init
   (setq magit-last-seen-setup-instructions "1.4.0"))
 
 (use-package magit-gitflow
