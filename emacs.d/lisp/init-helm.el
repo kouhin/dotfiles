@@ -8,9 +8,10 @@
   :ensure t
   :defer t
   :init
-  (require 'helm-config)
+  (add-hook 'after-init-hook 'helm-mode)
   (bind-key "M-x" 'helm-M-x)
-  (add-hook 'after-init-hook 'helm-mode))
+  :config
+  (require 'helm-config))
 
 (use-package helm-ag
   :ensure t

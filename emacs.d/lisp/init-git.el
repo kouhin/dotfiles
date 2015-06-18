@@ -33,12 +33,6 @@
 (use-package gitattributes-mode
   :ensure t
   :defer t)
-(use-package git-commit-mode
-  :ensure t
-  :defer t)
-(use-package git-rebase-mode
-  :ensure t
-  :defer t)
 
 (provide 'init-git)
 

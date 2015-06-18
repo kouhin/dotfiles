@@ -20,7 +20,9 @@
 						 ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
 
-(defun require-package (package &optional min-version no-refresh)
+; Install use-package
+(eval-when-compile
+  (defun require-package (package &optional min-version no-refresh)
     "Install given PACKAGE, optionally requiring MIN-VERSION.
 If NO-REFRESH is non-nil, the available package lists will not be
 re-downloaded in order to locate PACKAGE."
@@ -30,11 +32,8 @@ re-downloaded in order to locate PACKAGE."
 		  (package-install package)
 		(progn
 		  (package-refresh-contents)
-		          (require-package package min-version t)))))
-
-; Install use-package
-(require-package 'use-package)
-(eval-when-compile
+		  (require-package package min-version t)))))
+  (require-package 'use-package)
   (require 'use-package))
 (require 'bind-key)
 
