@@ -5,7 +5,9 @@
 
 ;;; Code:
 
-(el-get-bundle toml-mode)
+(use-package toml-mode
+  :ensure t
+  :defer t)
 (provide 'init-toml-mode)
 
 ;;; init-toml-mode.el ends here

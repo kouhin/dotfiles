@@ -2,8 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
-(el-get-bundle dockerfile-mode
-  (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
+(use-package dockerfile-mode
+  :ensure t
+  :defer t)
 
 (provide 'init-dockerfile-mode)
 

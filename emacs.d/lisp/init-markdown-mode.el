@@ -3,17 +3,18 @@
 ;;; Commentary:
 
 ;;; Code:
+(use-package markdown-mode
+  :ensure t
+  :defer t
+  :init
+  (add-to-list 'auto-mode-alist
+			   '("\\.\\(md\\|mdown\\|markdown\\)\\'" . gfm-mode))
+  :config
+  (bind-key "RET" 'comment-indent-new-line markdown-mode-map))
 
-(el-get-bundle markdown-mode
-  (add-hook 'markdown-mode-hook '(lambda()
-								   (local-set-key (kbd "RET") 'comment-indent-new-line)))
-  :prepare (add-to-list 'auto-mode-alist
-						'("\\.\\(md\\|mdown\\|markdown\\)\\'" . gfm-mode)))
-
-(el-get-bundle gh-md
-  :url "https://github.com/emacs-pe/gh-md.el.git"
-  :type github
-  :pkgname "emacs-pe/gh-md.el")
+(use-package gh-md
+  :ensure t
+  :defer t)
 
 (provide 'init-markdown-mode)
 

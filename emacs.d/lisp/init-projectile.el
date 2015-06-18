@@ -4,11 +4,17 @@
 ;; for project
 
 ;;; Code:
+(use-package projectile
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'after-init-hook 'projectile-global-mode))
 
-(el-get-bundle projectile
-  (add-hook 'after-init-hook 'helm-projectile-on)
-  (with-eval-after-load-feature 'projectile
-	(projectile-global-mode)))
+(use-package helm-projectile
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'after-init-hook 'helm-projectile-on))
 
 (provide 'init-projectile)
 
