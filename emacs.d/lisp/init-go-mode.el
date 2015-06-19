@@ -1,6 +1,13 @@
 ;;; init-go-mode.el --- Init Go mode
 ;;; Commentary:
 ;;; Code:
+
+(eval-and-compile
+  (defun go-oracle-load-path ()
+	(expand-file-name "src/golang.org/x/tools/cmd/oracle" (getenv "GOPATH")))
+  (defun go-rename-load-path ()
+	(expand-file-name "src/golang.org/x/tools/refactor/rename" (getenv "GOPATH"))))
+
 (use-package go-mode
   :ensure t
   :defer t
@@ -13,6 +20,15 @@
 		 (executable-find "goimports")))
 	(when goimports
 	  (setq gofmt-command goimports)))
+
+  (use-package rename
+	:commands (go-rename)
+	:load-path (lambda ()(list (go-rename-load-path))))
+
+  (use-package go-oracle
+	:load-path (lambda ()(list (go-oracle-load-path)))
+	:init
+	(load "oracle"))
 
   ;; go-direx
   (use-package go-direx
@@ -43,31 +59,6 @@
   :defer t
   :init
   (add-hook 'go-mode-hook 'go-eldoc-setup))
-
-;; go-rename
-(let ((gorename
-	   (executable-find "gorename")))
-  (when gorename
-	(eval-and-compile
-	  (defun go-rename-load-path ()
-		(expand-file-name "src/golang.org/x/tools/refactor/rename" (getenv "GOPATH"))))
-	(use-package rename
-	  :commands (go-rename)
-	  :load-path (lambda ()(list (go-rename-load-path))))))
-
-;; go-oracle
-(let ((gooracle
-	   (executable-find "oracle")))
-  (when gooracle
-	(eval-and-compile
-	  (defun go-oracle-load-path ()
-		(expand-file-name "src/golang.org/x/tools/cmd/oracle" (getenv "GOPATH"))))
-	(use-package go-oracle
-	  :load-path (lambda ()(list (go-oracle-load-path)))
-	  :defer t
-	  :init
-	  (add-hook 'go-mode-hook 'go-oracle-mode)
-	  (autoload 'go-oracle-mode "oracle" nil t))))
 
 ;; helm-go-package
 (use-package helm-go-package
