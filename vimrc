@@ -43,7 +43,7 @@ set expandtab
 set cindent
 set shiftwidth=2
 set softtabstop=2
-set backspace=indent,eol,start whichwrap+=<,>,[,]  " 允许退格键的使用
+set backspace=indent,eol,start whichwrap+=<,>,[,]
 set completeopt=menu,longest
 set noswapfile
 set mouse=a

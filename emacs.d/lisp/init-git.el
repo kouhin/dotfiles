@@ -13,7 +13,7 @@
 
 (use-package magit-gitflow
   :ensure t
-  :defer t
+  :commands turn-on-magit-gitflow
   :init
   (add-hook 'magit-mode-hook 'turn-on-magit-gitflow))
 
