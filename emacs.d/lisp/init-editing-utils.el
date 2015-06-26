@@ -98,6 +98,11 @@
   :init
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
+;; editorconfig
+(use-package editorconfig
+  :ensure t
+  :defer t)
+
 (provide 'init-editing-utils)
 
 ;;; init-editing-utils.el ends here
