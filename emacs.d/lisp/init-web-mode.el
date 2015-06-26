@@ -19,14 +19,16 @@
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.scss?\\'" . web-mode))
-  )
+  (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.json?\\'" . web-mode)))
 
 (use-package js2-mode
   :ensure t
   :defer t
   :init
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-  (add-hook 'js-mode-hook 'js2-minor-mode))
+  (add-hook 'js-mode-hook 'js2-minor-mode)
+  (add-hook 'web-mode-hook 'js2-minor-mode))
 
 (provide 'init-web-mode)
 
