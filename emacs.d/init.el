@@ -80,6 +80,8 @@ re-downloaded in order to locate PACKAGE."
   :init
   (add-hook 'emacs-lisp-mode-hook 'remove-elc-on-save))
 
+(load-theme 'tango-dark)
+
 (provide 'init)
 
 ;;; init.el ends here

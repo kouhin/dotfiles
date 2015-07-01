@@ -2,12 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(eval-and-compile
-  (defun go-oracle-load-path ()
-	(expand-file-name "src/golang.org/x/tools/cmd/oracle" (getenv "GOPATH")))
-  (defun go-rename-load-path ()
-	(expand-file-name "src/golang.org/x/tools/refactor/rename" (getenv "GOPATH"))))
-
 (use-package go-mode
   :ensure t
   :defer t
@@ -23,10 +17,18 @@
 
   (use-package rename
 	:commands (go-rename)
-	:load-path (lambda ()(list (go-rename-load-path))))
+	:load-path (lambda ()
+				 (unless (getenv "GOPATH")
+				   (exec-path-from-shell-copy-env "GOPATH"))
+				 (list
+				  (expand-file-name "src/golang.org/x/tools/refactor/rename" (getenv "GOPATH")))))
 
   (use-package go-oracle
-	:load-path (lambda ()(list (go-oracle-load-path)))
+	:load-path (lambda ()
+				 (unless (getenv "GOPATH")
+				   (exec-path-from-shell-copy-env "GOPATH"))
+				 (list
+				  (expand-file-name "src/golang.org/x/tools/cmd/oracle" (getenv "GOPATH"))))
 	:init
 	(load "oracle"))
 
