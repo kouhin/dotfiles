@@ -103,6 +103,13 @@
   :ensure t
   :defer t)
 
+;; subword
+(use-package syntax-subword
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook 'global-syntax-subword-mode))
+
 (provide 'init-editing-utils)
 
 ;;; init-editing-utils.el ends here

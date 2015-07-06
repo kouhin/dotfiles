@@ -58,6 +58,7 @@
   (setq company-idle-delay 0.1)
   (setq company-echo-delay 0)
   (setq company-begin-commands '(self-insert-command))
+  (setq company-tooltip-align-annotations t)
 
   (bind-key "TAB" 'company-complete-common-or-cycle company-active-map)
   (bind-key "C-n" 'company-select-next-or-abort company-active-map)
