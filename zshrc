@@ -83,6 +83,6 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias brewup='brew update && brew upgrade --all && brew cleanup'
-alias e='emacsclient -nw'
+alias e='emacs'
 
 ulimit -n 65535
