@@ -10,6 +10,7 @@
   :init
   (add-hook 'after-init-hook 'helm-mode)
   (bind-key "M-x" 'helm-M-x)
+  (bind-key "C-x b" 'helm-mini)
   :config
   (require 'helm-config))
 

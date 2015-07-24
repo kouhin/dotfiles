@@ -65,9 +65,10 @@ re-downloaded in order to locate PACKAGE."
 (require 'init-speedbar)
 (require 'init-git)
 (require 'init-direx)
-(require 'init-tabbar)
+;;(require 'init-tabbar)
 
 ;; Major modes
+(require 'init-org-mode)
 (require 'init-web-mode)
 (require 'init-markdown-mode)
 (require 'init-go-mode)
