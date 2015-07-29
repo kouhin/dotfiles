@@ -10,9 +10,12 @@
   :init
   (add-hook 'after-init-hook 'helm-mode)
   (bind-key "M-x" 'helm-M-x)
-  (bind-key "C-x b" 'helm-mini)
+  (bind-key "C-x b" 'helm-buffers-list)
   :config
-  (require 'helm-config))
+  (require 'helm-config)
+  (setq helm-boring-buffer-regexp-list
+		  '("\\` " "\\*helm" "\\*helm-mode" "\\*Echo Area" "\\*tramp" "\\*Minibuf" "\\*epc" "\\**\\*"))
+  )
 
 (use-package helm-ag
   :ensure t
