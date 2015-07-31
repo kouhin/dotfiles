@@ -8,7 +8,9 @@
   :ensure t
   :defer t
   :init
-  (add-hook 'after-init-hook 'projectile-global-mode))
+  (add-hook 'after-init-hook 'projectile-global-mode)
+  :config
+  (setq projectile-completion-system 'helm))
 
 (use-package helm-projectile
   :ensure t
