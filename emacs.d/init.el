@@ -47,6 +47,10 @@ re-downloaded in order to locate PACKAGE."
   (setq mac-option-modifier 'meta)
   (setq mac-command-modifier 'super))
 
+(require 'mouse)
+(xterm-mouse-mode t)
+(defun track-mouse (e))
+
 (add-to-list
  'load-path
  (expand-file-name "lisp" user-emacs-directory))

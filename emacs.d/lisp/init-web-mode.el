@@ -19,16 +19,37 @@
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.scss?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.json?\\'" . web-mode)))
+  (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode)))
+
+(use-package json-mode
+  :ensure t
+  :defer t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.json?\\'" . json-mode)))
 
 (use-package js2-mode
   :ensure t
   :defer t
   :init
+  (add-to-list 'auto-mode-alist '("\\.js?\\'" . js2-mode))
   (add-hook 'js-mode-hook 'js2-minor-mode)
   (add-hook 'web-mode-hook 'js2-minor-mode))
+
+(use-package tern
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'js-mode-hook (lambda ()
+							(tern-mode t)))
+  (add-hook 'js2-mode-hook (lambda ()
+							 (tern-mode t)))
+  :config
+  (use-package company-tern
+	:ensure t
+	:config
+	(setq company-tooltip-align-annotations t))
+  (add-to-list 'company-backends 'company-tern)
+  )
 
 (provide 'init-web-mode)
 
