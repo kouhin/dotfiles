@@ -16,7 +16,9 @@
   :ensure t
   :defer t
   :init
-  (add-hook 'after-init-hook 'helm-projectile-on))
+  (add-hook 'after-init-hook 'helm-projectile-on)
+  :config
+  (require 'grep))
 
 (provide 'init-projectile)
 
