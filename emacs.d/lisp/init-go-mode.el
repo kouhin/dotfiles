@@ -1,5 +1,13 @@
 ;;; init-go-mode.el --- Init Go mode
 ;;; Commentary:
+;; Required:
+;; - go
+;; - go-rename
+;; - go-oracle
+;; - gocode
+;; - goimports
+;; - golint
+;; - errcheck
 ;;; Code:
 
 (use-package go-mode

@@ -2,6 +2,12 @@
 
 ;;; Commentary:
 
+;; Required:
+;; - node
+;; - eslint
+;; - tern
+;; - json-lint
+
 ;;; Code:
 
 (use-package web-mode
