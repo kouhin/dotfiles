@@ -16,36 +16,48 @@
   (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.scss?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode)))
+  (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+  :config
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
+  (flycheck-add-mode 'javascript-eslint 'js-mode)
+  (flycheck-add-mode 'javascript-eslint 'js2-mode)
+
+  ;; disable jshint since we prefer eslint checking
+  (setq-default flycheck-disabled-checkers
+				(append flycheck-disabled-checkers
+						'(javascript-jshint json-jsonlint)))
+  )
 
 (use-package json-mode
   :ensure t
   :defer t
-  :mode "\\.json?\\'")
+  :mode "\\.json\\'")
 
 (use-package js2-mode
   :ensure t
   :defer t
-  :mode "\\.js?\\'"
-  :init
-  (add-hook 'js-mode-hook 'js2-minor-mode))
+  :mode "\\.js\\'"
+  :config
+  ;; disable jshint since we prefer eslint checking
+  (add-to-list 'company-backends 'company-tern)
+  (setq-default flycheck-disabled-checkers
+				(append flycheck-disabled-checkers
+						'(javascript-jshint json-jsonlint))))
+
+(use-package company-tern
+  :ensure t
+  :defer t)
 
 (use-package tern
   :ensure t
   :defer t
   :init
-  (add-hook 'web-mode-hook (lambda () (tern-mode t)))
-  (add-hook 'js-mode-hook (lambda () (tern-mode t)))
-  (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-  :config
-  (use-package company-tern
-	:ensure t
-	:config
-	(setq company-tooltip-align-annotations t)
-	(push 'company-tern company-backends)))
+  (add-hook 'js-mode-hook (lambda() (tern-mode t)))
+  (add-hook 'js2-mode-hook (lambda() (tern-mode t)))
+  (add-hook 'web-mode-hook (lambda() (tern-mode t))))
 
 (provide 'init-web-mode)
 
