@@ -79,6 +79,7 @@ re-downloaded in order to locate PACKAGE."
 (require 'init-toml-mode)
 (require 'init-yaml-mode)
 (require 'init-dockerfile-mode)
+(require 'init-rust-mode)
 
 (use-package init-utils
   :commands (byte-compile-init-dir remove-elc-on-save)

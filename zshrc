@@ -54,6 +54,7 @@ source $ZSH/oh-my-zsh.sh
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 export GOROOT=`go env GOROOT`
+export RUST_SRC_PATH=$HOME/git/rust/src
 export JAVA_HOME=`/usr/libexec/java_home`
 
 # export MANPATH="/usr/local/man:$MANPATH"

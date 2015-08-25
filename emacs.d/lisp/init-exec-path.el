@@ -7,7 +7,7 @@
   :init
   (add-hook 'after-init-hook '(lambda ()
 								(exec-path-from-shell-initialize)
-								(let ((envs '("GOROOT" "GOPATH")))
+								(let ((envs '("GOROOT" "GOPATH" "RUST_SRC_PATH")))
 								  (exec-path-from-shell-copy-envs envs))
 								)))
 
