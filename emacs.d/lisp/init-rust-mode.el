@@ -15,7 +15,15 @@
   :bind ("C-c C-j" . racer-find-definition)
   :init
   (add-hook 'rust-mode-hook #'racer-mode)
-  (add-hook 'racer-mode-hook #'eldoc-mode))
+  (add-hook 'racer-mode-hook #'eldoc-mode)
+  :config
+  (bind-key "TAB" 'company-complete racer-mode-map))
+
+(use-package flycheck-rust
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'rust-mode-hook 'flycheck-rust-setup))
 
 (provide 'init-rust-mode)
 
