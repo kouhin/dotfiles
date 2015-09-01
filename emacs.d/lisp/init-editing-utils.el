@@ -110,6 +110,11 @@
   :init
   (add-hook 'prog-mode-hook 'global-syntax-subword-mode))
 
+;; quickrun
+(use-package quickrun
+  :ensure t
+  :defer t)
+
 (provide 'init-editing-utils)
 
 ;;; init-editing-utils.el ends here
