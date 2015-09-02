@@ -4,6 +4,7 @@
 
 (use-package org
   :ensure t
+  :defer t
   :pin manual
   :init
   :config
