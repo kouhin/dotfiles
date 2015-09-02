@@ -53,10 +53,7 @@
   :mode "\\.js\\'"
   :config
   ;; disable jshint since we prefer eslint checking
-  (add-to-list 'company-backends 'company-tern)
-  (setq-default flycheck-disabled-checkers
-				(append flycheck-disabled-checkers
-						'(javascript-jshint json-jsonlint))))
+  (add-to-list 'company-backends 'company-tern))
 
 (use-package coffee-mode
   :ensure t
