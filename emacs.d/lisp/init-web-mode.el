@@ -5,11 +5,14 @@
 ;; Required:
 ;; - node
 ;; - eslint
+;; - jshint
+;; - csslint
 ;; - tern
 ;; - json-lint
 ;; - coffee-script
 ;; - jade
 ;; - stylus
+;; - jsfmt
 
 ;;; Code:
 
@@ -30,16 +33,11 @@
   (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
   :config
-  (flycheck-add-mode 'javascript-eslint 'web-mode)
-  (flycheck-add-mode 'javascript-eslint 'js-mode)
-  (flycheck-add-mode 'javascript-eslint 'js2-mode)
-
   (add-to-list 'company-backends 'company-web-html)
-
-  ;; disable jshint since we prefer eslint checking
-  (setq-default flycheck-disabled-checkers
-				(append flycheck-disabled-checkers
-						'(javascript-jshint json-jsonlint)))
+  (flycheck-add-mode 'html-tidy 'web-mode)
+  (flycheck-add-mode 'css-csslint 'web-mode)
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
+  (flycheck-add-mode 'javascript-jshint 'web-mode)
   )
 
 (use-package json-mode
@@ -54,6 +52,10 @@
   :config
   ;; disable jshint since we prefer eslint checking
   (add-to-list 'company-backends 'company-tern))
+
+(use-package jsfmt
+  :ensure t
+  :defer t)
 
 (use-package coffee-mode
   :ensure t
