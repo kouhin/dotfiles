@@ -12,6 +12,10 @@
 (when (version<= emacs-version "24")
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
+(add-to-list
+ 'load-path
+ (expand-file-name "lisp" user-emacs-directory))
+
 ; Init package.el
 (require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -47,14 +51,6 @@ re-downloaded in order to locate PACKAGE."
   (setq mac-option-modifier 'meta)
   (setq mac-command-modifier 'super))
 
-(require 'mouse)
-(xterm-mouse-mode t)
-(defun track-mouse (e))
-
-(add-to-list
- 'load-path
- (expand-file-name "lisp" user-emacs-directory))
-
 (require 'init-exec-path)
 (require 'init-editing-utils)
 (require 'init-ibuffer)
@@ -86,7 +82,9 @@ re-downloaded in order to locate PACKAGE."
   :init
   (add-hook 'emacs-lisp-mode-hook 'remove-elc-on-save))
 
-(load-theme 'tango-dark)
+(if window-system
+	(progn
+	  (load-theme 'tango-dark)))
 
 (provide 'init)
 
