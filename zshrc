@@ -57,6 +57,10 @@ export GOROOT=`go env GOROOT`
 export RUST_SRC_PATH=$HOME/git/rust/src
 export JAVA_HOME=`/usr/libexec/java_home`
 
+# for nvm
+export NVM_DIR=$(brew --prefix)/var/nvm
+source $(brew --prefix nvm)/nvm.sh
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
