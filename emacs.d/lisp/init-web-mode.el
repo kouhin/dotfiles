@@ -5,6 +5,7 @@
 ;; Required:
 ;; - node
 ;; - eslint
+;; - babel-eslint
 ;; - jshint
 ;; - csslint
 ;; - tern
@@ -17,6 +18,7 @@
 
 ;;; Code:
 
+(defvar web-mode)
 (use-package web-mode
   :ensure t
   :defer t
@@ -34,37 +36,34 @@
   (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
   (add-hook 'web-mode-hook (lambda()
-							 (when (equal web-mode-content-type "jsx")
-							   (message "!!!!!JSX MODE")
+							 (defvar web-mode-content-type)
+							 (when (or (equal web-mode-content-type "jsx") (equal web-mode-content-type "javascript"))
 							   (if (projectile-project-p)
 								   (progn
-									 (message "IS PROJECT")
 									 (cond
 									  ((file-exists-p (expand-file-name ".jshintrc" (projectile-project-root)))
-									   (message "FIND JSHINT, SELECT")
 									   (flycheck-select-checker 'javascript-jshint))
 									  ((file-exists-p (expand-file-name ".eslintrc" (projectile-project-root)))
-									   (message "FIND ESLINT SELECT")
 									   (flycheck-select-checker 'javascript-eslint))
 									  (t
-									   (message "FIND NOTHING, SELECT JSLINT")
 									   (flycheck-select-checker 'javascript-jshint)
-									   (message "SELECTED ")
 									   (message 'flycheck-checker))
 									 ))
 								 (progn
-								   (message "IS NOT A PROJECT")
 								   (flycheck-select-checker 'javascript-jslint))))
 							 (when (equal web-mode-content-type "html")
 							   (flycheck-select-checker 'html-tidy))
 							 (when (equal web-mode-content-type "css")
 							   (flycheck-select-checker 'css-csslint))
+							 (defvar company-backends)
 							 (set (make-local-variable 'company-backends)
 								  '((company-tern company-web-html company-css)))))
   :config
+  (defvar web-mode-content-types-alist)
   (setq web-mode-content-types-alist
 		'(("jsx" . "\\.js[x]?\\'"))))
 
+(defvar json-mode)
 (use-package json-mode
   :ensure t
   :defer t
@@ -74,24 +73,30 @@
   :ensure t
   :defer t)
 
+(defvar coffee-mode)
 (use-package coffee-mode
   :ensure t
   :defer t)
 
+(defvar sws-mode)
 (use-package sws-mode
   :ensure t
   :defer t)
 
+(defvar jade-mode)
 (use-package jade-mode
   :ensure t
   :defer t
   :config
+  (defvar company-backends)
   (add-to-list 'company-backends 'company-web-jade))
 
+(defvar stylus-mode)
 (use-package stylus-mode
   :ensure t
   :defer t)
 
+(defvar company-web)
 (use-package company-web
   :ensure t
   :defer t
@@ -111,6 +116,7 @@
 			(unless tern-mode (tern-mode))
 		  (if tern-mode (tern-mode))))))
 
+(defvar company-tern)
 (use-package company-tern
   :ensure t
   :defer t)
@@ -123,6 +129,7 @@
   (add-hook 'js2-mode-hook (lambda() (tern-mode t)))
   (add-hook 'web-mode-hook (lambda() (tern-mode t))))
 
+(defvar skewer-mode)
 (use-package skewer-mode
   :ensure t
   :defer t
