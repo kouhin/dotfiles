@@ -10,6 +10,7 @@
 ;; - tern
 ;; - json-lint
 ;; - coffee-script
+;; - coffeelint
 ;; - jade
 ;; - stylus
 ;; - jsfmt
