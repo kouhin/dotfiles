@@ -33,14 +33,13 @@
   (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
   (add-hook 'web-mode-hook (lambda()
-							 (when (equal web-mode-content-type "jsx")
-							   (flycheck-select-checker 'javascript-eslint))
 							 (set (make-local-variable 'company-backends)
 								  '((company-tern company-web-html company-css)))))
   :config
   (flycheck-add-mode 'html-tidy 'web-mode)
   (flycheck-add-mode 'css-csslint 'web-mode)
   (flycheck-add-mode 'javascript-eslint 'web-mode)
+  (flycheck-add-mode 'javascript-jshint 'web-mode)
   (setq web-mode-content-types-alist
 		'(("jsx" . "\\.js[x]?\\'"))))
 
