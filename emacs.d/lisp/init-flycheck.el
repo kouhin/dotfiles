@@ -10,14 +10,13 @@
   :defer t
   :init
   (add-hook 'after-init-hook 'global-flycheck-mode)
-  (add-hook 'flycheck-mode-hook (lambda()
-								  (when (projectile-project-p)
-									(unless (file-exists-p (expand-file-name ".jshintrc" (projectile-project-root)))
-									  (flycheck-disable-checker 'javascript-jshint))
-									(unless (file-exists-p (expand-file-name ".eslintrc" (projectile-project-root)))
-									  (flycheck-disable-checker 'javascript-eslint))
-									)
-								  )))
+  :config
+  (flycheck-add-mode 'html-tidy 'web-mode)
+  (flycheck-add-mode 'css-csslint 'web-mode)
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
+  (flycheck-add-mode 'javascript-jshint 'web-mode)
+  (flycheck-add-mode 'javascript-jscs 'web-mode)
+  )
 
 (provide 'init-flycheck)
 

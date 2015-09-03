@@ -34,13 +34,34 @@
   (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
   (add-hook 'web-mode-hook (lambda()
+							 (when (equal web-mode-content-type "jsx")
+							   (message "!!!!!JSX MODE")
+							   (if (projectile-project-p)
+								   (progn
+									 (message "IS PROJECT")
+									 (cond
+									  ((file-exists-p (expand-file-name ".jshintrc" (projectile-project-root)))
+									   (message "FIND JSHINT, SELECT")
+									   (flycheck-select-checker 'javascript-jshint))
+									  ((file-exists-p (expand-file-name ".eslintrc" (projectile-project-root)))
+									   (message "FIND ESLINT SELECT")
+									   (flycheck-select-checker 'javascript-eslint))
+									  (t
+									   (message "FIND NOTHING, SELECT JSLINT")
+									   (flycheck-select-checker 'javascript-jshint)
+									   (message "SELECTED ")
+									   (message 'flycheck-checker))
+									 ))
+								 (progn
+								   (message "IS NOT A PROJECT")
+								   (flycheck-select-checker 'javascript-jslint))))
+							 (when (equal web-mode-content-type "html")
+							   (flycheck-select-checker 'html-tidy))
+							 (when (equal web-mode-content-type "css")
+							   (flycheck-select-checker 'css-csslint))
 							 (set (make-local-variable 'company-backends)
 								  '((company-tern company-web-html company-css)))))
   :config
-  (flycheck-add-mode 'html-tidy 'web-mode)
-  (flycheck-add-mode 'css-csslint 'web-mode)
-  (flycheck-add-mode 'javascript-eslint 'web-mode)
-  (flycheck-add-mode 'javascript-jshint 'web-mode)
   (setq web-mode-content-types-alist
 		'(("jsx" . "\\.js[x]?\\'"))))
 
