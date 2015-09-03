@@ -46,8 +46,7 @@
 									  ((file-exists-p (expand-file-name ".eslintrc" (projectile-project-root)))
 									   (flycheck-select-checker 'javascript-eslint))
 									  (t
-									   (flycheck-select-checker 'javascript-jshint)
-									   (message 'flycheck-checker))
+									   (flycheck-select-checker 'javascript-jshint))
 									 ))
 								 (progn
 								   (flycheck-select-checker 'javascript-jslint))))
