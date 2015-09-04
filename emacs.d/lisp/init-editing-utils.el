@@ -103,6 +103,18 @@
   :ensure t
   :defer t)
 
+;; highlight-indentation
+(use-package highlight-indentation
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'python-mode-hook 'highlight-indentation-mode)
+  (add-hook 'coffee-mode-hook 'highlight-indentation-mode)
+  (add-hook 'stylus-mode-hook 'highlight-indentation-mode)
+  (add-hook 'jade-mode-hook 'highlight-indentation-mode)
+  :config
+  (set-face-background 'highlight-indentation-face "#4e4e4e"))
+
 ;; subword
 (use-package syntax-subword
   :ensure t
