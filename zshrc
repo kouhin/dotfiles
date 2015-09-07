@@ -45,14 +45,14 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker vagrant)
+# plugins=(git docker vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
+export PATH=$GOPATH/bin:/usr/local/sbin:$PATH
 export GOROOT=`go env GOROOT`
 export RUST_SRC_PATH=$HOME/git/rust/src
 export JAVA_HOME=`/usr/libexec/java_home`
