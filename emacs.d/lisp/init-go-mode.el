@@ -28,15 +28,18 @@
 	:load-path (lambda ()
 				 (unless (getenv "GOPATH")
 				   (exec-path-from-shell-copy-env "GOPATH"))
-				 (list
-				  (expand-file-name "src/golang.org/x/tools/refactor/rename" (getenv "GOPATH")))))
-
+				 (let ((gorename (executable-find "gorename")))
+				   (when gorename
+					 (list
+					  (expand-file-name "../../src/golang.org/x/tools/refactor/rename" gorename))))))
   (use-package go-oracle
 	:load-path (lambda ()
 				 (unless (getenv "GOPATH")
 				   (exec-path-from-shell-copy-env "GOPATH"))
-				 (list
-				  (expand-file-name "src/golang.org/x/tools/cmd/oracle" (getenv "GOPATH"))))
+				 (let ((oracle (executable-find "oracle")))
+				   (when oracle
+					 (list
+					  (expand-file-name "../../src/golang.org/x/tools/cmd/oracle" oracle)))))
 	:init
 	(load "oracle"))
 
@@ -52,6 +55,7 @@
   :defer t
   :init
   (add-hook 'go-mode-hook (lambda ()
+							(defvar company-backends)
 							(set (make-local-variable 'company-backends)
 								 '((company-go)))))
   :config
