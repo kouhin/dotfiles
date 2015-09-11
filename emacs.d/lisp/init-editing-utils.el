@@ -40,6 +40,13 @@
   :init
   (add-hook 'after-init-hook 'smooth-scroll-mode))
 
+;; yascroll
+(use-package yascroll
+  :ensure t
+  :defer t
+  :init
+  (global-yascroll-bar-mode 1))
+
 ;; cua-mode
 (cua-selection-mode t)
 
