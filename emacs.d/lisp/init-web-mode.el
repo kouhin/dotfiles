@@ -68,8 +68,7 @@
 									 (t
 									  (flycheck-select-checker 'javascript-jshint))
 									 ))
-								(progn
-								  (flycheck-select-checker 'javascript-jslint))))
+								(flycheck-select-checker 'javascript-jshint)))
 							(when (equal web-mode-content-type "html")
 							  (flycheck-select-checker 'html-tidy))
 							(when (equal web-mode-content-type "css")
