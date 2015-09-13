@@ -4,11 +4,6 @@
 
 ;;; Code:
 
-(use-package direx
-  :ensure t
-  :defer t
-  :init
-  (bind-key "C-x j" 'direx:jump-to-directory-other-window))
-
+(require-package 'direx)
 (provide 'init-direx)
 ;;; init-direx.el ends here

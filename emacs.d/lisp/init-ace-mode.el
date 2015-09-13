@@ -6,24 +6,22 @@
 ;;; Code:
 
 ;; ace-jump-mode
-(use-package ace-jump-mode
-  :ensure t
-  :defer t
-  :init
-  (bind-key "C-c SPC" 'ace-jump-mode)
-  (bind-key "C-x SPC" 'ace-jump-mode-pop-mark)
-  (add-hook 'org-mode-hook (lambda ()
-							 (local-set-key (kbd "\C-c SPC") 'ace-jump-mode)))
-  :config
+(require-package 'ace-jump-mode)
+(require-package 'ace-window)
+
+(add-hook 'after-init-hook '(lambda()
+							  (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+							  (global-set-key (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+							  (global-set-key (kbd "C-x o") 'ace-window)))
+
+(add-hook 'org-mode-hook (lambda ()
+						   (local-set-key (kbd "C-c SPC") 'ace-jump-mode)))
+
+(with-eval-after-load 'ace-jump-mode
   (ace-jump-mode-enable-mark-sync))
 
-;; ace-window
-(use-package ace-window
-  :ensure t
-  :defer t
-  :init
-  (bind-key "C-x o" 'ace-window)
-  :config
+(with-eval-after-load 'ace-window
+  (defvar aw-keys)
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
 (provide 'init-ace-mode)

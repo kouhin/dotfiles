@@ -15,5 +15,7 @@
 				  (delete-file (concat buffer-file-name "c"))))
 			nil
 			t))
+
+(add-hook 'emacs-lisp-mode-hook 'remove-elc-on-save)
 (provide 'init-utils)
 ;;; init-utils.el ends here

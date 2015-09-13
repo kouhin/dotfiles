@@ -10,74 +10,56 @@
 ;; - errcheck
 ;;; Code:
 
-(use-package go-mode
-  :ensure t
-  :defer t
-  :config
+(require-package 'go-mode)
+(require-package 'company-go)
+(require-package 'gotest)
+(require-package 'go-eldoc)
+(require-package 'helm-go-package)
 
-  (add-hook 'before-save-hook 'gofmt-before-save)
+;; config company-go
+(with-eval-after-load 'company-go
+  (defvar company-go-show-annotation)
+  (defvar company-go-insert-arguments)
+  (setq company-go-show-annotation t)
+  (setq company-go-insert-arguments nil))
 
+;; config go-mode
+(with-eval-after-load 'go-mode
   ;; go-imports
   (let ((goimports
 		 (executable-find "goimports")))
 	(when goimports
+	  (defvar gofmt-command)
 	  (setq gofmt-command goimports)))
+  ;; load go-rename
+  (let ((gorename (executable-find "gorename")))
+	(when gorename
+	  (add-to-list 'load-path
+				   (expand-file-name "../../src/golang.org/x/tools/refactor/rename" gorename))
+	  (load "rename")))
 
-  (use-package rename
-	:commands (go-rename)
-	:load-path (lambda ()
-				 (unless (getenv "GOPATH")
-				   (exec-path-from-shell-copy-env "GOPATH"))
-				 (let ((gorename (executable-find "gorename")))
-				   (when gorename
-					 (list
-					  (expand-file-name "../../src/golang.org/x/tools/refactor/rename" gorename))))))
-  (use-package go-oracle
-	:load-path (lambda ()
-				 (unless (getenv "GOPATH")
-				   (exec-path-from-shell-copy-env "GOPATH"))
-				 (let ((oracle (executable-find "oracle")))
-				   (when oracle
-					 (list
-					  (expand-file-name "../../src/golang.org/x/tools/cmd/oracle" oracle)))))
-	:init
-	(load "oracle"))
+  ;; load go-oracle
+  (let ((oracle (executable-find "oracle")))
+	(when oracle
+	  (add-to-list 'load-path
+				   (expand-file-name "../../src/golang.org/x/tools/cmd/oracle" oracle))
+	  (load "oracle"))))
 
-  ;; go-direx
-  (use-package go-direx
-	:ensure t
-	:init
-	(bind-key "C-c j" 'go-direx-pop-to-buffer go-mode-map)))
+(add-hook 'go-mode-hook '(lambda()
+						   ;; load GOPATH
+						   (unless (getenv "GOPATH")
+							 (exec-path-from-shell-copy-env "GOPATH"))
 
-;; company-go
-(use-package company-go
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'go-mode-hook (lambda ()
-							(defvar company-backends)
-							(set (make-local-variable 'company-backends)
-								 '((company-go)))))
-  :config
-  (setq company-go-show-annotation t)
-  (setq company-go-insert-arguments nil))
+						   ;; set eldoc
+						   (go-eldoc-setup)
 
-;; go-test
-(use-package gotest
-  :ensure t
-  :defer t)
+						   ;; gofmt
+						   (add-hook 'before-save-hook 'gofmt-before-save)
 
-;; go-eldoc
-(use-package go-eldoc
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'go-mode-hook 'go-eldoc-setup))
-
-;; helm-go-package
-(use-package helm-go-package
-  :ensure t
-  :defer t)
+						   ;; init company-go
+						   (defvar company-backends)
+						   (set (make-local-variable 'company-backends)
+								'((company-go)))))
 
 (provide 'init-go-mode)
 ;;; init-go-mode.el ends here

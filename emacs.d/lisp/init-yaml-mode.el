@@ -2,11 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package yaml-mode
-  :ensure t
-  :defer t
-  :config
-  (bind-key "C-m" 'newline-and-indent yaml-mode-map))
+(require-package 'yaml-mode)
+(add-hook 'yaml-mode-hook '(lambda()
+		  (defvar yaml-mode-map)
+		  (define-key yaml-mode-map (kbd "C-m") 'newline-and-indent)))
+
+
 
 (provide 'init-yaml-mode)
 

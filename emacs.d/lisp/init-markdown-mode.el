@@ -1,20 +1,16 @@
 ;;; init-markdown-mode.el --- Init markdown-mode
-
 ;;; Commentary:
-
 ;;; Code:
-(use-package markdown-mode
-  :ensure t
-  :defer t
-  :init
-  (add-to-list 'auto-mode-alist
-			   '("\\.\\(md\\|mdown\\|markdown\\)\\'" . gfm-mode))
-  :config
-  (bind-key "RET" 'comment-indent-new-line markdown-mode-map))
 
-(use-package gh-md
-  :ensure t
-  :defer t)
+(require-package 'markdown-mode)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . gfm-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . gfm-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
+
+(add-hook 'markdown-mode-hook '(lambda()
+								 (define-key gfm-mode-map (kbd "RET") 'comment-indent-new-line)))
+
+(require-package 'gh-md)
 
 (provide 'init-markdown-mode)
 

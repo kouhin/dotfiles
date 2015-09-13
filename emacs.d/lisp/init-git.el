@@ -5,34 +5,22 @@
 ;;; Code:
 
 ;; magit
-(use-package magit
-  :ensure t
-  :defer t
-  :init
+(require-package 'magit)
+(with-eval-after-load 'magit
+  (defvar magit-last-seen-setup-instructions)
   (setq magit-last-seen-setup-instructions "1.4.0"))
 
-(use-package magit-gitflow
-  :ensure t
-  :commands turn-on-magit-gitflow
-  :init
-  (add-hook 'magit-mode-hook 'turn-on-magit-gitflow))
+(require-package 'magit-gitflow)
+(autoload 'turn-on-magit-gitflow "magit-gitflow" nil nil)
+(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
 ;; git-gutter
-(use-package git-gutter
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'prog-mode-hook 'git-gutter-mode))
+(require-package 'git-gutter)
+(add-hook 'prog-mode-hook 'git-gutter-mode)
 
-(use-package gitignore-mode
-  :ensure t
-  :defer t)
-(use-package gitconfig-mode
-  :ensure t
-  :defer t)
-(use-package gitattributes-mode
-  :ensure t
-  :defer t)
+(require-package 'gitignore-mode)
+(require-package 'gitconfig-mode)
+(require-package 'gitattributes-mode)
 
 (provide 'init-git)
 

@@ -5,25 +5,15 @@
 ;; - racer
 ;;; Code:
 
-(use-package rust-mode
-  :ensure t
-  :defer t)
+(require-package 'rust-mode)
+(require-package 'racer)
+(require-package 'flycheck-rust)
 
-(use-package racer
-  :ensure t
-  :defer t
-  :bind ("C-c C-j" . racer-find-definition)
-  :init
-  (add-hook 'rust-mode-hook #'racer-mode)
-  (add-hook 'racer-mode-hook #'eldoc-mode)
-  :config
-  (bind-key "TAB" 'company-indent-or-complete-common racer-mode-map))
-
-(use-package flycheck-rust
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+(add-hook 'rust-mode-hook '(lambda()
+							 (flycheck-rust-setup)
+							 (racer-mode)
+ 							 (define-key racer-mode-map (kbd "C-c C-j") 'racer-find-definition)
+							 (define-key racer-mode-map (kbd "TAB") 'company-indent-or-complete-common)))
 
 (provide 'init-rust-mode)
 

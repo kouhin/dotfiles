@@ -4,25 +4,20 @@
 ;; Find text
 
 ;;; Code:
-(use-package helm
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'after-init-hook 'helm-mode)
-  (bind-key "M-x" 'helm-M-x)
-  (bind-key "C-x b" 'helm-buffers-list)
-  :config
-  (require 'helm-config)
-  (setq helm-boring-buffer-regexp-list
-		  '("\\` " "\\*helm" "\\*helm-mode" "\\*Echo Area" "\\*tramp" "\\*Minibuf" "\\*epc" "\\**\\*"))
-  )
+(require-package 'helm)
+(require-package 'helm-ag)
+(require-package 'helm-descbinds)
 
-(use-package helm-ag
-  :ensure t
-  :defer t)
-(use-package helm-descbinds
-  :ensure t
-  :defer t)
+(add-hook 'after-init-hook '(lambda()
+							  (global-set-key (kbd "M-x") 'helm-M-x)
+							  (global-set-key (kbd "C-x b") 'helm-buffers-list)
+							  (helm-mode)))
+
+(with-eval-after-load 'helm
+  (require 'helm-config)
+  (defvar helm-boring-buffer-regexp-list)
+  (setq helm-boring-buffer-regexp-list
+		'("\\` " "\\*helm" "\\*helm-mode" "\\*Echo Area" "\\*tramp" "\\*Minibuf" "\\*epc" "\\**\\*")))
 
 (provide 'init-helm)
 ;;; init-helm.el ends here

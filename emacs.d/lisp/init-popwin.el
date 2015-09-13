@@ -6,12 +6,12 @@
 ;;; Code:
 
 ;; popwin
-(use-package popwin
-  :ensure t
-  :commands (popwin-mode)
-  :init
-  (add-hook 'after-init-hook 'popwin-mode)
-  :config
+(require-package 'popwin)
+(add-hook 'after-init-hook '(lambda()
+							  (require 'popwin)
+							  (popwin-mode)))
+(with-eval-after-load 'popwin
+  (defvar popwin:special-display-config)
   (push '("*Ibuffer*" :position bottom :dedicated t)
 		popwin:special-display-config)
   (push '(direx:direx-mode :position left :width 25 :dedicated t)

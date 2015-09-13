@@ -30,30 +30,28 @@
  vc-follow-symlinks t)
 
 (show-paren-mode t)
+(defvar show-paren-delay)
 (setq show-paren-delay 0)
 
-;; smooth-scroll
-(use-package smooth-scroll
-  :ensure t
-  :commands (smooth-scroll-mode)
-  :defer t
-  :init
-  (add-hook 'after-init-hook 'smooth-scroll-mode))
+(setq-default left-fringe-width  10)
+(setq-default right-fringe-width  0)
+(set-face-attribute 'fringe nil :background "black")
+(defvar linum-delay)
+(setq linum-delay t)
+  (defadvice linum-schedule (around my-linum-schedule () activate)
+     (run-with-idle-timer 0.2 nil #'linum-update-current))
 
 ;; yascroll
-(use-package yascroll
-  :ensure t
-  :defer t
-  :init
-  (global-yascroll-bar-mode 1))
-
-;; cua-mode
-(cua-selection-mode t)
+(require-package 'yascroll)
+(add-hook 'after-init-hook 'global-yascroll-bar-mode)
 
 ;; delete-selection-mode
 (delete-selection-mode)
 
-(global-auto-revert-mode t)
+(add-hook 'after-init-hook 'global-auto-revert-mode)
+
+;; eldoc
+(add-hook 'prog-mode-hook 'eldoc-mode)
 
 ;; create auto-save file in ~/.emacs.d/backup
 
@@ -71,68 +69,50 @@
   (global-prettify-symbols-mode))
 
 ;; meaningful names for buffers with the same name
-(use-package uniquify
-  :config
+(with-eval-after-load 'uniquify
   (setq uniquify-buffer-name-style 'forward)
   (setq uniquify-separator "/")
-  (setq uniquify-after-kill-buffer-p t)    ; rename after killing uniquified
-  (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
-  )
+  (setq uniquify-after-kill-buffer-p t)
+  (setq uniquify-ignore-buffers-re "^\\*"))
 
 (set-default 'imenu-auto-rescan t)
 
 ;; highlight-symbol
-(use-package highlight-symbol
-  :ensure t
-  :defer t
-  :init
-  (add-to-list 'prog-mode-hook 'highlight-symbol-mode)
-  (add-to-list 'prog-mode-hook 'highlight-symbol-nav-mode)
-  :config
+(require-package 'highlight-symbol)
+(add-hook 'prog-mode-hook 'highlight-symbol-mode)
+(add-hook 'prog-mode-hook 'highlight-symbol-nav-mode)
+(with-eval-after-load 'highlight-symbol
+  (defvar highlight-symbol-idle-delay)
   (setq highlight-symbol-idle-delay 0.2))
 
 ;; undo tree
-(use-package undo-tree
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'after-init-hook 'global-undo-tree-mode))
+(require-package 'undo-tree)
+(add-hook 'after-init-hook 'global-undo-tree-mode)
 
 ;; rainbow-delimiters
-(use-package rainbow-delimiters
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+(require-package 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; editorconfig
-(use-package editorconfig
-  :ensure t
-  :defer t)
+(require-package 'editorconfig)
 
 ;; highlight-indentation
-(use-package highlight-indentation
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'python-mode-hook 'highlight-indentation-mode)
-  (add-hook 'coffee-mode-hook 'highlight-indentation-mode)
-  (add-hook 'stylus-mode-hook 'highlight-indentation-mode)
-  (add-hook 'jade-mode-hook 'highlight-indentation-mode)
-  :config
+(require-package 'highlight-indentation)
+(add-hook 'after-init-hook '(lambda ()
+							  (add-hook 'python-mode-hook 'highlight-indentation-mode)
+							  (add-hook 'coffee-mode-hook 'highlight-indentation-mode)
+							  (add-hook 'stylus-mode-hook 'highlight-indentation-mode)
+							  (add-hook 'jade-mode-hook 'highlight-indentation-mode)
+							  ))
+(with-eval-after-load 'highlight-indentation
   (set-face-background 'highlight-indentation-face "#4e4e4e"))
 
 ;; subword
-(use-package syntax-subword
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'prog-mode-hook 'global-syntax-subword-mode))
+(require-package 'syntax-subword)
+(add-hook 'after-init-hook 'global-syntax-subword-mode)
 
 ;; quickrun
-(use-package quickrun
-  :ensure t
-  :defer t)
+(require-package 'quickrun)
 
 (provide 'init-editing-utils)
 
