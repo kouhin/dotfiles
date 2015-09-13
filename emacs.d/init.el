@@ -56,9 +56,7 @@
 (require 'init-rust-mode)
 (require 'init-utils)
 
-(if window-system
-	(progn
-	  (load-theme 'tango-dark)))
+(load-theme 'tango-dark)
 
 (provide 'init)
 
