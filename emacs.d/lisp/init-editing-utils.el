@@ -27,7 +27,6 @@
  visible-bell t
  scroll-step 1
  scroll-conservatively 10000
- fill-column 0
  vc-follow-symlinks t)
 
 (show-paren-mode t)
