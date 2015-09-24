@@ -38,8 +38,8 @@
 (set-face-attribute 'fringe nil :background "black")
 (defvar linum-delay)
 (setq linum-delay t)
-  (defadvice linum-schedule (around my-linum-schedule () activate)
-     (run-with-idle-timer 0.2 nil #'linum-update-current))
+(defadvice linum-schedule (around my-linum-schedule () activate)
+  (run-with-idle-timer 0.2 nil #'linum-update-current))
 
 ;; yascroll
 (require-package 'yascroll)
@@ -110,6 +110,12 @@
 ;; subword
 (require-package 'syntax-subword)
 (add-hook 'after-init-hook 'global-syntax-subword-mode)
+
+;; expand region
+(require-package 'expand-region)
+(add-hook 'after-init-hook '(lambda()
+							  (global-set-key (kbd "C-=") 'er/expand-region)
+							  ))
 
 ;; quickrun
 (require-package 'quickrun)
