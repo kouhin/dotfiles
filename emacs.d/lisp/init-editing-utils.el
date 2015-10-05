@@ -120,10 +120,6 @@
 ;; quickrun
 (require-package 'quickrun)
 
-;;
-(require-package 'anzu)
-(add-hook 'after-init-hook 'global-anzu-mode)
-
 (provide 'init-editing-utils)
 
 ;;; init-editing-utils.el ends here
