@@ -120,6 +120,10 @@
 ;; quickrun
 (require-package 'quickrun)
 
+;; copy & paste for OSX
+(require-package 'pbcopy)
+(turn-on-pbcopy)
+
 (provide 'init-editing-utils)
 
 ;;; init-editing-utils.el ends here
