@@ -58,7 +58,8 @@
 (require 'init-rust-mode)
 (require 'init-utils)
 
-(load-theme 'tango-dark)
+(when (display-graphic-p)
+  (load-theme 'tango-dark))
 
 (provide 'init)
 
