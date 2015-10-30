@@ -4,7 +4,8 @@
 
 (require-package 'exec-path-from-shell)
 (add-hook 'after-init-hook '(lambda ()
-							  (exec-path-from-shell-initialize)
+							  (when (memq window-system '(mac ns))
+								(exec-path-from-shell-initialize))
 							  (let ((envs '("GOROOT" "GOPATH" "RUST_SRC_PATH")))
 								(exec-path-from-shell-copy-envs envs))))
 
