@@ -26,6 +26,7 @@ Plug 'bling/vim-airline'
 Plug 'Shougo/unite.vim'
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'ternjs/tern_for_vim'
 autocmd! User YouCompleteMe call youcompleteme#Enable()
 
 call plug#end()
