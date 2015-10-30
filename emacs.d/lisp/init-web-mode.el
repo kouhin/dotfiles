@@ -61,10 +61,10 @@
 							  (if (projectile-project-p)
 								  (progn
 									(cond
-									 ((file-exists-p (expand-file-name ".jshintrc" (projectile-project-root)))
-									  (flycheck-select-checker 'javascript-jshint))
 									 ((file-exists-p (expand-file-name ".eslintrc" (projectile-project-root)))
 									  (flycheck-select-checker 'javascript-eslint))
+									 ((file-exists-p (expand-file-name ".jshintrc" (projectile-project-root)))
+									  (flycheck-select-checker 'javascript-jshint))
 									 (t
 									  (flycheck-select-checker 'javascript-jshint))
 									 ))
