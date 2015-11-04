@@ -41,10 +41,6 @@
 (defadvice linum-schedule (around my-linum-schedule () activate)
   (run-with-idle-timer 0.2 nil #'linum-update-current))
 
-;; yascroll
-(require-package 'yascroll)
-(add-hook 'after-init-hook 'global-yascroll-bar-mode)
-
 ;; delete-selection-mode
 (delete-selection-mode)
 
