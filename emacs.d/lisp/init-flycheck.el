@@ -9,8 +9,7 @@
   (flycheck-add-mode 'html-tidy 'web-mode)
   (flycheck-add-mode 'css-csslint 'web-mode)
   (flycheck-add-mode 'javascript-eslint 'web-mode)
-  (flycheck-add-mode 'javascript-jshint 'web-mode)
-  (flycheck-add-mode 'javascript-jscs 'web-mode))
+  (flycheck-add-mode 'javascript-jshint 'web-mode))
 
 (provide 'init-flycheck)
 
