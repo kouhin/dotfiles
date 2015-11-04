@@ -36,7 +36,7 @@
 	(when gorename
 	  (add-to-list 'load-path
 				   (expand-file-name "../../src/golang.org/x/tools/refactor/rename" gorename))
-	  (load "rename")))
+	  (load "go-rename")))
 
   ;; load go-oracle
   (let ((oracle (executable-find "oracle")))
