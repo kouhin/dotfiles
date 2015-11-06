@@ -20,6 +20,7 @@
 
 (require-package 'web-mode)
 (require-package 'js2-mode)
+(require-package 'js2-refactor)
 (require-package 'json-mode)
 (require-package 'jsfmt)
 (require-package 'coffee-mode)
@@ -43,7 +44,7 @@
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 
 (with-eval-after-load 'web-mode
@@ -101,6 +102,8 @@
 (add-hook 'js-mode-hook 'tern-mode)
 (add-hook 'js2-mode-hook 'tern-mode)
 (add-hook 'js2-jsx-mode-hook 'tern-mode)
+(add-hook 'js2-mode-hook 'js2-refactor-mode)
+(add-hook 'js2-jsx-mode-hook 'js2-refactor-mode)
 (add-hook 'web-mode-hook 'tern-mode)
 (add-hook 'js2-mode-hook 'skewer-mode)
 (add-hook 'js2-jsx-mode-hook 'skewer-mode)
