@@ -91,6 +91,7 @@
 
 ;; editorconfig
 (require-package 'editorconfig)
+(add-hook 'after-init-hook 'editorconfig-mode)
 
 ;; highlight-indentation
 (require-package 'highlight-indentation)
