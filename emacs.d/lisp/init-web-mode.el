@@ -19,6 +19,7 @@
 ;;; Code:
 
 (require-package 'web-mode)
+(require-package 'js2-mode)
 (require-package 'json-mode)
 (require-package 'jsfmt)
 (require-package 'coffee-mode)
@@ -29,6 +30,7 @@
 (require-package 'company-tern)
 (require-package 'tern)
 (require-package 'skewer-mode)
+(require-package 'js-doc)
 
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -39,9 +41,10 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 
 (with-eval-after-load 'web-mode
   (defvar web-mode-content-types-alist)
@@ -79,6 +82,11 @@
 								 '((company-tern company-web-html company-css)))
 							))
 
+(with-eval-after-load 'js2-mode
+  (setq-default js2-show-parse-errors nil)
+  (setq-default js2-strict-missing-semi-warning nil)
+  (setq-default js2-strict-trailing-comma-warning nil))
+
 (defadvice company-tern (before web-mode-set-up-ac-sources activate)
   "Set `tern-mode' based on current language before running company-tern."
   (if (equal major-mode 'web-mode)
@@ -92,8 +100,10 @@
 
 (add-hook 'js-mode-hook 'tern-mode)
 (add-hook 'js2-mode-hook 'tern-mode)
+(add-hook 'js2-jsx-mode-hook 'tern-mode)
 (add-hook 'web-mode-hook 'tern-mode)
 (add-hook 'js2-mode-hook 'skewer-mode)
+(add-hook 'js2-jsx-mode-hook 'skewer-mode)
 (add-hook 'css-mode-hook 'skewer-css-mode)
 (add-hook 'html-mode-hook 'skewer-html-mode)
 
