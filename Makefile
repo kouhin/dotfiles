@@ -21,3 +21,20 @@ init-go:
 	go get -u github.com/golang/lint/golint
 	go get -u github.com/kisielk/errcheck
 	go get -u github.com/jstemmer/gotags
+init-web:
+	npm install babel -g
+	npm install bower -g
+	npm install coffee-script -g
+	npm install coffeelint -g
+	npm install eslint-cli -g
+	npm install babel-eslint -g
+	npm install csslint -g
+	npm install gulp -g
+	npm install jade -g
+	npm install jsfmt -g
+	npm install jshint -g
+	npm install jsonlint -g
+	npm install stylus -g
+	npm install tern -g
+	npm install phantomjs -g
+	npm install gm -g
