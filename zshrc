@@ -52,7 +52,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:/usr/local/sbin:$PATH
+export PATH=$HOME/.cargo/bin:$GOPATH/bin:/usr/local/sbin:$PATH
 export GOROOT=`go env GOROOT`
 export RUST_SRC_PATH=$HOME/git/rust/src
 export JAVA_HOME=`/usr/libexec/java_home`
