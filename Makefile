@@ -38,3 +38,6 @@ init-web:
 	npm install tern -g
 	npm install phantomjs -g
 	npm install gm -g
+init-rust:
+	cargo install --git https://github.com/phildawes/racer.git
+	cargo install --git https://github.com/rust-lang-nursery/rustfmt
