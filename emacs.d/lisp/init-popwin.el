@@ -25,7 +25,15 @@
   (push '("*magit-diff*" :noselect t :height 40 :width 80)
 		popwin:special-display-config)
   (push '("*magit-edit-log*" :noselect t :height 15 :width 80)
-		popwin:special-display-config))
+		popwin:special-display-config)
+  (push '("^\*helm.+\*$" :regexp t) popwin:special-display-config)
+  (add-hook 'helm-after-initialize-hook (lambda()
+										  (defvar helm-buffer)
+										  (popwin:display-buffer helm-buffer t)
+										  (popwin-mode -1)))
+  (add-hook'helm-cleanup-hook (lambda()
+								(popwin-mode 1)))
+  )
 
 (provide 'init-popwin)
 ;;; init-popwin.el ends here
