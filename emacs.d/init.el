@@ -52,6 +52,7 @@
 ;; Major modes
 (require 'init-org-mode)
 (require 'init-web-mode)
+(require 'init-typescript-mode)
 (require 'init-markdown-mode)
 (require 'init-go-mode)
 (require 'init-toml-mode)
