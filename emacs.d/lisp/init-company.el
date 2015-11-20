@@ -6,6 +6,7 @@
 ;;; Code:
 
 (require-package 'company)
+(require-package 'company-quickhelp)
 (with-eval-after-load 'company
   (custom-set-faces
    '(company-preview
@@ -33,6 +34,7 @@
   (defvar company-tooltip-align-annotations)
   (setq company-tooltip-align-annotations t))
 (add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'company-mode-hook 'company-quickhelp-mode)
 
 (defun check-expansion ()
   "Check expansion."

@@ -4,6 +4,8 @@
 ;;; Code:
 
 (require-package 'flycheck)
+(require-package 'flycheck-pos-tip)
+
 (add-hook 'after-init-hook 'global-flycheck-mode)
 (with-eval-after-load 'flycheck
   (defvar flycheck-disabled-checkers)
@@ -13,7 +15,8 @@
   (flycheck-add-mode 'css-csslint 'web-mode)
   (flycheck-add-mode 'javascript-eslint 'web-mode)
   (flycheck-add-mode 'javascript-jshint 'web-mode)
-  (flycheck-add-mode 'javascript-eslint 'js2-jsx-mode))
+  (flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)
+  (flycheck-pos-tip-mode))
 
 (provide 'init-flycheck)
 
