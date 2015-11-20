@@ -87,6 +87,10 @@
   (setq-default js2-show-parse-errors nil)
   (setq-default js2-strict-missing-semi-warning nil)
   (setq-default js2-strict-trailing-comma-warning nil))
+(add-hook 'js2-mode-hook '(lambda ()
+							(defvar company-backends)
+							(set (make-local-variable 'company-backends)
+								 '((company-tern)))))
 
 (defadvice company-tern (before web-mode-set-up-ac-sources activate)
   "Set `tern-mode' based on current language before running company-tern."
