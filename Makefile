@@ -13,14 +13,16 @@ clean:
 	unlink $(HOME)/.emacs.d
 	unlink $(HOME)/.slate.js
 init-go:
-	go get -u github.com/nsf/gocode
-	go get -u golang.org/x/tools/cmd/goimports
-	go get -u github.com/rogpeppe/godef
-	go get -u golang.org/x/tools/cmd/oracle
-	go get -u golang.org/x/tools/cmd/gorename
-	go get -u github.com/golang/lint/golint
-	go get -u github.com/kisielk/errcheck
-	go get -u github.com/jstemmer/gotags
+	go get -u -v github.com/nsf/gocode
+	go get -u -v golang.org/x/tools/cmd/goimports
+	go get -u -v github.com/rogpeppe/godef
+	go get -u -v golang.org/x/tools/cmd/oracle
+	go get -u -v golang.org/x/tools/cmd/gorename
+	go get -u -v github.com/golang/lint/golint
+	go get -u -v github.com/kisielk/errcheck
+	go get -u -v github.com/jstemmer/gotags
+	go get -u -v github.com/lukehoban/go-find-references
+	go get -u -v sourcegraph.com/sqs/goreturns
 init-web:
 	npm install babel -g
 	npm install bower -g
