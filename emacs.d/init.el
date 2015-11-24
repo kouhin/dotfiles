@@ -30,6 +30,7 @@
   (setq mac-option-modifier 'meta)
   (setq mac-command-modifier 'super))
 
+(set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
 (require 'init-elpa)
