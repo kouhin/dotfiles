@@ -81,3 +81,4 @@ alias brewup='brew update && brew upgrade --all && brew cleanup'
 alias e='emacs -nw'
 
 ulimit -n 65535
+
