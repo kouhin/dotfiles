@@ -127,8 +127,8 @@
 (add-hook 'after-init-hook 'global-anzu-mode)
 
 ;; copy & paste for OSX
-(require-package 'pbcopy)
-(turn-on-pbcopy)
+(require-package 'osx-clipboard)
+(add-hook 'after-init-hook 'osx-clipboard-mode)
 
 (provide 'init-editing-utils)
 
