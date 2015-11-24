@@ -45,21 +45,11 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump osx)
+plugins=(autojump osx nvm)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-export GOPATH=$HOME/go
-export PATH=$HOME/.cargo/bin:$GOPATH/bin:/usr/local/sbin:$PATH
-export GOROOT=`go env GOROOT`
-export RUST_SRC_PATH=$HOME/git/rust/src
-export JAVA_HOME=`/usr/libexec/java_home`
-
-# for nvm
-export NVM_DIR=$(brew --prefix)/var/nvm
-source $(brew --prefix nvm)/nvm.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -88,6 +78,6 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias brewup='brew update && brew upgrade --all && brew cleanup'
-alias e='emacs'
+alias e='emacs -nw'
 
 ulimit -n 65535
