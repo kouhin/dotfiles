@@ -138,6 +138,9 @@
   (defvar ag-reuse-buffers)
   (setq ag-reuse-buffers 't))
 
+(defvar dired-use-ls-dired)
+(setq dired-use-ls-dired nil)
+
 (provide 'init-editing-utils)
 
 ;;; init-editing-utils.el ends here
