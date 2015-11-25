@@ -130,6 +130,14 @@
 (require-package 'osx-clipboard)
 (add-hook 'after-init-hook 'osx-clipboard-mode)
 
+;; ag
+(require-package 'ag)
+(with-eval-after-load 'ag
+  (defvar ag-highlight-search)
+  (setq ag-highlight-search t)
+  (defvar ag-reuse-buffers)
+  (setq ag-reuse-buffers 't))
+
 (provide 'init-editing-utils)
 
 ;;; init-editing-utils.el ends here
