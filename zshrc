@@ -45,13 +45,12 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autojump osx nvm)
+plugins=(autojump osx)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# User configuration
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -81,4 +80,3 @@ alias brewup='brew update && brew upgrade --all && brew cleanup'
 alias e='emacs -nw'
 
 ulimit -n 65535
-
