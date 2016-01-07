@@ -50,6 +50,7 @@
 
 (require 'init-elpa)
 (require 'init-exec-path)
+(require 'init-term)
 (require 'init-editing-utils)
 (require 'init-ibuffer)
 (require 'init-yasnippet)

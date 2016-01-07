@@ -95,10 +95,6 @@
 ;; editorconfig
 (require-package 'editorconfig)
 (require-package 'editorconfig-core)
-(with-eval-after-load 'editorconfig
-  (defvar editorconfig-get-properties-function)
-  (setq editorconfig-get-properties-function
-      'editorconfig-core-get-properties-hash))
 (add-hook 'after-init-hook 'editorconfig-mode)
 
 ;; highlight-indentation
