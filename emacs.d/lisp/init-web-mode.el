@@ -45,7 +45,7 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 
 (with-eval-after-load 'web-mode
@@ -87,7 +87,12 @@
 (with-eval-after-load 'js2-mode
   (setq-default js2-show-parse-errors nil)
   (setq-default js2-strict-missing-semi-warning nil)
-  (setq-default js2-strict-trailing-comma-warning nil))
+  (setq-default js2-strict-trailing-comma-warning nil)
+  (setq-default js2-include-browser-externs nil)
+  (setq-default js2-mode-show-parse-errors nil)
+  (setq-default js2-mode-show-strict-warnings nil)
+  (setq-default js2-highlight-external-variables nil)
+  (setq-default js2-include-jslint-globals nil))
 
 (add-hook 'js2-mode-hook '(lambda ()
 							(defvar company-backends)
