@@ -128,6 +128,13 @@
   (interactive)
   (message (web-mode-language-at-pos)))
 
+(defun eslint-fix ()
+  "Where to display jscs-fix error output.  It can either be displayed in its own buffer, in the echo area, or not at all."
+  (interactive)
+  (message "eslint --fix the file %s" (buffer-file-name))
+  (shell-command (concat "eslint --fix " (buffer-file-name)))
+  (revert-buffer t t))
+
 (provide 'init-web-mode)
 
 ;;; init-web-mode.el ends here
