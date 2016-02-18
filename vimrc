@@ -27,6 +27,7 @@ Plug 'Shougo/unite.vim'
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'ternjs/tern_for_vim'
+Plug 'mxw/vim-jsx'
 autocmd! User YouCompleteMe call youcompleteme#Enable()
 
 call plug#end()
@@ -108,6 +109,9 @@ let g:syntastic_go_checkers = ['go', 'govet', 'golint', 'errcheck']
 
 " vim-matchmaker
 let g:matchmaker_enable_startup = 1 
+
+" For jsx
+let g:jsx_ext_required = 0
 
 " AutoFormat
 noremap <Leader> f :Autoformat<CR><CR>

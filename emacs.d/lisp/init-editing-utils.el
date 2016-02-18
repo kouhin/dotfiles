@@ -27,7 +27,8 @@
  visible-bell t
  scroll-step 1
  scroll-conservatively 10000
- vc-follow-symlinks t)
+ vc-follow-symlinks t
+ js-switch-indent-offset 2)
 
 (show-paren-mode t)
 (defvar show-paren-delay)
@@ -116,6 +117,7 @@
 (require-package 'expand-region)
 (add-hook 'after-init-hook '(lambda()
 							  (global-set-key (kbd "C-=") 'er/expand-region)
+							  (global-set-key (kbd "M-'") 'er/expand-region)
 							  ))
 
 ;; quickrun
