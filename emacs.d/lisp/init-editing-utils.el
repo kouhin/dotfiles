@@ -97,6 +97,20 @@
 (require-package 'editorconfig)
 (require-package 'editorconfig-core)
 (add-hook 'after-init-hook 'editorconfig-mode)
+(with-eval-after-load 'editorconfig
+  (defvar editorconfig-indentation-alist)
+  (add-to-list
+   'editorconfig-indentation-alist
+   '(web-mode
+	 (web-mode-indent-style . (lambda (size) 2))
+	 web-mode-markup-indent-offset
+	 web-mode-css-indent-offset
+	 web-mode-code-indent-offset
+	 web-mode-block-padding
+	 web-mode-script-padding
+	 web-mode-style-padding
+	 web-mode-attr-indent-offset
+	 web-mode-attr-value-indent-offset)))
 
 ;; highlight-indentation
 (require-package 'highlight-indentation)

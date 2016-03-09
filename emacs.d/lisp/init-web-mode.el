@@ -45,8 +45,8 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-jsx-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 
 (with-eval-after-load 'web-mode
   (defvar web-mode-content-types-alist)
@@ -58,27 +58,11 @@
 							 (add-to-list 'company-backends 'company-web-jade)))
 
 (add-hook 'web-mode-hook '(lambda ()
-							(set (make-local-variable 'company-backends) '(company-web-html company-files))
+							(set (make-local-variable 'company-backends) '(company-tern company-yasnippet company-web-html company-files))
 							(company-mode t)
-
 							(defvar web-mode-content-type)
 							(when (or (equal web-mode-content-type "jsx") (equal web-mode-content-type "javascript"))
-							  (if (projectile-project-p)
-								  (progn
-									(cond
-									 ((file-exists-p (expand-file-name ".eslintrc" (projectile-project-root)))
-									  (flycheck-select-checker 'javascript-eslint))
-									 ((file-exists-p (expand-file-name ".jshintrc" (projectile-project-root)))
-									  (flycheck-select-checker 'javascript-jshint))
-									 (t
-									  (flycheck-select-checker 'javascript-jshint))
-									 ))
-								(flycheck-select-checker 'javascript-jshint)))
-							(when (equal web-mode-content-type "html")
-							  (flycheck-select-checker 'html-tidy))
-							(when (equal web-mode-content-type "css")
-							  (flycheck-select-checker 'css-csslint))
-
+							  (flycheck-select-checker 'javascript-eslint))
 							(defvar company-backends)
 							(set (make-local-variable 'company-backends)
 								 '((company-tern company-web-html company-css)))
