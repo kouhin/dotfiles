@@ -45,6 +45,11 @@
 ;; newline
 (global-set-key (kbd "RET") 'newline-and-indent)
 
+;; mouse
+(global-set-key [mouse-4] 'scroll-down-line)
+(global-set-key [mouse-5] 'scroll-up-line)
+(add-hook 'after-init-hook 'xterm-mouse-mode)
+
 ;; delete-selection-mode
 (delete-selection-mode)
 
