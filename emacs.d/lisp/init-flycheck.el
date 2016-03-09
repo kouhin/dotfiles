@@ -13,11 +13,9 @@
   (flycheck-add-mode 'javascript-eslint 'web-mode)
   (flycheck-add-mode 'javascript-jshint 'web-mode)
   (flycheck-add-mode 'javascript-standard 'web-mode)
-  (flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)
-  (flycheck-add-mode 'javascript-jshint 'js2-jsx-mode)
-  (flycheck-add-mode 'javascript-standard 'js2-jsx-mode)
-  (when (display-graphic-p)
-	(flycheck-pos-tip-mode)))
+  (flycheck-add-mode 'javascript-eslint 'react-mode)
+  (flycheck-add-mode 'javascript-jshint 'react-mode)
+  (flycheck-add-mode 'javascript-standard 'react-mode))
 
 (provide 'init-flycheck)
 

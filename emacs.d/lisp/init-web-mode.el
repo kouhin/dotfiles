@@ -42,31 +42,19 @@
 (add-to-list 'auto-mode-alist '("\\.ftl\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 
-(with-eval-after-load 'web-mode
-  (defvar web-mode-content-types-alist)
-  (setq web-mode-content-types-alist
-		'(("jsx" . "\\.js[x]?\\'"))))
 
 (add-hook 'jade-mode-hook '(lambda()
 							 (defvar company-backends)
 							 (add-to-list 'company-backends 'company-web-jade)))
 
 (add-hook 'web-mode-hook '(lambda ()
-							(set (make-local-variable 'company-backends) '(company-tern company-yasnippet company-web-html company-files))
-							(company-mode t)
-							(defvar web-mode-content-type)
-							(when (or (equal web-mode-content-type "jsx") (equal web-mode-content-type "javascript"))
-							  (flycheck-select-checker 'javascript-eslint))
 							(defvar company-backends)
 							(set (make-local-variable 'company-backends)
-								 '((company-tern company-web-html company-css)))
-							))
+								 '((company-tern company-web-html company-yasnippet company-web-html company-css)))
+							(company-mode t)))
 
 (with-eval-after-load 'js2-mode
   (setq-default js2-show-parse-errors nil)
@@ -118,6 +106,39 @@
   (message "eslint --fix the file %s" (buffer-file-name))
   (shell-command (concat "eslint --fix " (buffer-file-name)))
   (revert-buffer t t))
+
+;; react-mode
+(add-hook 'after-init-hook '(lambda()
+							  (define-derived-mode react-mode web-mode "react")
+							  (add-to-list 'auto-mode-alist '("\\.js\\'" . react-mode))
+							  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . react-mode))
+
+							  (add-hook 'react-mode-hook '(lambda()
+															(message "Hello")
+															(yas-activate-extra-mode 'js-mode)
+															(web-mode-set-content-type "jsx")
+															(setq-local web-mode-enable-auto-quoting nil)
+															(defvar company-backends)
+															(set (make-local-variable 'company-backends) '(company-tern company-yasnippet company-web-html company-files company-dabbrev))
+															(company-mode t)
+															(js2-minor-mode t)
+															(js2-imenu-extras-mode t)
+															(editorconfig-apply)
+															))))
+(add-hook 'editorconfig-mode-hook '(lambda()
+									 (defvar editorconfig-indentation-alist)
+									 (add-to-list
+									  'editorconfig-indentation-alist
+									  '(react-mode
+										(web-mode-indent-style . (lambda (size) 2))
+										web-mode-markup-indent-offset
+										web-mode-css-indent-offset
+										web-mode-code-indent-offset
+										web-mode-block-padding
+										web-mode-script-padding
+										web-mode-style-padding
+										web-mode-attr-indent-offset
+										web-mode-attr-value-indent-offset))))
 
 (provide 'init-web-mode)
 
