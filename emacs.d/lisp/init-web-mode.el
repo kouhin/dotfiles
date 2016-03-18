@@ -114,7 +114,6 @@
 							  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . react-mode))
 
 							  (add-hook 'react-mode-hook '(lambda()
-															(message "Hello")
 															(yas-activate-extra-mode 'js-mode)
 															(web-mode-set-content-type "jsx")
 															(setq-local web-mode-enable-auto-quoting nil)
