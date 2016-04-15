@@ -34,6 +34,8 @@
 (defvar show-paren-delay)
 (setq show-paren-delay 0)
 
+(windmove-default-keybindings)
+
 (setq-default left-fringe-width  10)
 (setq-default right-fringe-width  0)
 (set-face-attribute 'fringe nil :background "black")

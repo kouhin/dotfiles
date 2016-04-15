@@ -60,7 +60,7 @@
 (require 'init-helm)
 (require 'init-popwin)
 (require 'init-projectile)
-(require 'init-ace-mode)
+(require 'init-avy-mode)
 (require 'init-speedbar)
 (require 'init-git)
 (require 'init-direx)
