@@ -28,7 +28,8 @@
  scroll-step 1
  scroll-conservatively 10000
  vc-follow-symlinks t
- js-switch-indent-offset 2)
+ js-switch-indent-offset 2
+ ad-redefinition-action 'accept)
 
 (show-paren-mode t)
 (defvar show-paren-delay)

@@ -94,6 +94,10 @@
 (add-hook 'js2-jsx-mode-hook 'skewer-mode)
 (add-hook 'css-mode-hook 'skewer-css-mode)
 (add-hook 'html-mode-hook 'skewer-html-mode)
+(add-hook 'editorconfig-custom-hooks
+		  (lambda (hash)
+			(defvar web-mode-block-padding)
+			(setq web-mode-block-padding 0)))
 
 (defun web-mode-cur-language()
   "Show current language in web-mode."
@@ -135,9 +139,7 @@
 										web-mode-code-indent-offset
 										web-mode-block-padding
 										web-mode-script-padding
-										web-mode-style-padding
-										web-mode-attr-indent-offset
-										web-mode-attr-value-indent-offset))))
+										web-mode-style-padding))))
 
 (provide 'init-web-mode)
 
