@@ -137,6 +137,8 @@
 										web-mode-markup-indent-offset
 										web-mode-css-indent-offset
 										web-mode-code-indent-offset
+										web-mode-attr-indent-offset
+										web-mode-attr-value-indent-offset
 										web-mode-block-padding
 										web-mode-script-padding
 										web-mode-style-padding))))
