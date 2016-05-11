@@ -126,6 +126,11 @@
 															(company-mode t)
 															(js2-minor-mode t)
 															(js2-imenu-extras-mode t)
+
+															(add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+															(add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
+															(add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+															(add-to-list 'web-mode-indentation-params '("lineup-ternary" . nil))
 															(editorconfig-apply)
 															))))
 (add-hook 'editorconfig-mode-hook '(lambda()
