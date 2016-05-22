@@ -79,7 +79,7 @@
 (require 'init-utils)
 
 (when (display-graphic-p)
-  (load-theme 'tango-dark))
+  (load-theme 'deeper-blue))
 
 (provide 'init)
 
