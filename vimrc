@@ -22,6 +22,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'qstrahl/vim-matchmaker'
 Plug 'vim-scripts/calendar.vim--Matsumoto'
 Plug 'tpope/vim-speeddating'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-airline'
 Plug 'Shougo/unite.vim'
 Plug 'ervandew/supertab'
@@ -108,7 +109,7 @@ let g:go_highlight_build_constraints = 1
 let g:syntastic_go_checkers = ['go', 'govet', 'golint', 'errcheck']
 
 " vim-matchmaker
-let g:matchmaker_enable_startup = 1 
+let g:matchmaker_enable_startup = 1
 
 " For jsx
 let g:jsx_ext_required = 0

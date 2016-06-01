@@ -7,6 +7,7 @@ link:
 	ln -sf $(shell pwd)/slate.js $(HOME)/.slate.js
 clean:
 	unlink $(HOME)/.vimrc
+	unlink $(HOME)/.zshenv
 	unlink $(HOME)/.zshrc
 	unlink $(HOME)/.tmux.conf
 	unlink $(HOME)/.emacs.d
@@ -23,22 +24,8 @@ init-go:
 	go get -u -v github.com/lukehoban/go-find-references
 	go get -u -v sourcegraph.com/sqs/goreturns
 init-web:
-	npm install babel -g
-	npm install bower -g
-	npm install coffee-script -g
-	npm install coffeelint -g
 	npm install eslint-cli -g
-	npm install babel-eslint -g
-	npm install csslint -g
-	npm install gulp -g
-	npm install jade -g
-	npm install jsfmt -g
-	npm install jshint -g
-	npm install jsonlint -g
-	npm install stylus -g
 	npm install tern -g
-	npm install phantomjs -g
-	npm install gm -g
 init-rust:
 	cargo install --git https://github.com/phildawes/racer.git
 	cargo install --git https://github.com/rust-lang-nursery/rustfmt
