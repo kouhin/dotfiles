@@ -63,7 +63,6 @@
 (require 'init-avy-mode)
 (require 'init-speedbar)
 (require 'init-git)
-(require 'init-direx)
 (require 'init-neotree)
 
 ;; Major modes
@@ -84,3 +83,22 @@
 (provide 'init)
 
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+	(2048-game yaml-mode xterm-color web-mode undo-tree toml-mode tide syntax-subword stylus-mode sr-speedbar skewer-mode rustfmt rainbow-delimiters racer quickrun projectile-speedbar popwin osx-clipboard neotree mwim markdown-mode magit-gitflow json-mode jsfmt js2-refactor js-doc jade-mode highlight-symbol highlight-indentation helm-projectile helm-go-package helm-descbinds helm-ag gotest go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-gutter gh-md flycheck-rust flycheck-pos-tip expand-region exec-path-from-shell editorconfig dockerfile-mode direx company-web company-tern company-quickhelp company-go coffee-mode cargo avy anzu ag))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-preview ((t (:foreground "darkgray" :underline t))))
+ '(company-preview-common ((t (:inherit company-preview))))
+ '(company-tooltip ((t (:background "lightgray" :foreground "black"))))
+ '(company-tooltip-common ((((type x)) (:inherit company-tooltip :weight bold)) (t (:inherit company-tooltip))))
+ '(company-tooltip-common-selection ((((type x)) (:inherit company-tooltip-selection :weight bold)) (t (:inherit company-tooltip-selection))))
+ '(company-tooltip-selection ((t (:background "steelblue" :foreground "white")))))

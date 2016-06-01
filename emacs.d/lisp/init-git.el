@@ -11,7 +11,6 @@
   (setq magit-last-seen-setup-instructions "1.4.0"))
 
 (require-package 'magit-gitflow)
-(autoload 'turn-on-magit-gitflow "magit-gitflow" nil nil)
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 
 ;; git-gutter
