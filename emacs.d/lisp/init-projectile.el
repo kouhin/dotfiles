@@ -6,6 +6,8 @@
 (with-eval-after-load 'projectile
   (defvar projectile-completion-system)
   (setq projectile-completion-system 'ivy)
+  (defvar projectile-switch-project-action)
+  (setq projectile-switch-project-action 'projectile-dired)
   (defun counsel-projectile-ag ()
 	"Counsel version of projectile-ag."
 	(interactive)
