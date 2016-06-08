@@ -57,7 +57,7 @@
 (require 'init-company)
 (require 'init-flycheck)
 
-(require 'init-helm)
+(require 'init-ivy)
 (require 'init-popwin)
 (require 'init-projectile)
 (require 'init-avy-mode)
@@ -83,6 +83,7 @@
 (provide 'init)
 
 ;;; init.el ends here
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -90,7 +91,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-	(2048-game yaml-mode xterm-color web-mode undo-tree toml-mode tide syntax-subword stylus-mode sr-speedbar skewer-mode rustfmt rainbow-delimiters racer quickrun projectile-speedbar popwin osx-clipboard neotree mwim markdown-mode magit-gitflow json-mode jsfmt js2-refactor js-doc jade-mode highlight-symbol highlight-indentation helm-projectile helm-go-package helm-descbinds helm-ag gotest go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-gutter gh-md flycheck-rust flycheck-pos-tip expand-region exec-path-from-shell editorconfig dockerfile-mode direx company-web company-tern company-quickhelp company-go coffee-mode cargo avy anzu ag))))
+	(flycheck-rust rustfmt cargo racer rust-mode dockerfile-mode yaml-mode toml-mode go-eldoc gotest company-go go-mode gh-md markdown-mode tide typescript-mode js-doc skewer-mode company-tern company-web stylus-mode jade-mode sws-mode coffee-mode jsfmt json-mode js2-refactor yasnippet xterm-color web-mode undo-tree syntax-subword sr-speedbar rainbow-delimiters quickrun projectile-speedbar popwin osx-clipboard neotree mwim magit-gitflow js2-mode highlight-symbol highlight-indentation gitignore-mode gitconfig-mode gitattributes-mode git-gutter flycheck-pos-tip expand-region exec-path-from-shell editorconfig counsel company-quickhelp avy anzu ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

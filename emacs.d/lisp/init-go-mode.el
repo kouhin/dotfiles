@@ -14,7 +14,6 @@
 (require-package 'company-go)
 (require-package 'gotest)
 (require-package 'go-eldoc)
-(require-package 'helm-go-package)
 
 ;; config company-go
 (with-eval-after-load 'company-go

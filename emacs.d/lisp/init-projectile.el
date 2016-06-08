@@ -5,11 +5,8 @@
 (require-package 'projectile)
 (with-eval-after-load 'projectile
   (defvar projectile-completion-system)
-  (setq projectile-completion-system 'helm))
+  (setq projectile-completion-system 'ivy))
 (add-hook 'after-init-hook 'projectile-global-mode)
-
-(require-package 'helm-projectile)
-(add-hook 'helm-mode-hook 'helm-projectile-on)
 
 (provide 'init-projectile)
 
