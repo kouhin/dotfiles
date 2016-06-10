@@ -83,23 +83,3 @@
 (provide 'init)
 
 ;;; init.el ends here
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-	(flycheck-rust rustfmt cargo racer rust-mode dockerfile-mode yaml-mode toml-mode go-eldoc gotest company-go go-mode gh-md markdown-mode tide typescript-mode js-doc skewer-mode company-tern company-web stylus-mode jade-mode sws-mode coffee-mode jsfmt json-mode js2-refactor yasnippet xterm-color web-mode undo-tree syntax-subword sr-speedbar rainbow-delimiters quickrun projectile-speedbar popwin osx-clipboard neotree mwim magit-gitflow js2-mode highlight-symbol highlight-indentation gitignore-mode gitconfig-mode gitattributes-mode git-gutter flycheck-pos-tip expand-region exec-path-from-shell editorconfig counsel company-quickhelp avy anzu ag))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-preview ((t (:foreground "darkgray" :underline t))))
- '(company-preview-common ((t (:inherit company-preview))))
- '(company-tooltip ((t (:background "lightgray" :foreground "black"))))
- '(company-tooltip-common ((((type x)) (:inherit company-tooltip :weight bold)) (t (:inherit company-tooltip))))
- '(company-tooltip-common-selection ((((type x)) (:inherit company-tooltip-selection :weight bold)) (t (:inherit company-tooltip-selection))))
- '(company-tooltip-selection ((t (:background "steelblue" :foreground "white")))))
