@@ -6,13 +6,6 @@
 
 ;;; Code:
 
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 (setq gc-cons-threshold (* 128 1024 1024))
 
 (let ((minver "23.3"))
@@ -20,6 +13,9 @@
 	(error "Your Emacs is too old -- this config requires v%s or higher" minver)))
 (when (version<= emacs-version "24")
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
+
+(when (display-graphic-p)
+  (load-theme 'deeper-blue))
 
 (setq user-emacs-directory "~/.emacs.d")
 
@@ -48,6 +44,12 @@
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (require 'init-elpa)
 (require 'init-exec-path)
 (require 'init-term)
@@ -68,6 +70,7 @@
 ;; Major modes
 (require 'init-org-mode)
 (require 'init-web-mode)
+(require 'init-sws-mode)
 (require 'init-typescript-mode)
 (require 'init-markdown-mode)
 (require 'init-go-mode)
@@ -76,9 +79,6 @@
 (require 'init-dockerfile-mode)
 (require 'init-rust-mode)
 (require 'init-utils)
-
-(when (display-graphic-p)
-  (load-theme 'deeper-blue))
 
 (provide 'init)
 
