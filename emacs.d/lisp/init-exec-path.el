@@ -3,6 +3,11 @@
 ;;; Code:
 
 (require-package 'exec-path-from-shell)
+(with-eval-after-load 'exec-path-from-shell
+  (defvar exec-path-from-shell-check-startup-files)
+  (setq exec-path-from-shell-check-startup-files nil)
+  )
+
 (add-hook 'after-init-hook '(lambda ()
 							  (when (memq window-system '(mac ns))
 								(exec-path-from-shell-initialize))
