@@ -44,8 +44,12 @@
 			(unless tern-mode (tern-mode))
 		  (if tern-mode (tern-mode))))))
 
-(add-hook 'js-mode-hook 'tern-mode)
-(add-hook 'web-mode-hook 'tern-mode)
+(if (executable-find "tern")
+	(progn
+	  (add-hook 'js-mode-hook 'tern-mode)
+	  (add-hook 'web-mode-hook 'tern-mode))
+  (message "Please install ternjs: 'npm install -g tern'"))
+
 (add-hook 'editorconfig-custom-hooks
 		  (lambda (hash)
 			(defvar web-mode-block-padding)
@@ -56,12 +60,15 @@
   (interactive)
   (message (web-mode-language-at-pos)))
 
-(defun eslint-fix ()
-  "Where to display jscs-fix error output.  It can either be displayed in its own buffer, in the echo area, or not at all."
-  (interactive)
-  (message "eslint --fix the file %s" (buffer-file-name))
-  (shell-command (concat "eslint --fix " (buffer-file-name)))
-  (revert-buffer t t))
+(if (executable-find "eslint")
+	(progn
+	  (defun eslint-fix ()
+		"Where to display jscs-fix error output.  It can either be displayed in its own buffer, in the echo area, or not at all."
+		(interactive)
+		(message "eslint --fix the file %s" (buffer-file-name))
+		(shell-command (concat "eslint --fix " (buffer-file-name)))
+		(revert-buffer t t)))
+  (message "Please install eslint: 'npm install -g eslint-cli'."))
 
 ;; react-mode
 (add-hook 'after-init-hook '(lambda()
