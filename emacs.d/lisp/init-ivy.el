@@ -6,6 +6,7 @@
 ;;; Code:
 (require-package 'ivy)
 (require-package 'swiper)
+(require-package 'smex)
 (require-package 'counsel)
 
 (add-hook 'after-init-hook '(lambda()
