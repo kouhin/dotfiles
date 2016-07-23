@@ -58,6 +58,7 @@
 (require 'init-yasnippet)
 (require 'init-company)
 (require 'init-flycheck)
+(require 'flycheck-stylelint)
 
 (require 'init-ivy)
 (require 'init-popwin)
