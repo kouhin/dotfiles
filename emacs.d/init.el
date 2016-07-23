@@ -32,7 +32,6 @@
       `((".*" ,emacs-tmp-dir t)))
 (setq auto-save-list-file-prefix
 	  emacs-tmp-dir)
-(setq custom-file (expand-file-name "emacs-custom" emacs-tmp-dir))
 
 (defconst *spell-check-support-enabled* t) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
@@ -90,6 +89,10 @@
 (require 'init-dockerfile-mode)
 (require 'init-rust-mode)
 (require 'init-utils)
+
+(setq custom-file (expand-file-name "emacs-custom.el" emacs-tmp-dir))
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 (provide 'init)
 
