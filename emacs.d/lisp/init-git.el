@@ -8,7 +8,12 @@
 (require-package 'magit)
 (with-eval-after-load 'magit
   (defvar magit-last-seen-setup-instructions)
-  (setq magit-last-seen-setup-instructions "1.4.0"))
+  (setq magit-last-seen-setup-instructions "1.4.0")
+  (defvar magit-refresh-status-buffer)
+  (setq magit-refresh-status-buffer nil))
+
+;; disable build-in vc only for git
+(setq vc-handled-backends (delq 'Git vc-handled-backends))
 
 (require-package 'magit-gitflow)
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
