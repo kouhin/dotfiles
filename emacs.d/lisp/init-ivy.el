@@ -1,4 +1,4 @@
-;;; init-ivy.el --- Init helm
+;;; init-ivy.el --- Init ivy-mode
 
 ;;; Commentary:
 ;; Find text
