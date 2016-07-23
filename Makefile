@@ -25,6 +25,7 @@ init-go:
 	go get -u -v sourcegraph.com/sqs/goreturns
 init-web:
 	npm install eslint-cli -g
+	npm install stylelint -g
 	npm install tern -g
 init-rust:
 	cargo install --git https://github.com/phildawes/racer.git
