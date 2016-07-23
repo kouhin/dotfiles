@@ -62,18 +62,6 @@
 ;; eldoc
 (add-hook 'prog-mode-hook 'eldoc-mode)
 
-;; create auto-save file in ~/.emacs.d/backup
-
-(defconst emacs-tmp-dir "~/.emacs.d/tmp/")
-(unless (file-exists-p emacs-tmp-dir)
-  (make-directory emacs-tmp-dir t))
-(setq backup-directory-alist
-      `((".*" . ,emacs-tmp-dir)))
-(setq auto-save-file-name-transforms
-      `((".*" ,emacs-tmp-dir t)))
-(setq auto-save-list-file-prefix
-	  emacs-tmp-dir)
-
 (when (fboundp 'global-prettify-symbols-mode)
   (global-prettify-symbols-mode))
 

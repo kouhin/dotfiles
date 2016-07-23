@@ -18,10 +18,21 @@
   (load-theme 'deeper-blue))
 
 (setq user-emacs-directory "~/.emacs.d")
-
 (add-to-list
  'load-path
  (expand-file-name "lisp" user-emacs-directory))
+
+;; create auto-save file in ~/.emacs.d/backup
+(defconst emacs-tmp-dir "~/.emacs.d/tmp/")
+(unless (file-exists-p emacs-tmp-dir)
+  (make-directory emacs-tmp-dir t))
+(setq backup-directory-alist
+      `((".*" . ,emacs-tmp-dir)))
+(setq auto-save-file-name-transforms
+      `((".*" ,emacs-tmp-dir t)))
+(setq auto-save-list-file-prefix
+	  emacs-tmp-dir)
+(setq custom-file (expand-file-name "emacs-custom" emacs-tmp-dir))
 
 (defconst *spell-check-support-enabled* t) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
