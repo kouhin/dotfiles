@@ -12,9 +12,6 @@
   (defvar magit-refresh-status-buffer)
   (setq magit-refresh-status-buffer nil))
 
-;; disable build-in vc only for git
-(setq vc-handled-backends (delq 'Git vc-handled-backends))
-
 (require-package 'magit-gitflow)
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 (add-hook 'after-init-hook '(lambda()
