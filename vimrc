@@ -23,7 +23,7 @@ Plug 'qstrahl/vim-matchmaker'
 Plug 'vim-scripts/calendar.vim--Matsumoto'
 Plug 'tpope/vim-speeddating'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'Shougo/unite.vim'
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
