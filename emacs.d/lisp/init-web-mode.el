@@ -13,6 +13,7 @@
 (require-package 'json-mode)
 (require-package 'company-web)
 (require-package 'company-tern)
+(require-package 'company-flow)
 (require-package 'tern)
 (require-package 'js-doc)
 
@@ -30,7 +31,7 @@
 (add-hook 'web-mode-hook '(lambda ()
 							(defvar company-backends)
 							(set (make-local-variable 'company-backends)
-								 '((company-tern company-web-html company-yasnippet company-web-html company-css)))
+								 '((company-tern company-flow company-web-html company-yasnippet company-web-html company-css)))
 							(company-mode t)))
 
 (defadvice company-tern (before web-mode-set-up-ac-sources activate)
