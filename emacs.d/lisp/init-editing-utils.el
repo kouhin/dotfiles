@@ -142,6 +142,8 @@
 (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
 (global-set-key (kbd "C-e") 'mwim-end-of-code-or-line)
 
+(require-package 'sudo-edit)
+
 (provide 'init-editing-utils)
 
 ;;; init-editing-utils.el ends here
