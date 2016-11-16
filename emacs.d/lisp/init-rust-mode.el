@@ -18,7 +18,6 @@
 							 (rustfmt-enable-on-save)
 							 (flycheck-rust-setup)
  							 (define-key racer-mode-map (kbd "C-c C-j") 'racer-find-definition)
-							 (define-key racer-mode-map (kbd "TAB") 'company-indent-or-complete-common)
 							 (define-key rust-mode-map (kbd "C-c C-f") 'rustfmt-format-buffer)))
 
 (provide 'init-rust-mode)

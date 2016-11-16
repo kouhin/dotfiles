@@ -11,16 +11,9 @@
 ;;; Code:
 
 (require-package 'go-mode)
-(require-package 'company-go)
 (require-package 'gotest)
 (require-package 'go-eldoc)
-
-;; config company-go
-(with-eval-after-load 'company-go
-  (defvar company-go-show-annotation)
-  (defvar company-go-insert-arguments)
-  (setq company-go-show-annotation t)
-  (setq company-go-insert-arguments nil))
+(require-package 'go-autocomplete)
 
 ;; config go-mode
 (with-eval-after-load 'go-mode
@@ -53,12 +46,9 @@
 						   (go-eldoc-setup)
 
 						   ;; gofmt
-						   (add-hook 'before-save-hook 'gofmt-before-save)
+						   (add-hook 'before-save-hook 'gofmt-before-save)))
 
-						   ;; init company-go
-						   (defvar company-backends)
-						   (set (make-local-variable 'company-backends)
-								'((company-go)))))
+(require 'go-autocomplete)
 
 (provide 'init-go-mode)
 ;;; init-go-mode.el ends here

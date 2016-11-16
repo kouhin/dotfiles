@@ -65,7 +65,7 @@
 (require 'init-editing-utils)
 (require 'init-ibuffer)
 (require 'init-yasnippet)
-(require 'init-company)
+(require 'init-autocomplete)
 (require 'init-flycheck)
 (require 'flycheck-stylelint)
 

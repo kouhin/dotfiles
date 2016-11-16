@@ -15,9 +15,5 @@
 (require-package 'jade-mode)
 (require-package 'stylus-mode)
 
-(add-hook 'jade-mode-hook '(lambda()
-							 (defvar company-backends)
-							 (add-to-list 'company-backends 'company-web-jade)))
-
 (provide 'init-sws-mode)
 ;;; init-sws-mode.el ends here
