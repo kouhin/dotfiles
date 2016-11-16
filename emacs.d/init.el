@@ -54,6 +54,12 @@
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
+(when (and (display-graphic-p) (eq system-type 'darwin))
+  (set-face-attribute 'default nil :font "Menlo:pixelsize=12")
+  (dolist (charset '(kana han cjk-misc bopomofo))
+    (set-fontset-font (frame-parameter nil 'font) charset
+                      (font-spec :family "Hiragino Sans GB" :size 14))))
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
