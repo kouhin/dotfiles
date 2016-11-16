@@ -12,9 +12,9 @@
   (flycheck-add-mode 'javascript-eslint 'web-mode)
   (flycheck-add-mode 'javascript-jshint 'web-mode)
   (flycheck-add-mode 'javascript-standard 'web-mode)
-  (flycheck-add-mode 'javascript-eslint 'react-mode)
-  (flycheck-add-mode 'javascript-jshint 'react-mode)
-  (flycheck-add-mode 'javascript-standard 'react-mode))
+  (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
+  (flycheck-add-mode 'javascript-jshint 'rjsx-mode)
+  (flycheck-add-mode 'javascript-standard 'rjsx-mode))
 
 (provide 'init-flycheck)
 

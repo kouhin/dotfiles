@@ -9,7 +9,7 @@
 
 (with-eval-after-load 'auto-complete
   ;; Enable auto-complete mode other than default enable modes
-  (dolist (mode '(react-mode
+  (dolist (mode '(rjsx-mode
 				  markdown-mode
 				  fundamental-mode
 				  org-mode

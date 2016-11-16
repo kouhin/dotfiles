@@ -11,6 +11,7 @@
 
 (require-package 'web-mode)
 (require-package 'json-mode)
+(require-package 'rjsx-mode)
 (require-package 'tern)
 (require-package 'tern-auto-complete)
 (require-package 'js-doc)
@@ -28,7 +29,7 @@
 
 (with-eval-after-load 'tern
   (require 'tern-auto-complete)
-  (defvar tern-ac-js-major-modes '(js2-mode js2-jsx-mode js-mode javascript-mode react-mode))
+  (defvar tern-ac-js-major-modes '(rjsx-mode js2-mode js2-jsx-mode js-mode javascript-mode))
   (tern-ac-setup))
 
 (defun web-mode-cur-language()
@@ -46,31 +47,26 @@
 		(revert-buffer t t)))
   (message "Please install eslint: 'npm install -g eslint-cli'."))
 
-;; react-mode
 (add-hook 'after-init-hook '(lambda()
-							  (define-derived-mode react-mode web-mode "react")
-							  (add-to-list 'auto-mode-alist '("\\.js\\'" . react-mode))
-							  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . react-mode))
+							  (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+							  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))))
 
-							  (add-hook 'react-mode-hook '(lambda()
-															(yas-activate-extra-mode 'js-mode)
-															(web-mode-set-content-type "jsx")
-															(setq-local web-mode-enable-auto-quoting nil)
-															(add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
-															(add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
-															(add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
-															(add-to-list 'web-mode-indentation-params '("lineup-ternary" . nil))
-															(editorconfig-apply)
-															))))
+(with-eval-after-load 'rjsx-mode
+  (defvar js2-mode-show-parse-errors)
+  (defvar js2-mode-show-strict-warnings)
+  (setq js2-mode-show-parse-errors nil
+        js2-mode-show-strict-warnings nil))
 
-(add-hook 'react-mode-hook '(lambda()
-							  (tern-mode)))
+(add-hook 'rjsx-mode-hook '(lambda()
+							 (add-to-list 'editorconfig-indentation-alist '(rjsx-mode js2-basic-offset sgml-basic-offset))
+							 (tern-mode)
+							 (editorconfig-apply)))
 
 (add-hook 'editorconfig-mode-hook '(lambda()
 									 (defvar editorconfig-indentation-alist)
 									 (add-to-list
 									  'editorconfig-indentation-alist
-									  '(react-mode
+									  '(rjsx-mode
 										(web-mode-indent-style . (lambda (size) 2))
 										web-mode-markup-indent-offset
 										web-mode-css-indent-offset
