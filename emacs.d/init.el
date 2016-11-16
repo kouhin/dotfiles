@@ -14,7 +14,11 @@
 (when (version<= emacs-version "24")
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
-(when (display-graphic-p)
+(defconst *spell-check-support-enabled* t) ;; Enable with t if you prefer
+(defconst *is-a-mac* (eq system-type 'darwin))
+(defconst *is-gui* (display-graphic-p))
+
+(when *is-gui*
   (load-theme 'deeper-blue))
 
 (setq user-emacs-directory "~/.emacs.d")
@@ -33,8 +37,6 @@
 (setq auto-save-list-file-prefix
 	  emacs-tmp-dir)
 
-(defconst *spell-check-support-enabled* t) ;; Enable with t if you prefer
-(defconst *is-a-mac* (eq system-type 'darwin))
 (when *is-a-mac*
   (setq ns-function-modifier 'hyper)
   (setq ns-option-modifier 'meta)
@@ -54,7 +56,7 @@
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-(when (and (display-graphic-p) (eq system-type 'darwin))
+(when (and *is-a-mac* *is-gui*)
   (set-face-attribute 'default nil :font "Menlo:pixelsize=12")
   (dolist (charset '(kana han cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font) charset
