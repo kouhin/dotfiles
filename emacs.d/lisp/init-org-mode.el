@@ -7,6 +7,7 @@
   (setq org-plantuml-jar-path
 		(expand-file-name "~/plantuml.jar")))
 (add-hook 'org-mode-hook '(lambda()
+							(setq truncate-lines nil)
 							(require 'ox-taskjuggler)
 							(org-babel-do-load-languages
 							 'org-babel-load-languages
