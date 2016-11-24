@@ -11,6 +11,8 @@
 ;;; Code:
 
 (require-package 'go-mode)
+(require-package 'go-rename)
+(require-package 'go-guru)
 (require-package 'gotest)
 (require-package 'go-eldoc)
 (require-package 'go-autocomplete)
@@ -22,20 +24,7 @@
 		 (executable-find "goimports")))
 	(when goimports
 	  (defvar gofmt-command)
-	  (setq gofmt-command goimports)))
-  ;; load go-rename
-  (let ((gorename (executable-find "gorename")))
-	(when gorename
-	  (add-to-list 'load-path
-				   (expand-file-name "../../src/golang.org/x/tools/refactor/rename" gorename))
-	  (load "go-rename")))
-
-  ;; load go-oracle
-  (let ((oracle (executable-find "oracle")))
-	(when oracle
-	  (add-to-list 'load-path
-				   (expand-file-name "../../src/golang.org/x/tools/cmd/oracle" oracle))
-	  (load "oracle"))))
+	  (setq gofmt-command goimports))))
 
 (add-hook 'go-mode-hook '(lambda()
 						   ;; load GOPATH

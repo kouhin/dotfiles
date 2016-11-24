@@ -7,8 +7,6 @@
 ;; magit
 (require-package 'magit)
 (with-eval-after-load 'magit
-  (defvar magit-last-seen-setup-instructions)
-  (setq magit-last-seen-setup-instructions "1.4.0")
   (defvar magit-refresh-status-buffer)
   (setq magit-refresh-status-buffer nil))
 
