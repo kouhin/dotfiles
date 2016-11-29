@@ -2,6 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
+(require-package 'org-plus-contrib)
+
 (with-eval-after-load 'org
   (defvar org-plantuml-jar-path)
   (setq org-plantuml-jar-path
