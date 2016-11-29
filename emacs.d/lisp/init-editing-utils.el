@@ -31,6 +31,7 @@
  js-switch-indent-offset 2
  ad-redefinition-action 'accept)
 
+(scroll-bar-mode -1)
 (tool-bar-mode -1)
 (show-paren-mode t)
 (defvar show-paren-delay)
