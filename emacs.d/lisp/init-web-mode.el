@@ -26,6 +26,8 @@
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 
 (with-eval-after-load 'tern
   (require 'tern-auto-complete)
@@ -47,10 +49,6 @@
 		(revert-buffer t t)))
   (message "Please install eslint: 'npm install -g eslint-cli'."))
 
-(add-hook 'after-init-hook '(lambda()
-							  (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
-							  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))))
-
 (with-eval-after-load 'rjsx-mode
   (defvar js2-mode-show-parse-errors)
   (defvar js2-mode-show-strict-warnings)
@@ -59,8 +57,8 @@
 
 (add-hook 'rjsx-mode-hook '(lambda()
 							 (add-to-list 'editorconfig-indentation-alist '(rjsx-mode js2-basic-offset sgml-basic-offset))
-							 (tern-mode)
-							 (editorconfig-apply)))
+							 (editorconfig-apply)
+							 (tern-mode)))
 
 (add-hook 'editorconfig-mode-hook '(lambda()
 									 (defvar editorconfig-indentation-alist)

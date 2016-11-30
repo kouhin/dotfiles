@@ -8,6 +8,8 @@
 (require-package 'auto-complete)
 
 (with-eval-after-load 'auto-complete
+  (defvar ac-ignore-case)
+  (setq ac-ignore-case nil)
   ;; Enable auto-complete mode other than default enable modes
   (dolist (mode '(rjsx-mode
 				  markdown-mode
