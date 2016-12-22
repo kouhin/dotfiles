@@ -79,8 +79,6 @@ export LANG=en_US.UTF-8
 alias brewup='brew update && brew upgrade && brew cleanup'
 alias e='emacs -nw'
 
-ulimit -n 65535
-
 [ -s "~/.gvm/scripts/gvm" ] && source "~/.gvm/scripts/gvm"
 export GOPATH=$HOME/go
 export PATH=$HOME/.cargo/bin:$GOPATH/bin:/usr/local/sbin:$PATH
