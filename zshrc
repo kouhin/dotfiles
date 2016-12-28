@@ -38,8 +38,14 @@ export JAVA_HOME=`/usr/libexec/java_home`
 
 # PATH
 export PATH=/usr/local/sbin:$PATH
-export GOPATH=$HOME/go; [[ :$PATH: == *":$GOPATH/bin:"* ]] || PATH+=":$GOPATH/bin"
-export N_PREFIX=$HOME/n; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+## Golang
+export GOPATH=$HOME/go
+[[ -d $GOPATH/bin ]] && PATH="$GOPATH/bin:$PATH"
+## Node.js
+export N_PREFIX=$HOME/n
+[[ -d $N_PREFIX/bin ]] || PATH="$N_PREFIX/bin:$PATH"
+## Rust
+[[ -d ~/.cargo/bin ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
 # Completion style
 zstyle ':completion:*' menu select
