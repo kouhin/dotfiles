@@ -43,7 +43,7 @@ export GOPATH=$HOME/go
 [[ -d $GOPATH/bin ]] && PATH="$GOPATH/bin:$PATH"
 ## Node.js
 export N_PREFIX=$HOME/n
-[[ -d $N_PREFIX/bin ]] || PATH="$N_PREFIX/bin:$PATH"
+[[ -d $N_PREFIX/bin ]] && PATH="$N_PREFIX/bin:$PATH"
 ## Rust
 [[ -d ~/.cargo/bin ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
