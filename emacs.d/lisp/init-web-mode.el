@@ -29,6 +29,9 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 
+(defvar js-indent-level)
+(setq js-indent-level 2)
+
 (with-eval-after-load 'tern
   (require 'tern-auto-complete)
   (defvar tern-ac-js-major-modes '(rjsx-mode js2-mode js2-jsx-mode js-mode javascript-mode))
