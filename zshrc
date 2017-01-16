@@ -45,7 +45,7 @@ export GOPATH=$HOME/go
 export N_PREFIX=$HOME/n
 [[ -d $N_PREFIX/bin ]] && PATH="$N_PREFIX/bin:$PATH"
 ## Rust
-[[ -d ~/.cargo/bin ]] && export PATH="$HOME/.cargo/bin:$PATH"
+[[ -d ~/.cargo/bin ]] && PATH="$HOME/.cargo/bin:$PATH"
 
 # Completion style
 zstyle ':completion:*' menu select
