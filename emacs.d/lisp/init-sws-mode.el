@@ -14,6 +14,7 @@
 (require-package 'sws-mode)
 (require-package 'jade-mode)
 (require-package 'stylus-mode)
+(require-package 'pug-mode)
 
 (provide 'init-sws-mode)
 ;;; init-sws-mode.el ends here

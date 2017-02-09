@@ -11,6 +11,7 @@
 
 (require-package 'web-mode)
 (require-package 'json-mode)
+(require-package 'vue-mode)
 (require-package 'rjsx-mode)
 (require-package 'tern)
 (require-package 'tern-auto-complete)
