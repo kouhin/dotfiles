@@ -22,6 +22,8 @@ zplug "tj/n", as:command, use:bin/n
 zplug check --verbose || zplug install
 zplug load
 
+setopt AUTO_CD
+
 # History
 export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=1000
