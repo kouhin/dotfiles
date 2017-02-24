@@ -22,7 +22,6 @@
 		popwin:special-display-config)
   (push '("*magit-edit-log*" :noselect t :height 15 :width 80)
 		popwin:special-display-config)
-  (push '("^\*helm.+\*$" :regexp t) popwin:special-display-config)
   (add-hook 'helm-after-initialize-hook (lambda()
 										  (defvar helm-buffer)
 										  (popwin:display-buffer helm-buffer t)
