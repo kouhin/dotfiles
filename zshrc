@@ -53,7 +53,7 @@ export N_PREFIX=$HOME/n
 zstyle ':completion:*' menu select
 
 # Alias
-alias daydayup='zplug update && brew update && brew upgrade && brew cleanup'
+alias ddup='zplug update && brew update && brew upgrade && brew cleanup'
 alias e='emacs -nw'
 alias ls='ls -G'
 alias l='ls -al'
