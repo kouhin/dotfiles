@@ -8,7 +8,9 @@
 (require-package 'magit)
 (with-eval-after-load 'magit
   (defvar magit-refresh-status-buffer)
-  (setq magit-refresh-status-buffer nil))
+  (setq magit-refresh-status-buffer nil)
+  (defvar magit-fetch-arguments)
+  (setq magit-fetch-arguments '("--prune")))
 
 (require-package 'magit-gitflow)
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
