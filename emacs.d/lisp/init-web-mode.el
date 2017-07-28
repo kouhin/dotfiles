@@ -32,6 +32,8 @@
 
 (defvar js-indent-level)
 (setq js-indent-level 2)
+;; Fix js.el inndentation bug
+(advice-add 'js--multi-line-declaration-indentation :around (lambda (orig-fun &rest args) nil))
 
 (with-eval-after-load 'tern
   (require 'tern-auto-complete)
@@ -59,25 +61,11 @@
   (setq js2-mode-show-parse-errors nil
         js2-mode-show-strict-warnings nil))
 
-(add-hook 'rjsx-mode-hook '(lambda()
-							 (add-to-list 'editorconfig-indentation-alist '(rjsx-mode js2-basic-offset sgml-basic-offset))
-							 (editorconfig-apply)
-							 (tern-mode)))
-
-(add-hook 'editorconfig-mode-hook '(lambda()
-									 (defvar editorconfig-indentation-alist)
-									 (add-to-list
-									  'editorconfig-indentation-alist
-									  '(rjsx-mode
-										(web-mode-indent-style . (lambda (size) 2))
-										web-mode-markup-indent-offset
-										web-mode-css-indent-offset
-										web-mode-code-indent-offset
-										web-mode-attr-indent-offset
-										web-mode-attr-value-indent-offset
-										web-mode-block-padding
-										web-mode-script-padding
-										web-mode-style-padding))))
+(add-hook 'rjsx-mode-hook
+          '(lambda()
+             (add-to-list 'editorconfig-indentation-alist '(rjsx-mode js2-basic-offset sgml-basic-offset))
+             (editorconfig-apply)
+             (tern-mode)))
 
 (provide 'init-web-mode)
 
