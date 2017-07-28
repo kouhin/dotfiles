@@ -78,6 +78,7 @@
 
 ;; Major modes
 (require 'init-org-mode)
+(require 'init-javascript)
 (require 'init-web-mode)
 (require 'init-sws-mode)
 (require 'init-typescript-mode)
