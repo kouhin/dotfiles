@@ -8,7 +8,7 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
 
 (add-hook 'markdown-mode-hook '(lambda()
-								 (define-key gfm-mode-map (kbd "RET") 'comment-indent-new-line)))
+                                 (define-key gfm-mode-map (kbd "RET") 'comment-indent-new-line)))
 
 (require-package 'gh-md)
 

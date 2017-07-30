@@ -15,7 +15,7 @@
 (require-package 'magit-gitflow)
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 (add-hook 'after-init-hook '(lambda()
-							  (global-set-key (kbd "C-c C-g") 'magit-status)))
+                              (global-set-key (kbd "C-c C-g") 'magit-status)))
 
 ;; git-gutter
 (require-package 'git-gutter)

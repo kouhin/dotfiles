@@ -16,22 +16,22 @@
   (setq ibuffer-use-header-line t)
   (defvar ibuffer-saved-filter-groups)
   (setq ibuffer-saved-filter-groups
-		'(("default"
-		   ("Magit" (name . "\*magit"))
-		   ("Emacs" (or (name . "^\\*scratch\\*$")
-						(name . "^\\*Messages\\*$")))
-		   ("Help" (or (name . "\*Help\*")
-					   (name . "\*Apropos\*")
-					   (name . "\*info\*"))))
-		  )))
+        '(("default"
+           ("Magit" (name . "\*magit"))
+           ("Emacs" (or (name . "^\\*scratch\\*$")
+                        (name . "^\\*Messages\\*$")))
+           ("Help" (or (name . "\*Help\*")
+                       (name . "\*Apropos\*")
+                       (name . "\*info\*"))))
+          )))
 
 (add-hook 'after-init-hook '(lambda()
-							  (global-set-key (kbd "C-x C-b") 'ibuffer-other-window)))
+                              (global-set-key (kbd "C-x C-b") 'ibuffer-other-window)))
 
 (add-hook 'ibuffer-mode-hook
-		  '(lambda ()
-			 (ibuffer-auto-mode t)
-			 (ibuffer-switch-to-saved-filter-groups "default")))
+          '(lambda ()
+             (ibuffer-auto-mode t)
+             (ibuffer-switch-to-saved-filter-groups "default")))
 
 (provide 'init-ibuffer)
 

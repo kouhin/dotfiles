@@ -9,9 +9,9 @@
   (defvar projectile-switch-project-action)
   (setq projectile-switch-project-action 'projectile-dired)
   (defun counsel-projectile-ag ()
-	"Counsel version of projectile-ag."
-	(interactive)
-	(counsel-ag "" (projectile-project-root)))
+    "Counsel version of projectile-ag."
+    (interactive)
+    (counsel-ag "" (projectile-project-root)))
   (defvar projectile-mode-map)
   (define-key projectile-mode-map (kbd "C-c p s s") 'counsel-projectile-ag))
 

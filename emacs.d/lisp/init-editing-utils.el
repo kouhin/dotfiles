@@ -99,11 +99,11 @@
 ;; highlight-indentation
 (require-package 'highlight-indentation)
 (add-hook 'after-init-hook '(lambda ()
-							  (add-hook 'python-mode-hook 'highlight-indentation-mode)
-							  (add-hook 'coffee-mode-hook 'highlight-indentation-mode)
-							  (add-hook 'stylus-mode-hook 'highlight-indentation-mode)
-							  (add-hook 'jade-mode-hook 'highlight-indentation-mode)
-							  ))
+                              (add-hook 'python-mode-hook 'highlight-indentation-mode)
+                              (add-hook 'coffee-mode-hook 'highlight-indentation-mode)
+                              (add-hook 'stylus-mode-hook 'highlight-indentation-mode)
+                              (add-hook 'jade-mode-hook 'highlight-indentation-mode)
+                              ))
 (with-eval-after-load 'highlight-indentation
   (set-face-background 'highlight-indentation-face "#4e4e4e"))
 
@@ -114,9 +114,9 @@
 ;; expand region
 (require-package 'expand-region)
 (add-hook 'after-init-hook '(lambda()
-							  (global-set-key (kbd "C-=") 'er/expand-region)
-							  (global-set-key (kbd "M-'") 'er/expand-region)
-							  ))
+                              (global-set-key (kbd "C-=") 'er/expand-region)
+                              (global-set-key (kbd "M-'") 'er/expand-region)
+                              ))
 
 ;; quickrun
 (require-package 'quickrun)
