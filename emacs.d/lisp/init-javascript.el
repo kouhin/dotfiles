@@ -26,7 +26,6 @@
 
 (with-eval-after-load 'tern
   (require 'tern-auto-complete)
-  (defvar tern-ac-js-major-modes '(rjsx-mode js2-mode js2-jsx-mode js-mode javascript-mode))
   (tern-ac-setup))
 
 (if (executable-find "eslint")
