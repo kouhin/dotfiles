@@ -121,10 +121,6 @@
 ;; quickrun
 (require-package 'quickrun)
 
-;; anzu
-(require-package 'anzu)
-(add-hook 'after-init-hook 'global-anzu-mode)
-
 ;; copy & paste for OSX
 (require-package 'osx-clipboard)
 (add-hook 'after-init-hook 'osx-clipboard-mode)
