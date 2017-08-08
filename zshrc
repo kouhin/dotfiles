@@ -48,6 +48,8 @@ export N_PREFIX=$HOME/n
 [[ -d $N_PREFIX/bin ]] && PATH="$N_PREFIX/bin:$PATH"
 ## Rust
 [[ -d ~/.cargo/bin ]] && PATH="$HOME/.cargo/bin:$PATH"
+## Tmux
+if [[ ! -d ~/.tmux/plugins/tpm ]]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
 
 # Completion style
 zstyle ':completion:*' menu select
