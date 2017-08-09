@@ -76,13 +76,13 @@
 
 (set-default 'imenu-auto-rescan t)
 
-;; highlight-symbol
-(require-package 'highlight-symbol)
-(add-hook 'prog-mode-hook 'highlight-symbol-mode)
-(add-hook 'prog-mode-hook 'highlight-symbol-nav-mode)
-(with-eval-after-load 'highlight-symbol
-  (defvar highlight-symbol-idle-delay)
-  (setq highlight-symbol-idle-delay 0.2))
+;; symbol-overlay
+(require-package 'symbol-overlay)
+(add-hook 'prog-mode-hook 'symbol-overlay-mode)
+(with-eval-after-load 'symbol-overlay
+  (defvar symbol-overlay-mode-map)
+  (define-key symbol-overlay-mode-map (kbd "M-n") 'symbol-overlay-jump-next)
+  (define-key symbol-overlay-mode-map (kbd "M-p") 'symbol-overlay-jump-prev))
 
 ;; undo tree
 (require-package 'undo-tree)
