@@ -37,6 +37,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export MANPATH=/usr/local/man:$MANPATH
 export JAVA_HOME=`/usr/libexec/java_home`
+export TERM=xterm-256color
 
 # PATH
 export PATH=/usr/local/sbin:$PATH
