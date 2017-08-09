@@ -22,9 +22,6 @@
 (defconst *is-a-mac* (eq system-type 'darwin))
 (defconst *is-gui* (display-graphic-p))
 
-(when *is-gui*
-  (load-theme 'deeper-blue))
-
 (setq user-emacs-directory "~/.emacs.d")
 (add-to-list
  'load-path
@@ -89,6 +86,9 @@
 (require 'init-dockerfile-mode)
 (require 'init-rust-mode)
 (require 'init-utils)
+
+(require-package 'dracula-theme)
+(load-theme 'dracula t)
 
 (setq custom-file (expand-file-name "emacs-custom.el" emacs-tmp-dir))
 (when (file-exists-p custom-file)
