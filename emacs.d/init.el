@@ -39,12 +39,12 @@
 	  emacs-tmp-dir)
 
 (when *is-a-mac*
-  (setq ns-function-modifier 'hyper)
-  (setq ns-option-modifier 'meta)
-  (setq ns-command-modifier 'super)
-  (setq mac-function-modifier 'hyper)
-  (setq mac-option-modifier 'meta)
-  (setq mac-command-modifier 'super))
+  (setq-default ns-function-modifier 'hyper)
+  (setq-default ns-option-modifier 'meta)
+  (setq-default ns-command-modifier 'super)
+  (setq-default mac-function-modifier 'hyper)
+  (setq-default mac-option-modifier 'meta)
+  (setq-default mac-command-modifier 'super))
 
 (setq ring-bell-function 'ignore)
 
@@ -87,8 +87,12 @@
 (require 'init-rust-mode)
 (require 'init-utils)
 
-(require-package 'dracula-theme)
-(load-theme 'dracula t)
+(require-package 'color-theme-sanityinc-solarized)
+(if *is-gui*
+    (add-hook 'after-init-hook 'color-theme-sanityinc-solarized-dark)
+  (add-hook 'after-init-hook '(lambda ()
+                                (dolist (i custom-enabled-themes)
+                                  (disable-theme i)))))
 
 (setq custom-file (expand-file-name "emacs-custom.el" emacs-tmp-dir))
 (when (file-exists-p custom-file)

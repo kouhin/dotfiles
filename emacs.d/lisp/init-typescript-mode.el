@@ -9,8 +9,7 @@
           (lambda ()
             (tide-setup)
             (flycheck-mode +1)
-            (defvar flycheck-check-syntax-automatically)
-            (setq flycheck-check-syntax-automatically '(save mode-enabled))
+            (setq-default flycheck-check-syntax-automatically '(save mode-enabled))
             (eldoc-mode +1)))
 ;; Tide can be used along with web-mode to edit tsx files
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
@@ -19,8 +18,7 @@
             (when (string-equal "tsx" (file-name-extension buffer-file-name))
               (tide-setup)
               (flycheck-mode +1)
-              (defvar flycheck-check-syntax-automatically)
-              (setq flycheck-check-syntax-automatically '(save mode-enabled))
+              (setq-default flycheck-check-syntax-automatically '(save mode-enabled))
               (eldoc-mode +1))))
 
 (provide 'init-typescript-mode)

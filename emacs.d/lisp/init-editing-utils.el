@@ -35,16 +35,13 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (show-paren-mode t)
-(defvar show-paren-delay)
-(setq show-paren-delay 0)
 
 (windmove-default-keybindings)
 
 (setq-default left-fringe-width  10)
 (setq-default right-fringe-width  0)
 (set-face-attribute 'fringe nil :background "black")
-(defvar linum-delay)
-(setq linum-delay t)
+(setq-default linum-delay t)
 (defadvice linum-schedule (around my-linum-schedule () activate)
   (run-with-idle-timer 0.2 nil #'linum-update-current))
 
@@ -128,13 +125,10 @@
 ;; ag
 (require-package 'ag)
 (with-eval-after-load 'ag
-  (defvar ag-highlight-search)
-  (setq ag-highlight-search t)
-  (defvar ag-reuse-buffers)
-  (setq ag-reuse-buffers 't))
+  (setq-default ag-highlight-search t)
+  (setq-default ag-reuse-buffers 't))
 
-(defvar dired-use-ls-dired)
-(setq dired-use-ls-dired nil)
+(setq-default dired-use-ls-dired nil)
 
 (require-package 'mwim)
 (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)

@@ -23,8 +23,7 @@
   (let ((goimports
          (executable-find "goimports")))
     (when goimports
-      (defvar gofmt-command)
-      (setq gofmt-command goimports))))
+      (setq-default gofmt-command goimports))))
 
 (add-hook 'go-mode-hook '(lambda()
                            ;; load GOPATH

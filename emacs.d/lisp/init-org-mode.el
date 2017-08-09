@@ -6,8 +6,7 @@
 (require-package 'ox-gfm)
 
 (with-eval-after-load 'org
-  (defvar org-plantuml-jar-path)
-  (setq org-plantuml-jar-path
+  (setq-default org-plantuml-jar-path
         (expand-file-name "~/plantuml.jar")))
 (add-hook 'org-mode-hook '(lambda()
                             (setq truncate-lines nil)

@@ -6,11 +6,11 @@
 
 ;; magit
 (require-package 'magit)
+(setq-default magit-push-current-set-remote-if-missing nil)
 (with-eval-after-load 'magit
-  (defvar magit-refresh-status-buffer)
-  (setq magit-refresh-status-buffer nil)
-  (defvar magit-fetch-arguments)
-  (setq magit-fetch-arguments '("--prune")))
+  (setq-default
+   magit-refresh-status-buffer nil
+   magit-fetch-arguments '("--prune")))
 
 (require-package 'magit-gitflow)
 (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)

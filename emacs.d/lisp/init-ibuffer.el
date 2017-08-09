@@ -4,18 +4,13 @@
 
 ;; ibuffer
 (with-eval-after-load 'ibuffer
-  (defvar ibuffer-show-empty-filter-groups)
-  (setq ibuffer-show-empty-filter-groups nil)
-  (defvar ibuffer-shrink-to-minimum-size)
-  (setq ibuffer-shrink-to-minimum-size t)
-  (defvar ibuffer-always-show-last-buffer)
-  (setq ibuffer-always-show-last-buffer nil)
-  (defvar ibuffer-sorting-mode)
-  (setq ibuffer-sorting-mode 'recency)
-  (defvar ibuffer-use-header-line)
-  (setq ibuffer-use-header-line t)
-  (defvar ibuffer-saved-filter-groups)
-  (setq ibuffer-saved-filter-groups
+  (setq-default
+   ibuffer-show-empty-filter-groups nil
+   ibuffer-shrink-to-minimum-size t
+   ibuffer-always-show-last-buffer nil
+   ibuffer-sorting-mode 'recency
+   ibuffer-use-header-line t
+   ibuffer-saved-filter-groups
         '(("default"
            ("Magit" (name . "\*magit"))
            ("Emacs" (or (name . "^\\*scratch\\*$")
