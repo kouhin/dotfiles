@@ -87,12 +87,11 @@
 (require 'init-rust-mode)
 (require 'init-utils)
 
-(require-package 'color-theme-sanityinc-solarized)
 (if *is-gui*
-    (add-hook 'after-init-hook 'color-theme-sanityinc-solarized-dark)
-  (add-hook 'after-init-hook '(lambda ()
-                                (dolist (i custom-enabled-themes)
-                                  (disable-theme i)))))
+    (load-theme 'leuven t)
+  '(lambda ()
+     (dolist (i custom-enabled-themes)
+       (disable-theme i))))
 
 (setq custom-file (expand-file-name "emacs-custom.el" emacs-tmp-dir))
 (when (file-exists-p custom-file)

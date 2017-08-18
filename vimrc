@@ -23,25 +23,26 @@ endif
 call plug#begin(expand('~/.vim/plugged'))
 
 " Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-sensible'
 Plug 'honza/vim-snippets'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Shougo/vimshell'
 Plug 'tpope/vim-fugitive'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'kien/ctrlp.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'majutsushi/tagbar'
 Plug 'lukaszkorecki/CoffeeTags', { 'do': 'gem install CoffeeTags' }
-Plug 'altercation/vim-colors-solarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'kchmck/vim-coffee-script'
 Plug 'wavded/vim-stylus'
 Plug 'digitaltoad/vim-jade'
 Plug 'Chiel92/vim-autoformat'
-Plug 'qstrahl/vim-matchmaker'
+Plug 't9md/vim-quickhl'
 Plug 'vim-scripts/calendar.vim--Matsumoto'
 Plug 'tpope/vim-speeddating'
 Plug 'vim-airline/vim-airline-themes'
@@ -55,40 +56,28 @@ autocmd! User YouCompleteMe call youcompleteme#Enable()
 
 call plug#end()
 
-" Required:
-filetype plugin indent on
-
-" Basic config
-syntax on
 set number
-set ruler
-set wildmenu
 set tabstop=2
 set expandtab
 set cindent
 set shiftwidth=2
 set softtabstop=2
-set backspace=indent,eol,start whichwrap+=<,>,[,]
 set completeopt=menu,longest
 set noswapfile
 set mouse=a
 set clipboard=unnamed
-set laststatus=2
-set encoding=utf-8
-set t_Co=256
 let g:Powerline_symbols = 'fancy'
 
 imap jj <ESC>
 
-" Solarized
+" Theme
 if has('gui_running')
   set background=light
   set guifont=Menlo:h12
+  colorscheme solarized
 else
-  set background=dark
-  let g:solarized_termcolors = 256
+  "set background=light
 endif
-colorscheme solarized
 
 " YCM
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']

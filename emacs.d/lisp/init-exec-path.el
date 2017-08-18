@@ -4,12 +4,12 @@
 
 (require-package 'exec-path-from-shell)
 (with-eval-after-load 'exec-path-from-shell
-  (setq-default exec-path-from-shell-check-startup-files nil))
+  (defvar exec-path-from-shell-variables)
+  (dolist (var '("GOROOT" "GOPATH" "RUST_SRC_PATH" "TERM"))
+    (add-to-list 'exec-path-from-shell-variables var)))
 
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
-(let ((envs '("GOROOT" "GOPATH" "RUST_SRC_PATH" "TERM")))
-  (exec-path-from-shell-copy-envs envs))
 
 (provide 'init-exec-path)
 ;;; init-exec-path.el ends here
