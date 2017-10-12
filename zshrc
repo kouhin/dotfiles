@@ -42,13 +42,13 @@ export TERM=xterm-256color
 # PATH
 export PATH=/usr/local/sbin:$PATH
 ## Golang
-export GOPATH=$HOME/go
-[[ -d $GOPATH/bin ]] && PATH="$GOPATH/bin:$PATH"
+[[ -x "$(command -v go)" ]] && export GOPATH=$HOME/go && export PATH=$GOPATH/bin:$PATH
 ## Node.js
-export N_PREFIX=$HOME/n
-[[ -d $N_PREFIX/bin ]] && PATH="$N_PREFIX/bin:$PATH"
+[[ -x "$(command -v n)" ]] && export N_PREFIX=$HOME/n && export PATH=$N_PREFIX/bin:$PATH
 ## Rust
-[[ -d ~/.cargo/bin ]] && PATH="$HOME/.cargo/bin:$PATH"
+[[ -x "$(command -v cargo)" ]] && export PATH=$HOME/.cargo/bin:$PATH
+## Lua
+[[ -x "$(command -v luarocks)" ]] && eval `luarocks path --bin`
 ## Tmux
 if [[ ! -d ~/.tmux/plugins/tpm ]]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
 
