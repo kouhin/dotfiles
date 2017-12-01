@@ -6,9 +6,6 @@
 (with-eval-after-load 'projectile
   (setq-default projectile-completion-system 'ivy)
   (setq-default projectile-switch-project-action 'projectile-dired)
-  (setq-default projectile-mode-line
-                '(:eval (format " Projectile[%s]"
-                                (projectile-project-name))))
   (defun counsel-projectile-ag ()
     "Counsel version of projectile-ag."
     (interactive)

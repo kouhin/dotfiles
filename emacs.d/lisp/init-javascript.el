@@ -15,8 +15,10 @@
 (require-package 'tern)
 (require-package 'tern-auto-complete)
 (require-package 'js-doc)
+(require-package 'prettier-js)
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("\\.mjs\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 
 (setq-default js-indent-level 2)
@@ -44,9 +46,11 @@
 
 (add-hook 'rjsx-mode-hook
           '(lambda()
+             ;; (prettier-js-mode)
              (add-to-list 'editorconfig-indentation-alist '(rjsx-mode js2-basic-offset sgml-basic-offset))
              (editorconfig-apply)
              (tern-mode)))
+(add-hook 'js-mode 'prettier-js-mode)
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here

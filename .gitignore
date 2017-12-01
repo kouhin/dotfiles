@@ -181,3 +181,4 @@ SessionDesktop.el
 tutorial/
 /emacs.d/kkcrc
 network-security.data
+/.tern-port
