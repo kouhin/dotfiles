@@ -46,6 +46,12 @@
 
 (add-hook 'rjsx-mode-hook
           '(lambda()
+             (if (projectile-project-p)
+                 (progn
+                   (when
+                    (file-exists-p (expand-file-name ".prettierrc.json" (projectile-project-root)))
+                     (prettier-js-mode))
+                 ))
              ;; (prettier-js-mode)
              (add-to-list 'editorconfig-indentation-alist '(rjsx-mode js2-basic-offset sgml-basic-offset))
              (editorconfig-apply)
