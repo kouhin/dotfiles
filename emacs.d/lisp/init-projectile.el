@@ -3,15 +3,11 @@
 ;; for project
 ;;; Code:
 (require-package 'projectile)
+(require-package 'counsel-projectile)
 (with-eval-after-load 'projectile
   (setq-default projectile-completion-system 'ivy)
   (setq-default projectile-switch-project-action 'projectile-dired)
-  (defun counsel-projectile-ag ()
-    "Counsel version of projectile-ag."
-    (interactive)
-    (counsel-ag "" (projectile-project-root)))
-  (defvar projectile-mode-map)
-  (define-key projectile-mode-map (kbd "C-c p s s") 'counsel-projectile-ag))
+  )
 
 (add-hook 'after-init-hook 'projectile-global-mode)
 
