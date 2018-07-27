@@ -36,7 +36,6 @@
   (setq-default counsel-mode-override-describe-bindings t))
 
 (add-hook 'after-init-hook 'counsel-mode)
-(add-hook 'counsel-mode-hook 'counsel-projectile-mode)
 
 (provide 'init-ivy)
 ;;; init-ivy.el ends here
