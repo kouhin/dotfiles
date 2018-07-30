@@ -13,7 +13,6 @@
 (require-package 'vue-mode)
 (require-package 'rjsx-mode)
 (require-package 'tern)
-(require-package 'tern-auto-complete)
 (require-package 'js-doc)
 (require-package 'prettier-js)
 
@@ -24,10 +23,6 @@
 (setq-default js-indent-level 2)
 ;; Fix js.el inndentation bug
 (advice-add 'js--multi-line-declaration-indentation :override (lambda () nil))
-
-(with-eval-after-load 'tern
-  (require 'tern-auto-complete)
-  (tern-ac-setup))
 
 (if (executable-find "eslint")
     (progn

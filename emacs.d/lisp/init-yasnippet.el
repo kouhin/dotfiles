@@ -3,6 +3,7 @@
 ;;; Commentary:
 
 ;;; Code:
+(depends 'yasnippet-snippets)
 (when (depends 'yasnippet)
   (add-hook 'web-mode-hook
             '(lambda()

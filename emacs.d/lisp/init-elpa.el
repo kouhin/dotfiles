@@ -1,5 +1,8 @@
 ;;; init-elpa.el --- initializes ELPA settings
 ;;; Commentary:
+
+;Orinal source code: https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el
+
 ;;; Code:
 
 (require 'package)

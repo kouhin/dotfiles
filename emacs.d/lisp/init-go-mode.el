@@ -15,7 +15,6 @@
   (require-package 'go-guru)
   (require-package 'gotest)
   (require-package 'go-eldoc)
-  (require-package 'go-autocomplete)
 
   ;; config go-mode
   (with-eval-after-load 'go-mode
@@ -34,9 +33,7 @@
                              (go-eldoc-setup)
 
                              ;; gofmt
-                             (add-hook 'before-save-hook 'gofmt-before-save)))
-
-  (require 'go-autocomplete))
+                             (add-hook 'before-save-hook 'gofmt-before-save))))
 
 (provide 'init-go-mode)
 ;;; init-go-mode.el ends here

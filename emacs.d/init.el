@@ -63,7 +63,8 @@
 (require 'init-editing-utils)
 (require 'init-ibuffer)
 (require 'init-yasnippet)
-(require 'init-autocomplete)
+                                        ;(require 'init-autocomplete)
+(require 'init-company)
 (require 'init-flycheck)
 
 (require 'init-ivy)
