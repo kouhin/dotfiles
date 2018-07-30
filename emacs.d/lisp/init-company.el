@@ -8,8 +8,6 @@
 (when (depends 'company)
   (add-hook 'after-init-hook 'global-company-mode)
   (with-eval-after-load 'company
-    (setq-default company-dabbrev-other-buffers 'all
-                  company-tooltip-align-annotations t)
     (defvar company-backends)
     (add-to-list 'company-backends 'company-yasnippet)
     (defvar company-mode-map)
