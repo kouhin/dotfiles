@@ -2,10 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'yaml-mode)
-(add-hook 'yaml-mode-hook '(lambda()
-                             (defvar yaml-mode-map)
-                             (define-key yaml-mode-map (kbd "C-m") 'newline-and-indent)))
+(when (depends 'yaml-mode)
+  (add-hook 'yaml-mode-hook '(lambda()
+                               (defvar yaml-mode-map)
+                               (define-key yaml-mode-map (kbd "C-m") 'newline-and-indent))))
 
 
 

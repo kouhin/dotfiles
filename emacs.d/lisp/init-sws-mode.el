@@ -10,11 +10,11 @@
 ;; - jade
 ;; - stylus
 
-(require-package 'coffee-mode)
-(require-package 'sws-mode)
-(require-package 'jade-mode)
-(require-package 'stylus-mode)
-(require-package 'pug-mode)
+(depends 'coffee-mode)
+(depends 'sws-mode)
+(depends 'jade-mode)
+(depends 'stylus-mode)
+(depends 'pug-mode)
 
 (provide 'init-sws-mode)
 ;;; init-sws-mode.el ends here

@@ -2,21 +2,21 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'sr-speedbar)
-(with-eval-after-load 'sr-speedbar
-  (setq-default
-   sr-speedbar-default-width 5
-   sr-speedbar-max-width 5
-   sr-speedbar-auto-refresh t))
+(when (depends 'sr-speedbar)
+  (with-eval-after-load 'sr-speedbar
+    (setq-default
+     sr-speedbar-default-width 5
+     sr-speedbar-max-width 5
+     sr-speedbar-auto-refresh t)))
 
-(require-package 'projectile-speedbar)
+(depends 'projectile-speedbar)
 
-(require-package 'speedbar)
-(with-eval-after-load 'speedbar
-  (setq-default
-   speedbar-show-unknown-files t
-   speedbar-smart-directory-expand-flag t
-   speedbar-use-images nil))
+(when (depends 'speedbar)
+  (with-eval-after-load 'speedbar
+    (setq-default
+     speedbar-show-unknown-files t
+     speedbar-smart-directory-expand-flag t
+     speedbar-use-images nil)))
 
 (provide 'init-speedbar)
 

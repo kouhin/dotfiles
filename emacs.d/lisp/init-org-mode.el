@@ -2,8 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'org-plus-contrib)
-(require-package 'ox-gfm)
+(depends 'org-plus-contrib)
+(depends 'ox-gfm)
 
 (with-eval-after-load 'org
   (setq-default org-plantuml-jar-path

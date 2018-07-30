@@ -6,7 +6,7 @@
 ;;; Code:
 
 ;; popwin
-(require-package 'popwin)
+(when (depends 'popwin)
 (add-hook 'after-init-hook '(lambda()
                               (require 'popwin)
                               (popwin-mode)))
@@ -21,14 +21,7 @@
   (push '("*magit-diff*" :noselect t :height 40 :width 80)
         popwin:special-display-config)
   (push '("*magit-edit-log*" :noselect t :height 15 :width 80)
-        popwin:special-display-config)
-  (add-hook 'helm-after-initialize-hook (lambda()
-                                          (defvar helm-buffer)
-                                          (popwin:display-buffer helm-buffer t)
-                                          (popwin-mode -1)))
-  (add-hook'helm-cleanup-hook (lambda()
-                                (popwin-mode 1)))
-  )
+        popwin:special-display-config)))
 
 (provide 'init-popwin)
 ;;; init-popwin.el ends here

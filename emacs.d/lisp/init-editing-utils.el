@@ -74,67 +74,67 @@
 (set-default 'imenu-auto-rescan t)
 
 ;; symbol-overlay
-(require-package 'symbol-overlay)
-(add-hook 'prog-mode-hook 'symbol-overlay-mode)
-(with-eval-after-load 'symbol-overlay
-  (defvar symbol-overlay-mode-map)
-  (define-key symbol-overlay-mode-map (kbd "M-n") 'symbol-overlay-jump-next)
-  (define-key symbol-overlay-mode-map (kbd "M-p") 'symbol-overlay-jump-prev))
+(when (depends 'symbol-overlay)
+  (add-hook 'prog-mode-hook 'symbol-overlay-mode)
+  (with-eval-after-load 'symbol-overlay
+    (defvar symbol-overlay-mode-map)
+    (define-key symbol-overlay-mode-map (kbd "M-n") 'symbol-overlay-jump-next)
+    (define-key symbol-overlay-mode-map (kbd "M-p") 'symbol-overlay-jump-prev)))
 
 ;; undo tree
-(require-package 'undo-tree)
-(add-hook 'after-init-hook 'global-undo-tree-mode)
+(when (depends 'undo-tree)
+  (add-hook 'after-init-hook 'global-undo-tree-mode))
 
 ;; rainbow-delimiters
-(require-package 'rainbow-delimiters)
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(when (depends 'rainbow-delimiters)
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 ;; editorconfig
-(require-package 'editorconfig)
-(add-hook 'after-init-hook 'editorconfig-mode)
+(when (depends 'editorconfig)
+  (add-hook 'after-init-hook 'editorconfig-mode))
 
 ;; highlight-indentation
-(require-package 'highlight-indentation)
-(add-hook 'after-init-hook '(lambda ()
-                              (add-hook 'python-mode-hook 'highlight-indentation-mode)
-                              (add-hook 'coffee-mode-hook 'highlight-indentation-mode)
-                              (add-hook 'stylus-mode-hook 'highlight-indentation-mode)
-                              (add-hook 'jade-mode-hook 'highlight-indentation-mode)
-                              ))
-(with-eval-after-load 'highlight-indentation
-  (set-face-background 'highlight-indentation-face "#4e4e4e"))
+(when (depends 'highlight-indentation)
+  (add-hook 'after-init-hook '(lambda ()
+                                (add-hook 'python-mode-hook 'highlight-indentation-mode)
+                                (add-hook 'coffee-mode-hook 'highlight-indentation-mode)
+                                (add-hook 'stylus-mode-hook 'highlight-indentation-mode)
+                                (add-hook 'jade-mode-hook 'highlight-indentation-mode)
+                                ))
+  (with-eval-after-load 'highlight-indentation
+    (set-face-background 'highlight-indentation-face "#4e4e4e")))
 
 ;; subword
-(require-package 'syntax-subword)
-(add-hook 'after-init-hook 'global-syntax-subword-mode)
+(when (depends 'syntax-subword)
+  (add-hook 'after-init-hook 'global-syntax-subword-mode))
 
 ;; expand region
-(require-package 'expand-region)
-(add-hook 'after-init-hook '(lambda()
-                              (global-set-key (kbd "C-=") 'er/expand-region)
-                              (global-set-key (kbd "M-'") 'er/expand-region)
-                              ))
+(when (depends 'expand-region)
+  (add-hook 'after-init-hook '(lambda()
+                                (global-set-key (kbd "C-=") 'er/expand-region)
+                                (global-set-key (kbd "M-'") 'er/expand-region)
+                                )))
 
 ;; quickrun
-(require-package 'quickrun)
+(depends 'quickrun)
 
 ;; copy & paste for OSX
-(require-package 'osx-clipboard)
-(add-hook 'after-init-hook 'osx-clipboard-mode)
+(when (depends 'osx-clipboard)
+  (add-hook 'after-init-hook 'osx-clipboard-mode))
 
 ;; ag
-(require-package 'ag)
-(with-eval-after-load 'ag
-  (setq-default ag-highlight-search t)
-  (setq-default ag-reuse-buffers 't))
+(when (depends 'ag)
+  (with-eval-after-load 'ag
+    (setq-default ag-highlight-search t)
+    (setq-default ag-reuse-buffers 't)))
 
 (setq-default dired-use-ls-dired nil)
 
-(require-package 'mwim)
-(global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
-(global-set-key (kbd "C-e") 'mwim-end-of-code-or-line)
+(when (depends 'mwim)
+  (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
+  (global-set-key (kbd "C-e") 'mwim-end-of-code-or-line))
 
-(require-package 'sudo-edit)
+(depends 'sudo-edit)
 
 (provide 'init-editing-utils)
 

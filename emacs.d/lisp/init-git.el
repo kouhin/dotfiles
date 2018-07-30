@@ -5,25 +5,25 @@
 ;;; Code:
 
 ;; magit
-(require-package 'magit)
-(setq-default magit-push-current-set-remote-if-missing nil)
-(with-eval-after-load 'magit
-  (setq-default
-   magit-refresh-status-buffer nil
-   magit-fetch-arguments '("--prune")))
+(when (depends 'magit)
+  (setq-default magit-push-current-set-remote-if-missing nil)
+  (with-eval-after-load 'magit
+    (setq-default
+     magit-refresh-status-buffer nil
+     magit-fetch-arguments '("--prune")))
 
-(require-package 'magit-gitflow)
-(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
-(add-hook 'after-init-hook '(lambda()
-                              (global-set-key (kbd "C-c C-g") 'magit-status)))
+  (when (depends 'magit-gitflow)
+    (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+    (add-hook 'after-init-hook '(lambda()
+                                  (global-set-key (kbd "C-c C-g") 'magit-status)))))
 
 ;; git-gutter
-(require-package 'git-gutter)
-(add-hook 'prog-mode-hook 'git-gutter-mode)
+(when (depends 'git-gutter)
+  (add-hook 'prog-mode-hook 'git-gutter-mode))
 
-(require-package 'gitignore-mode)
-(require-package 'gitconfig-mode)
-(require-package 'gitattributes-mode)
+(depends 'gitignore-mode)
+(depends 'gitconfig-mode)
+(depends 'gitattributes-mode)
 
 (provide 'init-git)
 

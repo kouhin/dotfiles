@@ -2,18 +2,26 @@
 ;;; Commentary:
 ;; for project
 ;;; Code:
-(require-package 'projectile)
-(with-eval-after-load 'projectile
-  (setq-default projectile-completion-system 'ivy)
-  (setq-default projectile-switch-project-action 'projectile-dired)
-  (defun counsel-projectile-ag ()
-    "Counsel version of projectile-ag."
-    (interactive)
-    (counsel-ag "" (projectile-project-root)))
-  (defvar projectile-mode-map)
-  (define-key projectile-mode-map (kbd "C-c p s s") 'counsel-projectile-ag))
+(when (depends 'projectile)
+  (with-eval-after-load 'projectile
+    (setq-default projectile-switch-project-action 'projectile-dired)
+    (when (depends 'projectile)
+      (setq-default projectile-completion-system 'ivy))
+    (when (depends 'counsel)
+      (defun counsel-projectile-ag ()
+        "Counsel version of projectile-ag."
+        (interactive)
+        (counsel-ag "" (projectile-project-root)))
+      (defun counsel-projectile-rg ()
+        "Counsel version of projectile-rg."
+        (interactive)
+        (counsel-rg "" (projectile-project-root)))
+      (defvar projectile-mode-map)
+      (let ((map (make-sparse-keymap)))
+        (define-key projectile-mode-map [remap projectile-ag] 'counsel-projectile-ag)
+        (define-key projectile-mode-map [remap projectile-ripgrep] 'counsel-projectile-rg))))
 
-(add-hook 'after-init-hook 'projectile-global-mode)
+  (add-hook 'after-init-hook 'projectile-global-mode))
 
 (provide 'init-projectile)
 
