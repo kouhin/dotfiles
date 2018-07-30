@@ -10,11 +10,11 @@
 ;; - errcheck
 ;;; Code:
 
-(when (require-package 'go-mode)
-  (require-package 'go-rename)
-  (require-package 'go-guru)
-  (require-package 'gotest)
-  (require-package 'go-eldoc)
+(when (depends 'go-mode)
+  (depends 'go-rename)
+  (depends 'go-guru)
+  (depends 'gotest)
+  (depends 'go-eldoc)
 
   ;; config go-mode
   (with-eval-after-load 'go-mode

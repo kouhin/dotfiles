@@ -9,12 +9,12 @@
 
 ;;; Code:
 
-(require-package 'json-mode)
-(require-package 'vue-mode)
-(require-package 'rjsx-mode)
-(require-package 'tern)
-(require-package 'js-doc)
-(require-package 'prettier-js)
+(depends 'json-mode)
+(depends 'vue-mode)
+(depends 'rjsx-mode)
+(depends 'tern)
+(depends 'js-doc)
+(depends 'prettier-js)
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.mjs\\'" . rjsx-mode))

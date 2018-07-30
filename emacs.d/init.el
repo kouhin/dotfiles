@@ -76,9 +76,9 @@
 (require 'init-neotree)
 
 ;; Major modes
-(require-package 'lua-mode)
-(require-package 'dockerfile-mode)
-(require-package 'toml-mode)
+(depends 'lua-mode)
+(depends 'dockerfile-mode)
+(depends 'toml-mode)
 (require 'init-org-mode)
 (require 'init-javascript)
 (require 'init-web-mode)
@@ -90,7 +90,7 @@
 (require 'init-rust-mode)
 (require 'init-utils)
 
-(require-package 'leuven-theme)
+(depends 'leuven-theme)
 (if *is-gui*
     (load-theme 'leuven t)
   '(lambda ()
