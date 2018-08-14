@@ -5,6 +5,7 @@
 (when (depends 'projectile)
   (with-eval-after-load 'projectile
     (setq-default projectile-switch-project-action 'projectile-dired)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
     (when (depends 'projectile)
       (setq-default projectile-completion-system 'ivy))
     (when (depends 'counsel)
