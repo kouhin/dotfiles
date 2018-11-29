@@ -15,6 +15,7 @@
 (depends 'tern)
 (depends 'js-doc)
 (depends 'prettier-js)
+(depends 'tide)
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.mjs\\'" . rjsx-mode))
@@ -44,14 +45,20 @@
              (if (projectile-project-p)
                  (progn
                    (when
-                    (file-exists-p (expand-file-name ".prettierrc.json" (projectile-project-root)))
+                       (file-exists-p (expand-file-name ".prettierrc.json" (projectile-project-root)))
                      (prettier-js-mode))
-                 ))
-             ;; (prettier-js-mode)
+                   (when
+                       (file-exists-p (expand-file-name "jsconfig.json" (projectile-project-root)))
+                     (tide-setup)
+                     (tide-hl-identifier-mode +1))
+                   (when
+                       (file-exists-p (expand-file-name ".tern-project" (projectile-project-root)))
+                     (tern-mode))
+                   ))
              (add-to-list 'editorconfig-indentation-alist '(rjsx-mode js2-basic-offset sgml-basic-offset))
-             (editorconfig-apply)
-             (tern-mode)))
+             (editorconfig-apply)))
 (add-hook 'js-mode 'prettier-js-mode)
+(add-hook 'vue-mode 'prettier-js-mode)
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here
