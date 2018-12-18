@@ -16,6 +16,7 @@
 (depends 'js-doc)
 (depends 'prettier-js)
 (depends 'tide)
+(depends 'add-node-modules-path)
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.mjs\\'" . rjsx-mode))
@@ -42,6 +43,7 @@
 
 (add-hook 'rjsx-mode-hook
           '(lambda()
+             (add-node-modules-path)
              (if (projectile-project-p)
                  (progn
                    (when
@@ -57,8 +59,12 @@
                    ))
              (add-to-list 'editorconfig-indentation-alist '(rjsx-mode js2-basic-offset sgml-basic-offset))
              (editorconfig-apply)))
-(add-hook 'js-mode 'prettier-js-mode)
-(add-hook 'vue-mode 'prettier-js-mode)
+(add-hook 'js-mode '(lambda()
+                      (add-node-modules-path)
+                      (prettier-js-mode)))
+(add-hook 'vue-mode '(lambda()
+                       (add-node-modules-path)
+                       (prettier-js-mode)))
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here
