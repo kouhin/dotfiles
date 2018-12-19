@@ -59,10 +59,10 @@
                    ))
              (add-to-list 'editorconfig-indentation-alist '(rjsx-mode js2-basic-offset sgml-basic-offset))
              (editorconfig-apply)))
-(add-hook 'js-mode '(lambda()
+(add-hook 'js-mode-hook '(lambda()
                       (add-node-modules-path)
                       (prettier-js-mode)))
-(add-hook 'vue-mode '(lambda()
+(add-hook 'vue-mode-hook '(lambda()
                        (add-node-modules-path)
                        (prettier-js-mode)))
 
