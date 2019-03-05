@@ -20,6 +20,8 @@
     (setq-default company-tooltip-limit 20
                   company-idle-delay 0.1
                   company-echo-delay 0
+                  company-dabbrev-ignore-case nil
+                  company-dabbrev-downcase nil
                   company-dabbrev-other-buffers 'all
                   company-tooltip-align-annotations t)
     (global-set-key (kbd "M-C-/") 'company-complete)))
