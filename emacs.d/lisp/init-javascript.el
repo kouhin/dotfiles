@@ -19,7 +19,10 @@
 (add-to-list 'auto-mode-alist '("\\.mjs\\'" . rjsx-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 
-(setq-default js-indent-level 2)
+(custom-set-variables
+ '(js-indent-level 2)
+ '(js2-mode-show-parse-errors nil)
+ '(js2-mode-show-strict-warnings nil))
 ;; Fix js.el inndentation bug
 (advice-add 'js--multi-line-declaration-indentation :override (lambda () nil))
 
@@ -32,11 +35,6 @@
         (shell-command (concat "eslint --fix " (buffer-file-name)))
         (revert-buffer t t)))
   (message "Please install eslint: 'npm install -g eslint-cli'."))
-
-(with-eval-after-load 'rjsx-mode
-  (setq-default
-   js2-mode-show-parse-errors nil
-   js2-mode-show-strict-warnings nil))
 
 (add-hook 'rjsx-mode-hook
           '(lambda()

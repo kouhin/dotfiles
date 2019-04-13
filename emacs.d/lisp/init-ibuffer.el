@@ -3,14 +3,13 @@
 ;;; Code:
 
 ;; ibuffer
-(with-eval-after-load 'ibuffer
-  (setq-default
-   ibuffer-show-empty-filter-groups nil
-   ibuffer-shrink-to-minimum-size t
-   ibuffer-always-show-last-buffer nil
-   ibuffer-sorting-mode 'recency
-   ibuffer-use-header-line t
-   ibuffer-saved-filter-groups
+(custom-set-variables
+   '(ibuffer-show-empty-filter-groups nil)
+   '(ibuffer-shrink-to-minimum-size t)
+   '(ibuffer-always-show-last-buffer nil)
+   '(ibuffer-sorting-mode 'recency)
+   '(ibuffer-use-header-line t)
+   '(ibuffer-saved-filter-groups
         '(("default"
            ("Magit" (name . "\*magit"))
            ("Emacs" (or (name . "^\\*scratch\\*$")

@@ -2,21 +2,18 @@
 ;;; Commentary:
 ;;; Code:
 
-(when (depends 'sr-speedbar)
-  (with-eval-after-load 'sr-speedbar
-    (setq-default
-     sr-speedbar-default-width 5
-     sr-speedbar-max-width 5
-     sr-speedbar-auto-refresh t)))
 
+(custom-set-variables
+ '(sr-speedbar-default-width 5)
+ '(sr-speedbar-max-width 5)
+ '(sr-speedbar-auto-refresh t)
+ '(speedbar-show-unknown-files t)
+ '(speedbar-smart-directory-expand-flag t)
+ '(speedbar-use-images nil))
+
+(depends 'sr-speedbar)
 (depends 'projectile-speedbar)
-
-(when (depends 'speedbar)
-  (with-eval-after-load 'speedbar
-    (setq-default
-     speedbar-show-unknown-files t
-     speedbar-smart-directory-expand-flag t
-     speedbar-use-images nil)))
+(depends 'speedbar)
 
 (provide 'init-speedbar)
 

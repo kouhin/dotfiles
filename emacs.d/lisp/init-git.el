@@ -5,12 +5,10 @@
 ;;; Code:
 
 ;; magit
-(when (depends 'magit)
-  (with-eval-after-load 'magit
-    (setq-default
-     magit-remote-set-if-missing nil
-     magit-refresh-status-buffer nil))
+(custom-set-variables
+ '(magit-refresh-status-buffer nil))
 
+(when (depends 'magit)
   (when (depends 'magit-gitflow)
     (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
     (add-hook 'after-init-hook '(lambda()

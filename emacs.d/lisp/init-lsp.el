@@ -13,6 +13,10 @@
 (add-hook 'web-mode-hook #'lsp)
 (add-hook 'go-mode-hook #'lsp)
 
+(custom-set-variables
+ '(lsp-ui-flycheck-enable t)
+ '(lsp-prefer-flymake nil))
+
 (with-eval-after-load 'lsp-mode
                       (require 'lsp-clients))
 

@@ -4,33 +4,42 @@
 ;; Some basic preferences
 
 ;;; Code:
-(setq-default
- blink-cursor-interval 0.4
- bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory)
- case-fold-search t
- column-number-mode t
- line-number-mode t
- delete-selection-mode t
- ediff-split-window-function 'split-window-horizontally
- ediff-window-setup-function 'ediff-setup-windows-plain
- indent-tabs-mode nil
- tab-width 2
- make-backup-files t
- create-lockfiles nil
- mouse-yank-at-point t
- save-interprogram-paste-before-kill t
- scroll-preserve-screen-position 'always
- set-mark-command-repeat-pop t
- show-trailing-whitespace t
- tooltip-delay 1.5
- truncate-lines t
- truncate-partial-width-windows nil
- visible-bell t
- scroll-step 1
- scroll-conservatively 10000
- vc-follow-symlinks t
- js-switch-indent-offset 2
- ad-redefinition-action 'accept)
+(custom-set-variables
+ '(blink-cursor-interval 0.4)
+ '(bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory))
+ '(case-fold-search t)
+ '(column-number-mode t)
+ '(line-number-mode t)
+ '(delete-selection-mode t)
+ '(ediff-split-window-function 'split-window-horizontally)
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
+ '(indent-tabs-mode nil)
+ '(tab-width 2)
+ '(make-backup-files t)
+ '(create-lockfiles nil)
+ '(mouse-yank-at-point t)
+ '(save-interprogram-paste-before-kill t)
+ '(scroll-preserve-screen-position 'always)
+ '(set-mark-command-repeat-pop t)
+ '(show-trailing-whitespace t)
+ '(tooltip-delay 1.5)
+ '(truncate-lines t)
+ '(truncate-partial-width-windows nil)
+ '(visible-bell t)
+ '(scroll-step 1)
+ '(scroll-conservatively 10000)
+ '(vc-follow-symlinks t)
+ '(js-switch-indent-offset 2)
+ '(ad-redefinition-action 'accept)
+ '(left-fringe-width  10)
+ '(right-fringe-width  0)
+ '(linum-delay t)
+ '(uniquify-buffer-name-style 'forward)
+ '(uniquify-separator "/")
+ '(uniquify-after-kill-buffer-p t)
+ '(uniquify-ignore-buffers-re "^\\*")
+ '(imenu-auto-rescan t)
+ '(dired-use-ls-dired nil))
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -38,10 +47,7 @@
 
 (windmove-default-keybindings)
 
-(setq-default left-fringe-width  10)
-(setq-default right-fringe-width  0)
 (set-face-attribute 'fringe nil :background "black")
-(setq-default linum-delay t)
 (defadvice linum-schedule (around my-linum-schedule () activate)
   (run-with-idle-timer 0.2 nil #'linum-update-current))
 
@@ -63,15 +69,6 @@
 
 (when (fboundp 'global-prettify-symbols-mode)
   (global-prettify-symbols-mode))
-
-;; meaningful names for buffers with the same name
-(with-eval-after-load 'uniquify
-  (setq uniquify-buffer-name-style 'forward)
-  (setq uniquify-separator "/")
-  (setq uniquify-after-kill-buffer-p t)
-  (setq uniquify-ignore-buffers-re "^\\*"))
-
-(set-default 'imenu-auto-rescan t)
 
 ;; symbol-overlay
 (when (depends 'symbol-overlay)
@@ -123,12 +120,10 @@
   (add-hook 'after-init-hook 'osx-clipboard-mode))
 
 ;; ag
-(when (depends 'ag)
-  (with-eval-after-load 'ag
-    (setq-default ag-highlight-search t)
-    (setq-default ag-reuse-buffers 't)))
-
-(setq-default dired-use-ls-dired nil)
+(custom-set-variables
+ '(ag-highlight-search t)
+ '(ag-reuse-buffers 't))
+(depends 'ag)
 
 (when (depends 'mwim)
   (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)

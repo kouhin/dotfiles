@@ -7,20 +7,21 @@
 (depends 'smex)
 (depends 'flx)
 
+(custom-set-variables
+ '(ivy-use-virtual-buffers t)
+ '(counsel-mode-override-describe-bindings t))
+
 (when (depends 'ivy)
   (add-hook 'after-init-hook '(lambda()
                                 (ivy-mode 1)
                                 (global-set-key (kbd "C-c C-r") 'ivy-resume)
-                                (global-set-key (kbd "<f6>") 'ivy-resume)))
-  (with-eval-after-load 'ivy
-    (setq-default ivy-use-virtual-buffers t)))
+                                (global-set-key (kbd "<f6>") 'ivy-resume))))
 
 (when (depends 'swiper)
   (add-hook 'after-init-hook '(lambda()
                                 (global-set-key "\C-s" 'swiper))))
 
 (when (depends 'counsel)
-
   (add-hook 'after-init-hook '(lambda()
                                 (counsel-mode 1)
                                 (global-set-key (kbd "M-x") 'counsel-M-x)
@@ -35,9 +36,7 @@
                                 (global-set-key (kbd "C-c k") 'counsel-ag)
                                 (global-set-key (kbd "C-x l") 'counsel-locate)
                                 (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-                                (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
-  (with-eval-after-load 'counsel
-    (setq-default counsel-mode-override-describe-bindings t)))
+                                (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))))
 
 
 (provide 'init-ivy)
