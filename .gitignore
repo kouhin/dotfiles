@@ -182,3 +182,4 @@ tutorial/
 /emacs.d/kkcrc
 network-security.data
 /.tern-port
+.lsp-session-v1

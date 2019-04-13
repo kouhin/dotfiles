@@ -5,17 +5,14 @@
 ;; Required:
 ;; - node
 ;; - eslint
-;; - tern
 
 ;;; Code:
 
 (depends 'json-mode)
 (depends 'vue-mode)
 (depends 'rjsx-mode)
-(depends 'tern)
 (depends 'js-doc)
 (depends 'prettier-js)
-(depends 'tide)
 (depends 'add-node-modules-path)
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
@@ -49,13 +46,6 @@
                    (when
                        (file-exists-p (expand-file-name ".prettierrc.json" (projectile-project-root)))
                      (prettier-js-mode))
-                   (when
-                       (file-exists-p (expand-file-name "jsconfig.json" (projectile-project-root)))
-                     (tide-setup)
-                     (tide-hl-identifier-mode +1))
-                   (when
-                       (file-exists-p (expand-file-name ".tern-project" (projectile-project-root)))
-                     (tern-mode))
                    ))
              (add-to-list 'editorconfig-indentation-alist '(rjsx-mode js2-basic-offset sgml-basic-offset))
              (editorconfig-apply)))

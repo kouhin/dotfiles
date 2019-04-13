@@ -23,7 +23,6 @@ init-go:
 init-web:
 	npm install eslint-cli -g
 	npm install stylelint -g
-	npm install tern -g
 init-rust:
 	cargo install --git https://github.com/phildawes/racer.git
 	cargo install --git https://github.com/rust-lang-nursery/rustfmt

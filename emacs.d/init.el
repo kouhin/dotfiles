@@ -63,7 +63,8 @@
 (require 'init-editing-utils)
 (require 'init-ibuffer)
 (require 'init-yasnippet)
-                                        ;(require 'init-autocomplete)
+
+(require 'init-lsp)
 (require 'init-company)
 (require 'init-flycheck)
 
@@ -83,7 +84,6 @@
 (require 'init-javascript)
 (require 'init-web-mode)
 (require 'init-sws-mode)
-(require 'init-typescript-mode)
 (require 'init-markdown-mode)
 (require 'init-go-mode)
 (require 'init-yaml-mode)
