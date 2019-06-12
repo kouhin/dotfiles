@@ -72,7 +72,6 @@
 (require 'init-popwin)
 (require 'init-projectile)
 (require 'init-avy-mode)
-(require 'init-speedbar)
 (require 'init-git)
 (require 'init-neotree)
 
@@ -84,6 +83,7 @@
 (require 'init-javascript)
 (require 'init-web-mode)
 (require 'init-sws-mode)
+(require 'init-typescript-mode)
 (require 'init-markdown-mode)
 (require 'init-go-mode)
 (require 'init-yaml-mode)
