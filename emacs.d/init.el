@@ -64,7 +64,7 @@
 (require 'init-ibuffer)
 (require 'init-yasnippet)
 
-(require 'init-lsp)
+;(require 'init-lsp)
 (require 'init-company)
 (require 'init-flycheck)
 
@@ -73,7 +73,6 @@
 (require 'init-projectile)
 (require 'init-avy-mode)
 (require 'init-git)
-(require 'init-neotree)
 
 ;; Major modes
 (depends 'lua-mode)
