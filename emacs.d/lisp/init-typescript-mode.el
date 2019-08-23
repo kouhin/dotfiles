@@ -9,6 +9,13 @@
           (lambda ()
             (tide-setup)
             (flycheck-mode +1)
+            (add-node-modules-path)
+            (if (projectile-project-p)
+                 (progn
+                   (when
+                       (file-exists-p (expand-file-name ".prettierrc.json" (projectile-project-root)))
+                     (prettier-js-mode))
+                   ))
 			(defvar flycheck-check-syntax-automatically)
             (setq flycheck-check-syntax-automatically '(save mode-enabled))
             (eldoc-mode +1)
