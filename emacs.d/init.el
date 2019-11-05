@@ -17,29 +17,25 @@
 
 (let ((minver "25.0"))
   (when (version<= emacs-version "25.0")
-	(error "Your Emacs is too old -- this config requires v%s or higher" minver)))
+    (error
+      "Your Emacs is too old -- this config requires v%s or higher"
+      minver)))
 
 (defconst *is-a-mac* (eq system-type 'darwin))
 (defconst *is-gui* (display-graphic-p))
 
 (setq user-emacs-directory "~/.emacs.d")
-(add-to-list
- 'load-path
- (expand-file-name "lisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; create auto-save file in ~/.emacs.d/backup
 (defconst emacs-tmp-dir "~/.emacs.d/tmp/")
 (unless (file-exists-p emacs-tmp-dir)
   (make-directory emacs-tmp-dir t))
-(setq backup-directory-alist
-      `((".*" . ,emacs-tmp-dir)))
-(setq auto-save-file-name-transforms
-      `((".*" ,emacs-tmp-dir t)))
-(setq auto-save-list-file-prefix
-	  emacs-tmp-dir)
+(setq backup-directory-alist `((".*" . ,emacs-tmp-dir)))
+(setq auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t)))
+(setq auto-save-list-file-prefix emacs-tmp-dir)
 
-(when *is-a-mac*
-  (setq-default ns-function-modifier 'hyper)
+(when *is-a-mac* (setq-default ns-function-modifier 'hyper)
   (setq-default ns-option-modifier 'meta)
   (setq-default ns-command-modifier 'super)
   (setq-default mac-function-modifier 'hyper)
@@ -64,7 +60,7 @@
 (require 'init-ibuffer)
 (require 'init-yasnippet)
 
-;(require 'init-lsp)
+(require 'init-lsp)
 (require 'init-company)
 (require 'init-flycheck)
 
@@ -90,8 +86,7 @@
 (require 'init-utils)
 
 (depends 'leuven-theme)
-(if *is-gui*
-    (load-theme 'leuven t)
+(if *is-gui* (load-theme 'leuven t)
   '(lambda ()
      (dolist (i custom-enabled-themes)
        (disable-theme i))))
