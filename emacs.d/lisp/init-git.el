@@ -5,14 +5,14 @@
 ;;; Code:
 
 ;; magit
-(custom-set-variables
- '(magit-refresh-status-buffer nil))
+(custom-set-variables '(magit-refresh-status-buffer nil))
 
 (when (depends 'magit)
   (when (depends 'magit-gitflow)
     (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
-    (add-hook 'after-init-hook '(lambda()
-                                  (global-set-key (kbd "C-c C-g") 'magit-status)))))
+    (add-hook 'after-init-hook
+      '(lambda()
+         (global-set-key (kbd "C-c C-g") 'magit-status)))))
 
 ;; git-gutter
 (when (depends 'git-gutter)
