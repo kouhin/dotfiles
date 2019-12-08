@@ -14,6 +14,7 @@
 (add-hook 'js2-mode-hook #'lsp)
 (add-hook 'web-mode-hook #'lsp)
 (add-hook 'go-mode-hook #'lsp)
+(add-hook 'rust-mode-hook #'lsp)
 
 (with-eval-after-load 'lsp-mode
   (require 'lsp-clients))

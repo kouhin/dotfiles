@@ -7,16 +7,7 @@
 ;;; Code:
 
 (when (depends 'rust-mode)
-  (when (depends 'racer)
-    (when (depends 'cargo)
-      (when (depends 'flycheck-rust)
-        (add-hook 'rust-mode-hook
-          '(lambda()
-             (racer-mode)
-             (cargo-minor-mode)
-             (flycheck-rust-setup)
-             (define-key racer-mode-map (kbd "C-c C-j") 'racer-find-definition)
-             (define-key rust-mode-map (kbd "C-c C-f") 'rustfmt-format-buffer)))))))
+  (setq-default rust-format-on-save t))
 
 (provide 'init-rust-mode)
 
