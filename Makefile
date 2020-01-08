@@ -1,6 +1,7 @@
 link:
 	ln -sf $(shell pwd)/vimrc $(HOME)/.vimrc
 	ln -sf $(shell pwd)/vimrc.local $(HOME)/.vimrc.local
+	ln -sf $(shell pwd)/vimrc.local.bundles $(HOME)/.vimrc.local.bundles
 	ln -sf $(shell pwd)/zshenv $(HOME)/.zshenv
 	ln -sf $(shell pwd)/zshrc $(HOME)/.zshrc
 	ln -sf $(shell pwd)/tmux.conf $(HOME)/.tmux.conf
