@@ -5,7 +5,7 @@
 (depends 'typescript-mode)
 (depends 'add-node-modules-path)
 
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
 (add-hook 'typescript-mode-hook
   (lambda ()
