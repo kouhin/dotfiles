@@ -2,39 +2,35 @@
 ;;; Commentary:
 ;;; Code:
 
-(depends 'lsp-mode)
-(depends 'lsp-ui)
-(depends 'company-lsp)
+(remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
 
-(add-hook 'lsp-mode-hook 'lsp-ui-mode)
-(add-hook 'javascript-mode-hook
-  '(lambda()
-     (lsp-deferred)
-     (with-eval-after-load 'lsp-ui (flycheck-add-next-checker 'lsp-ui 'javascript-eslint))))
-(add-hook 'js-mode-hook
-  '(lambda()
-     (lsp-deferred)
-     (with-eval-after-load 'lsp-ui (flycheck-add-next-checker 'lsp-ui 'javascript-eslint))))
-(add-hook 'typescript-mode-hook
-  '(lambda()
-     (lsp-deferred)
-     (with-eval-after-load 'lsp-ui (flycheck-add-next-checker 'lsp-ui 'javascript-eslint))))
-(add-hook 'rjsx-mode-hook
-  '(lambda()
-     (lsp-deferred)
-     (with-eval-after-load 'lsp-ui (flycheck-add-next-checker 'lsp-ui 'javascript-eslint))))
-(add-hook 'js2-mode-hook '(lambda()
-     (lsp-deferred)
-     (with-eval-after-load 'lsp-ui (flycheck-add-next-checker 'lsp-ui 'javascript-eslint))))
+(depends 'lsp-mode)
+(depends 'company-lsp)
+(require 'flymake-eslint)
+(require 'flymake-stylelint)
+
+(add-hook 'javascript-mode-hook #'lsp)
+(add-hook 'javascript-mode-hook #'flymake-eslint-enable)
+(add-hook 'js-mode-hook #'lsp)
+(add-hook 'js-mode-hook #'flymake-eslint-enable)
+
+(add-hook 'typescript-mode-hook #'lsp)
+(add-hook 'typescript-mode-hook #'flymake-eslint-enable)
+(add-hook 'rjsx-mode-hook #'lsp)
+(add-hook 'rjsx-mode-hook #'flymake-eslint-enable)
+(add-hook 'js2-mode-hook #'lsp)
+(add-hook 'js2-mode-hook #'flymake-eslint-enable)
+
 (add-hook 'css-mode-hook #'lsp)
+(add-hook 'css-mode-hook #'flymake-stylelint-enable)
+
 (add-hook 'web-mode-hook #'lsp)
 (add-hook 'go-mode-hook #'lsp)
 (add-hook 'rust-mode-hook #'lsp)
 
-
 (with-eval-after-load 'lsp-mode
-  (require 'lsp-clients)
-  (setq-default lsp-prefer-flymake nil))
+  (setq lsp-diagnostic-package :flymake)
+  (require 'lsp-clients))
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here

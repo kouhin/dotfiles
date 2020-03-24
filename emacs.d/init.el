@@ -62,7 +62,7 @@
 
 (require 'init-lsp)
 (require 'init-company)
-(require 'init-flycheck)
+;(require 'init-flycheck)
 
 (require 'init-ivy)
 (require 'init-popwin)

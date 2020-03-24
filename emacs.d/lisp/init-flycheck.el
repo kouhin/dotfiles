@@ -10,7 +10,8 @@
       (flycheck-add-mode 'javascript-eslint 'vue-mode)
       (flycheck-add-mode 'javascript-eslint 'vue-html-mode)
       (flycheck-add-mode 'javascript-eslint 'css-mode))
-    (add-hook 'after-init-hook 'global-flycheck-mode)))
+    ;(add-hook 'after-init-hook 'global-flycheck-mode)
+    ))
 
 (provide 'init-flycheck)
 
