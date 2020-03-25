@@ -28,6 +28,9 @@
 (add-hook 'go-mode-hook #'lsp)
 (add-hook 'rust-mode-hook #'lsp)
 
+(defvar flymake-no-changes-timeout)
+(setq flymake-no-changes-timeout 2)
+
 (with-eval-after-load 'lsp-mode
   (setq lsp-diagnostic-package :flymake)
   (require 'lsp-clients))
