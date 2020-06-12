@@ -83,6 +83,7 @@
 (require 'init-go-mode)
 (require 'init-yaml-mode)
 (require 'init-rust-mode)
+(require 'init-http)
 (require 'init-utils)
 
 (depends 'leuven-theme)
