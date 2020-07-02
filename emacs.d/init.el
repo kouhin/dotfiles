@@ -11,12 +11,12 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(package-initialize)
+;(package-initialize)
 
 (setq gc-cons-threshold (* 128 1024 1024))
 
-(let ((minver "25.0"))
-  (when (version<= emacs-version "25.0")
+(let ((minver "27.0"))
+  (when (version<= emacs-version "27.0")
     (error
       "Your Emacs is too old -- this config requires v%s or higher"
       minver)))

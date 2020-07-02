@@ -15,11 +15,8 @@
 (depends 'prettier-js)
 (depends 'add-node-modules-path)
 
-(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
-(add-to-list 'auto-mode-alist '("\\.mjs\\'" . rjsx-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
-
-(custom-set-variables '(js-indent-level 2)
+(custom-set-variables
+  '(js-jsx-indent-level 2)
   '(js2-mode-show-parse-errors nil)
   '(js2-mode-show-strict-warnings nil))
 ;; Fix js.el inndentation bug
@@ -36,14 +33,15 @@
 
 (add-hook 'js-mode-hook
   '(lambda()
-     (add-node-modules-path)))
+     (add-node-modules-path)
+     (define-key js-mode-map (kbd "M-.") nil)))
 (add-hook 'rjsx-mode-hook
   '(lambda()
      (add-node-modules-path)
      (if (projectile-project-p)
        (progn (when (file-exists-p (expand-file-name ".prettierrc.json" (projectile-project-root)))
                 (prettier-js-mode))))
-     (add-to-list 'editorconfig-indentation-alist '(rjsx-mode js2-basic-offset sgml-basic-offset))
+     (add-to-list 'editorconfig-indentation-alist '(js2-basic-offset sgml-basic-offset))
      (editorconfig-apply)))
 (add-hook 'js-mode-hook
   '(lambda()
