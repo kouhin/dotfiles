@@ -36,15 +36,12 @@ setopt share_history
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export MANPATH=/usr/local/man:$MANPATH
-export JAVA_HOME=`/usr/libexec/java_home`
 export TERM=xterm-256color
 
 # PATH
 export PATH=/usr/local/sbin:$PATH
 ## Golang
-#[[ -x "$(command -v go)" ]] && export GOPATH=$HOME/go && export PATH=$GOPATH/bin:$PATH
-## Golang
-[[ -d $HOME/.gvm ]] && source $HOME/.gvm/scripts/gvm
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 ## Node.js
 [[ -x "$(command -v n)" ]] && export N_PREFIX=$HOME/n && export PATH=$N_PREFIX/bin:$PATH
 ## Rust
@@ -53,6 +50,8 @@ export PATH=/usr/local/sbin:$PATH
 [[ -x "$(command -v luarocks)" ]] && eval `luarocks path --bin`
 ## Tmux
 if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
+## Java
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Completion style
 zstyle ':completion:*' menu select
@@ -62,5 +61,3 @@ alias ddup='zplug update && brew update && brew upgrade && brew cleanup'
 alias e='emacs -nw'
 alias ls='ls -G'
 alias l='ls -al'
-
-[[ -s "/Users/kouhin/.gvm/scripts/gvm" ]] && source "/Users/kouhin/.gvm/scripts/gvm"
