@@ -184,3 +184,5 @@ tutorial/
 network-security.data
 /.tern-port
 .lsp-session-v1
+emacs.d/workspace/
+emacs.d/.dap-breakpoints
