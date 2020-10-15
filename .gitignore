@@ -186,3 +186,4 @@ network-security.data
 .lsp-session-v1
 emacs.d/workspace/
 emacs.d/.dap-breakpoints
+emacs.d/eclipse.jdt.ls
