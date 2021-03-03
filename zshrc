@@ -18,6 +18,7 @@ zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 # Tools
 zplug "rupa/z", use:z.sh
 zplug "tj/n", as:command, use:bin/n
+zplug "mattberther/zsh-rbenv"
 
 zplug check --verbose || zplug install
 zplug load
@@ -52,6 +53,8 @@ export PATH=/usr/local/sbin:$PATH
 if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
 ## Java
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+## Ruby
+[[ -x "$(command -v rbenv)" ]] && eval "$(rbenv init - zsh)" && export PATH="$HOME/.rbenv/bin:$PATH"
 
 # Completion style
 zstyle ':completion:*' menu select
