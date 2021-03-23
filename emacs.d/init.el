@@ -60,7 +60,8 @@
 (require 'init-ibuffer)
 (require 'init-yasnippet)
 
-(require 'init-eglot)
+;(require 'init-eglot)
+(require 'init-lsp)
 (require 'init-company)
 ;(require 'init-flycheck)
 
