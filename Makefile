@@ -6,7 +6,7 @@ link:
 	ln -sf $(shell pwd)/zshrc $(HOME)/.zshrc
 	ln -sf $(shell pwd)/tmux.conf $(HOME)/.tmux.conf
 	ln -sf $(shell pwd)/emacs.d $(HOME)/.emacs.d
-	ln -sf $(shell pwd)/slate.js $(HOME)/.slate.js
+	ln -sf $(shell pwd)/hammerspoon $(HOME)/.hammerspoon
 clean:
 	unlink $(HOME)/.vimrc
 	unlink $(HOME)/.zshenv
