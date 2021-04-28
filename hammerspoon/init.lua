@@ -27,7 +27,10 @@ spoon.ShiftIt:bindHotkeys({
   resizeIn = {{ 'ctrl', 'cmd' }, '-' }
 })
 
+hs.logger.new('IM', 'debug'):d(hs.inspect(hs.keycodes.methods()))
+
 local simpleCmd = false
+local simpleOpt = false
 local map = hs.keycodes.map
 local function eikanaEvent(event)
     local c = event:getKeyCode()
@@ -36,6 +39,9 @@ local function eikanaEvent(event)
         if f['cmd'] then
             simpleCmd = true
         end
+        if f['alt'] then
+           simpleOpt = true
+        end
     elseif event:getType() == hs.eventtap.event.types.flagsChanged then
         if not f['cmd'] then
             if simpleCmd == false then
@@ -43,6 +49,14 @@ local function eikanaEvent(event)
                     hs.keycodes.setMethod('Romaji')
                 elseif c == map['rightcmd'] then
                     hs.keycodes.setMethod('Hiragana')
+                end
+            end
+            simpleCmd = false
+        end
+        if not f['alt'] then
+            if simpleOpt == false then
+                if c == map['rightalt'] then
+                    hs.keycodes.setMethod('Wubi - Simplified')
                 end
             end
             simpleCmd = false
