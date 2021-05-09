@@ -13,7 +13,6 @@ clean:
 	unlink $(HOME)/.zshrc
 	unlink $(HOME)/.tmux.conf
 	unlink $(HOME)/.emacs.d
-	unlink $(HOME)/.slate.js
 init-web:
 	npm install eslint-cli -g
 	npm install stylelint -g
