@@ -51,8 +51,6 @@ export PATH=/usr/local/sbin:$PATH
 [[ -x "$(command -v luarocks)" ]] && eval `luarocks path --bin`
 ## Tmux
 if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
-## Java
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 ## Ruby
 [[ -x "$(command -v rbenv)" ]] && eval "$(rbenv init - zsh)" && export PATH="$HOME/.rbenv/bin:$PATH"
 
