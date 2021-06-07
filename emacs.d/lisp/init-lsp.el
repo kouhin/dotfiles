@@ -6,7 +6,6 @@
 
 (depends 'lsp-mode)
 (depends 'lsp-java)
-(depends 'company-lsp)
 (depends 'kotlin-mode)
 (require 'flymake-eslint)
 (require 'flymake-stylelint)
@@ -32,6 +31,8 @@
 (add-hook 'rust-mode-hook #'lsp)
 (add-hook 'java-mode-hook #'lsp)
 (add-hook 'kotlin-mode-hook #'lsp)
+
+(add-hook 'lsp-managed-mode-hook (lambda () (setq-local company-backends '(company-capf))))
 
 (defvar flymake-no-changes-timeout)
 (setq flymake-no-changes-timeout 2)

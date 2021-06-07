@@ -17,7 +17,7 @@
 (when (depends 'company)
   (with-eval-after-load 'company
     (defvar company-backends)
-    (add-to-list 'company-backends 'company-yasnippet 'company-lsp)
+    (add-to-list 'company-backends 'company-yasnippet)
     (defvar company-mode-map)
     (defvar company-active-map)
     (define-key company-mode-map (kbd "M-/") 'company-complete)
