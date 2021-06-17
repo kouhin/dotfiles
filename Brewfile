@@ -1,10 +1,13 @@
 tap "homebrew/cask"
 
+brew "python"
+brew "rbenv"
+brew "go"
 brew "git"
 brew "git-extras"
 brew "the_silver_searcher"
-brew "python"
 brew "mitmproxy"
+brew "jq"
 
 tap "railwaycat/emacsmacport"
-brew "emacs-mac"
+cask "emacs-mac"
