@@ -188,3 +188,4 @@ emacs.d/workspace/
 emacs.d/.dap-breakpoints
 emacs.d/eclipse.jdt.ls
 /emacs.d/projects
+history.el
