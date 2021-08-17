@@ -189,3 +189,5 @@ emacs.d/.dap-breakpoints
 emacs.d/eclipse.jdt.ls
 /emacs.d/projects
 history.el
+
+Brewfile.lock.json
