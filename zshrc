@@ -1,7 +1,7 @@
 # -*- mode: shell-script -*- #
 
 if [[ ! -d ~/.zplug ]]; then
-	git clone https://github.com/zplug/zplug ~/.zplug
+  git clone https://github.com/zplug/zplug ~/.zplug
 fi
 source ~/.zplug/init.zsh
 zplug "zplug/zplug"
@@ -19,6 +19,7 @@ zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug "rupa/z", use:z.sh
 zplug "tj/n", as:command, use:bin/n
 zplug "mattberther/zsh-rbenv"
+zplug "syndbg/goenv", as:command, use:bin/goenv
 
 zplug check --verbose || zplug install
 zplug load
@@ -42,17 +43,31 @@ export TERM=xterm-256color
 # PATH
 export PATH=/usr/local/sbin:$PATH
 ## Golang
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+if [[ -x "$(command -v goenv)" ]]; then
+  export GOENV_ROOT="$HOME/.goenv"
+  export PATH="$GOENV_ROOT/bin:$PATH"
+  eval "$(goenv init -)"
+  export PATH="$GOROOT/bin:$PATH"
+  export PATH="$PATH:$GOPATH/bin"
+fi
 ## Node.js
-[[ -x "$(command -v n)" ]] && export N_PREFIX=$HOME/n && export PATH=$N_PREFIX/bin:$PATH
+if [[ -x "$(command -v n)" ]]; then
+  export N_PREFIX=$HOME/n
+  export PATH=$N_PREFIX/bin:$PATH
+fi
 ## Rust
 [[ -x "$(command -v cargo)" ]] && export PATH=$HOME/.cargo/bin:$PATH
 ## Lua
 [[ -x "$(command -v luarocks)" ]] && eval `luarocks path --bin`
 ## Tmux
-if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi
+if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 ## Ruby
-[[ -x "$(command -v rbenv)" ]] && eval "$(rbenv init - zsh)" && export PATH="$HOME/.rbenv/bin:$PATH"
+if [[ -x "$(command -v rbenv)" ]]; then
+  eval "$(rbenv init - zsh)"
+  export PATH=$HOME/.rbenv/bin:$PATH
+fi
 
 # Completion style
 zstyle ':completion:*' menu select

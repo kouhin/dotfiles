@@ -1,7 +1,6 @@
 tap "homebrew/cask"
 
 brew "rbenv"
-brew "go"
 brew "git"
 brew "git-extras"
 brew "the_silver_searcher"
