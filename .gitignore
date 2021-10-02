@@ -191,3 +191,5 @@ emacs.d/eclipse.jdt.ls
 history.el
 
 Brewfile.lock.json
+*.spoon
+!SpoonInstall.spoon
