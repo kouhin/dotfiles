@@ -37,53 +37,47 @@ table.size = function(t)
    return count
 end
 
-local defaultMapping<const> = {
-   ['cmd']='Romaji',
-   ['rightcmd']='Hiragana'
-}
-function newEikana(userMapping)
-   local map<const> = hs.keycodes.map
-   local mapping<const> = {}
-   if (userMapping) then
-      for k,v in pairs(userMapping) do mapping[map[k]] = v end
-   else
-      for k,v in pairs(defaultMapping) do mapping[map[k]] = v end
-   end
+function addSingleModKeyPressEventListener(keys, handler)
+   local targetKeyCodes = {}
+   for _,v in pairs(keys) do targetKeyCodes[v]=true end
 
-   local prevCode = ''
+   local prevCode = 0
    local prevFlagSize = 0
 
+   local function reset()
+      if prevCode ~= 0 then prevCode = 0 end
+   end
+
    local function eventhandler(event)
-      local code<const> = event:getKeyCode()
-      local flag<const> = event:getFlags()
+      local code = event:getKeyCode()
+      local flag = event:getFlags()
+
       if event:getType() == hs.eventtap.event.types.keyDown then
-         prevCode = ''
-      elseif event:getType() == hs.eventtap.event.types.flagsChanged then
-         local flagSize<const> = table.size(flag)
-         if flagSize == 0 then
+         return reset()
+      end
+
+      if event:getType() == hs.eventtap.event.types.flagsChanged then
+         local flagSize = table.size(flag)
+         if flagSize == 0  then
             if prevFlagSize == 1 and code == prevCode then
                -- FlagSize 1 -> 0
-               if mapping[code] ~= nil then
-                  if mapping[code] == 'Romaji' then
-                     hs.eventtap.keyStroke({}, 102)
-                  elseif mapping[code] == 'Hiragana' then
-                     hs.eventtap.keyStroke({}, 104)
-                  else
-                     hs.keycodes.setMethod(mapping[code])
-                  end
+               if not targetKeyCodes[hs.keycodes.map[code]] then
+                  reset()
+               else
+                  handler(hs.eventtap.event.newKeyEvent(code, false))
                end
             else
-               prevCode = ''
+               reset()
             end
          elseif flagSize == 1 then
             if prevFlagSize == 0 then
                -- FlagSize 0 -> 1
                prevCode = code
             else
-               prevCode = ''
+               reset()
             end
          else
-            prevCode = ''
+            reset()
          end
          prevFlagSize = flagSize
       end
@@ -91,11 +85,70 @@ function newEikana(userMapping)
    return hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.flagsChanged}, eventhandler)
 end
 
-local mapping<const> = {
-   ['cmd']='Romaji',
-   ['rightcmd']='Hiragana',
-   ['rightalt']='Wubi - Simplified'
+Eikana = {}
+
+Eikana.mapping = {
+   cmd = 'Romaji',
+   rightcmd = 'Hiragana'
 }
 
-eikana = newEikana(mapping)
-eikana:start()
+function Eikana:new(mapping)
+   self.__index = self
+   local obj = {}
+   return setmetatable(obj, self)
+end
+
+function Eikana:handleEvent(ev)
+   local key = hs.keycodes.map[ev:getKeyCode()]
+   local method = self.mapping[key]
+
+   if method == nil then return end
+
+   if method == 'Romaji' then
+      hs.eventtap.keyStroke({}, 102)
+   elseif method == 'Hiragana' then
+      hs.eventtap.keyStroke({}, 104)
+   else
+      hs.keycodes.setMethod(method)
+   end
+end
+
+function Eikana:start()
+   if self.eventtap == nil then return end
+   self.eventtap:start()
+end
+
+function Eikana:stop()
+   if self.eventtap == nil then return end
+   self.eventtap:stop()
+end
+
+function Eikana:bindKeys(mapping)
+   for k, v in pairs(mapping) do self.mapping[k] = v end
+
+   local keys = {}
+   for k in pairs(self.mapping) do table.insert(keys, k) end
+
+   local function handleEvent(ev)
+      local key = hs.keycodes.map[ev:getKeyCode()]
+      local method = self.mapping[key]
+
+      if method == nil then return end
+
+      if method == 'Romaji' then
+         hs.eventtap.keyStroke({}, 102)
+      elseif method == 'Hiragana' then
+         hs.eventtap.keyStroke({}, 104)
+      else
+         hs.keycodes.setMethod(method)
+      end
+   end
+
+   self.eventtap = addSingleModKeyPressEventListener(keys, handleEvent)
+   self:start()
+end
+
+eikana = Eikana:new()
+eikana:bindKeys({
+      rightalt = 'Wubi - Simplified'
+})
