@@ -34,11 +34,11 @@ spoon.SpoonInstall.repos.Eikana = {
 }
 
 spoon.SpoonInstall:andUse("Eikana", {
-                             repo = "Eikana",
-                             config = {
-                                userMapping = {
-                                   rightalt = 'Wubi - Simplified'
-                                }
-                             },
-                             start = true
+  repo = "Eikana",
+  config = {
+    userMapping = {
+      rightalt = "Wubi - Simplified"
+    }
+  },
+  start = true
 })
