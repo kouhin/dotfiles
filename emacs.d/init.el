@@ -21,6 +21,10 @@
       "Your Emacs is too old -- this config requires v%s or higher"
       minver)))
 
+(define-key local-function-key-map [?\C-¥] [?\C-\\])
+(define-key local-function-key-map [?\M-¥] [?\M-\\])
+(define-key local-function-key-map [?\C-\M-¥] [?\C-\M-\\])
+
 (defconst *is-a-mac* (eq system-type 'darwin))
 (defconst *is-gui* (display-graphic-p))
 
