@@ -23,8 +23,8 @@ spoon.ShiftIt:bindHotkeys({
       center = {{ 'ctrl', 'cmd' }, 'c' },
       nextScreen = {{ 'ctrl', 'cmd' }, 'n' },
       previousScreen = {{ 'ctrl', 'cmd' }, 'p' },
-      resizeOut = {{ 'ctrl', 'cmd' }, '=' },
-      resizeIn = {{ 'ctrl', 'cmd' }, '-' }
+      resizeOut = {{ 'ctrl', 'cmd', 'shift' }, '[' },
+      resizeIn = {{ 'ctrl', 'cmd', 'shift' }, ']' }
 })
 
 spoon.SpoonInstall.repos.Eikana = {
