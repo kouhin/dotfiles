@@ -7,6 +7,7 @@ link:
 	ln -sf $(shell pwd)/tmux.conf $(HOME)/.tmux.conf
 	ln -sf $(shell pwd)/emacs.d $(HOME)/.emacs.d
 	ln -sf $(shell pwd)/hammerspoon $(HOME)/.hammerspoon
+	ln -sf $(shell pwd)/Brewfile $(HOME)/.Brewfile
 clean:
 	unlink $(HOME)/.vimrc
 	unlink $(HOME)/.zshenv

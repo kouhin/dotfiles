@@ -73,7 +73,7 @@ fi
 zstyle ':completion:*' menu select
 
 # Alias
-alias ddup='zplug update && brew update && brew upgrade && brew cleanup'
+alias ddup='zplug update && brew bundle --global --cleanup'
 alias e='emacs -nw'
 alias ls='ls -G'
 alias l='ls -al'
