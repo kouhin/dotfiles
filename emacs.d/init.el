@@ -87,7 +87,7 @@
 (require 'init-sws-mode)
 (require 'init-typescript-mode)
 (require 'init-markdown-mode)
-(require 'init-go-mode)
+;(require 'init-go-mode)
 (require 'init-yaml-mode)
 (require 'init-rust-mode)
 (require 'init-http)

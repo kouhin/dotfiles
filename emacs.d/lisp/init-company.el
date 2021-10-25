@@ -14,6 +14,9 @@
   '(company-dabbrev-other-buffers 'all)
   '(company-tooltip-align-annotations t))
 
+(add-hook 'company-mode-hook 'company-box-mode)
+
+(depends 'company-box)
 (when (depends 'company)
   (with-eval-after-load 'company
     (defvar company-backends)

@@ -5,6 +5,7 @@
 (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
 
 (depends 'lsp-mode)
+(depends 'dap-mode)
 (depends 'lsp-java)
 (depends 'kotlin-mode)
 (require 'flymake-eslint)
@@ -28,6 +29,9 @@
 
 (add-hook 'web-mode-hook #'lsp)
 (add-hook 'go-mode-hook #'lsp)
+(add-hook 'go-mode-hook '(lambda()
+                           (require 'dap-go)
+                           ))
 (add-hook 'rust-mode-hook #'lsp)
 (add-hook 'java-mode-hook #'lsp)
 (add-hook 'kotlin-mode-hook #'lsp)
@@ -37,11 +41,17 @@
 (defvar flymake-no-changes-timeout)
 (setq flymake-no-changes-timeout 2)
 
+(setq dap-auto-configure-features '(sessions locals controls tooltip))
 (with-eval-after-load 'lsp-mode
   (setq lsp-diagnostic-package :flymake))
 
 (with-eval-after-load 'lsp-java
   (lsp-java-lombok))
+
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here
