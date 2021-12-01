@@ -18,9 +18,7 @@
 (when (depends 'git-gutter)
   (add-hook 'prog-mode-hook 'git-gutter-mode))
 
-(depends 'gitignore-mode)
-(depends 'gitconfig-mode)
-(depends 'gitattributes-mode)
+(depends 'git-modes)
 
 (provide 'init-git)
 
