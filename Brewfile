@@ -11,3 +11,4 @@ brew "shellcheck"
 
 tap "railwaycat/emacsmacport"
 cask "emacs-mac"
+cask "hammerspoon"
