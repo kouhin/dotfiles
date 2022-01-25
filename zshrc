@@ -20,6 +20,7 @@ zplug "rupa/z", use:z.sh
 zplug "tj/n", as:command, use:bin/n
 zplug "mattberther/zsh-rbenv"
 zplug "syndbg/goenv", as:command, use:bin/goenv
+zplug "cowboyd/zsh-rust"
 
 zplug check --verbose || zplug install
 zplug load
