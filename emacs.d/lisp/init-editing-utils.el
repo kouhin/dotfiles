@@ -80,7 +80,8 @@
 
 ;; undo tree
 (when (depends 'undo-tree)
-  (add-hook 'after-init-hook 'global-undo-tree-mode))
+  (add-hook 'after-init-hook 'global-undo-tree-mode)
+  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/tmp"))))
 
 ;; rainbow-delimiters
 (when (depends 'rainbow-delimiters)
