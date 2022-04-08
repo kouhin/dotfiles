@@ -64,8 +64,7 @@
   "Configure lsp-java to let the server to load the Lombok JAR."
   (setq lsp-java-vmargs
         (append lsp-java-vmargs
-                (list (concat "-javaagent:" lsp-java-lombok-jar-path)
-                      (concat "-Xbootclasspath/a:" lsp-java-lombok-jar-path)))))
+                (list (concat "-javaagent:" lsp-java-lombok-jar-path)))))
 
 
 (provide 'lsp-java-lombok)
