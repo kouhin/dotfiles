@@ -12,8 +12,8 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 
 # Theme
-zplug "mafredri/zsh-async", defer:0
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+#zplug "mafredri/zsh-async"
+#zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
 # Tools
 zplug "rupa/z", use:z.sh
@@ -78,3 +78,5 @@ alias ddup='zplug update && brew bundle --global --cleanup'
 alias e='emacs -nw'
 alias ls='ls -G'
 alias l='ls -al'
+
+eval "$(starship init zsh)"

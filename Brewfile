@@ -8,7 +8,11 @@ brew "mitmproxy"
 brew "jq"
 brew "tree"
 brew "shellcheck"
+brew "starship"
 
 tap "railwaycat/emacsmacport"
 cask "emacs-mac"
 cask "hammerspoon"
+
+tap "homebrew/cask-fonts"
+cask "font-jetbrains-mono-nerd-font"
