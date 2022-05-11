@@ -15,4 +15,4 @@ cask "emacs-mac"
 cask "hammerspoon"
 
 tap "homebrew/cask-fonts"
-cask "font-jetbrains-mono-nerd-font"
+cask "font-fira-code-nerd-font"
