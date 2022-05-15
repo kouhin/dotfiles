@@ -79,4 +79,7 @@ alias e='emacs -nw'
 alias ls='ls -G'
 alias l='ls -al'
 
+if [ ! -e ~/.config/starship.toml ]; then
+  mkdir -p ~/.config && curl -o ~/.config/starship.toml https://starship.rs/presets/toml/pure-preset.toml
+fi
 eval "$(starship init zsh)"
