@@ -15,8 +15,8 @@
         (defun eslint-fix ()
           "Where to display jscs-fix error output.  It can either be displayed in its own buffer, in the echo area, or not at all."
           (interactive)
-          (message "eslint --fix the file %s" (buffer-file-name))
-          (shell-command (concat "eslint --fix " (buffer-file-name)))
+          (message (concat (executable-find "eslint") " --fix " (buffer-file-name)))
+          (shell-command (concat (executable-find "eslint") " --fix " (buffer-file-name)))
           (revert-buffer t t)))
       (message "Please install eslint: 'npm install -g eslint-cli'."))
     (if (projectile-project-p)
