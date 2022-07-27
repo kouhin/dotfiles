@@ -10,6 +10,7 @@ brew "jq"
 brew "tree"
 brew "shellcheck"
 brew "starship"
+brew "graphviz"
 
 tap "railwaycat/emacsmacport"
 cask "emacs-mac"
