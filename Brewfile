@@ -18,3 +18,4 @@ cask "hammerspoon"
 
 tap "homebrew/cask-fonts"
 cask "font-fira-code-nerd-font"
+cask "squirrel"
