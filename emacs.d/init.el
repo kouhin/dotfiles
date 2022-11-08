@@ -66,9 +66,10 @@
 (require 'init-ibuffer)
 (require 'init-yasnippet)
 
-;(require 'init-eglot)
-(require 'init-lsp)
+(require 'init-eglot)
+;(require 'init-lsp)
 (require 'init-company)
+(require 'init-flymake)
 ;(require 'init-flycheck)
 
 (require 'init-ivy)
@@ -85,7 +86,6 @@
 (require 'init-javascript)
 (require 'init-web-mode)
 (require 'init-sws-mode)
-(require 'init-typescript-mode)
 (require 'init-markdown-mode)
 (require 'init-go-mode)
 (require 'init-yaml-mode)
