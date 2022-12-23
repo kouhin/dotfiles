@@ -49,7 +49,7 @@
 (set-face-attribute 'fringe nil
   :background "black")
 (defadvice linum-schedule (around my-linum-schedule () activate)
-  (run-with-idle-timer 0.2 nil #'linum-update-current))
+  (run-with-idle-timer 0.2 nil 'linum-update-current))
 
 ;; newline
 (global-set-key (kbd "RET") 'newline-and-indent)

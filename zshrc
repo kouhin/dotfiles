@@ -70,6 +70,8 @@ if [[ -x "$(command -v rbenv)" ]]; then
   export PATH=$HOME/.rbenv/bin:$PATH
 fi
 
+export PATH=$HOME/.bin:$PATH
+
 # Completion style
 zstyle ':completion:*' menu select
 
