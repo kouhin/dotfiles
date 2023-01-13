@@ -13,6 +13,8 @@ brew "starship"
 brew "graphviz"
 brew "mkcert"
 brew "nss"
+
+tap "sqldef/sqldef"
 brew "sqldef/sqldef/mysqldef"
 
 tap "railwaycat/emacsmacport"
