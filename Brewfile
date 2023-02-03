@@ -13,6 +13,7 @@ brew "starship"
 brew "graphviz"
 brew "mkcert"
 brew "nss"
+brew "colima"
 
 tap "sqldef/sqldef"
 brew "sqldef/sqldef/mysqldef"
