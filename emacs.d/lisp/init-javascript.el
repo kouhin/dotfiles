@@ -28,6 +28,7 @@
 
 (require 'derived)
 (when (depends 'add-node-modules-path)
+  (custom-set-variables '(add-node-modules-path-command "echo \"$(npm root)/.bin\""))
   (dolist (mode '(eglot-managed-mode typescript-mode js-mode coffee-mode))
     (add-hook (derived-mode-hook-name mode) '(lambda()
                                                (add-node-modules-path)))))
