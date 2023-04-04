@@ -1,0 +1,3 @@
+[submodule "emacs.d/lisp/copilot"]
+	path = emacs.d/lisp/copilot
+	url = git@github.com:zerolfx/copilot.el.git
