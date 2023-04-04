@@ -90,3 +90,6 @@ eval "$(starship init zsh)"
 export PNPM_HOME="/Users/kouhin/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
+export DOCKER_HOST="unix://${HOME}/.colima/docker.sock"
