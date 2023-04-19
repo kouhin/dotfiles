@@ -93,6 +93,8 @@
 (require 'init-http)
 (require 'init-utils)
 
+(require 'copilot "./copilot/copilot.el")
+
 (depends 'leuven-theme)
 (if *is-gui* (load-theme 'leuven t)
   '(lambda ()

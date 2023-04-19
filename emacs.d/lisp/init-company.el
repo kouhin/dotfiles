@@ -29,5 +29,9 @@
     (define-key company-active-map (kbd "C-p") 'company-select-previous)
     (global-set-key (kbd "M-C-/") 'company-complete)))
 
+(with-eval-after-load 'copilot
+  (add-hook 'company-mode-hook 'copilot-mode)
+  (define-key copilot-mode-map (kbd "s-<return>") 'copilot-accept-completion))
+
 (provide 'init-company)
 ;;; init-company.el ends here
