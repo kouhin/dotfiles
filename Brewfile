@@ -17,6 +17,7 @@ brew "nss"
 brew "docker"
 brew "docker-buildx"
 brew "colima"
+brew "zig"
 
 tap "sqldef/sqldef"
 brew "sqldef/sqldef/mysqldef"
