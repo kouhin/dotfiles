@@ -17,7 +17,6 @@ zplug "zsh-users/zsh-history-substring-search"
 
 # Tools
 zplug "rupa/z", use:z.sh
-zplug "tj/n", as:command, use:bin/n
 zplug "mattberther/zsh-rbenv"
 zplug "syndbg/goenv", as:command, use:bin/goenv
 zplug "cowboyd/zsh-rust"
@@ -51,11 +50,6 @@ if [[ -x "$(command -v goenv)" ]]; then
   export PATH="$GOROOT/bin:$PATH"
   export PATH="$PATH:$GOPATH/bin"
 fi
-## Node.js
-if [[ -x "$(command -v n)" ]]; then
-  export N_PREFIX=$HOME/n
-  export PATH=$N_PREFIX/bin:$PATH
-fi
 ## Rust
 [[ -x "$(command -v cargo)" ]] && export PATH=$HOME/.cargo/bin:$PATH
 ## Lua
@@ -68,6 +62,11 @@ fi
 if [[ -x "$(command -v rbenv)" ]]; then
   eval "$(rbenv init - zsh)"
   export PATH=$HOME/.rbenv/bin:$PATH
+fi
+
+## Node.js
+if [[ -x "$(command -v fnm)" ]]; then
+  eval "$(fnm env --use-on-cd)"
 fi
 
 export PATH=$HOME/.bin:$PATH
