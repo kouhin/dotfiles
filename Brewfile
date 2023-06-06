@@ -1,3 +1,4 @@
+brew "automake"
 brew "rbenv"
 brew "fnm"
 brew "git"
