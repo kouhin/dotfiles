@@ -1,5 +1,3 @@
-tap "homebrew/cask"
-
 brew "rbenv"
 brew "fnm"
 brew "git"
