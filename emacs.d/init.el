@@ -93,7 +93,8 @@
 (require 'init-http)
 (require 'init-utils)
 
-(require 'copilot "./copilot/copilot.el")
+(add-to-list 'load-path (expand-file-name "lisp/copilot" user-emacs-directory))
+(require 'copilot)
 
 (depends 'leuven-theme)
 (if *is-gui* (load-theme 'leuven t)
