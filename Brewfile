@@ -18,6 +18,7 @@ brew "docker"
 brew "docker-buildx"
 brew "colima"
 brew "zig"
+brew "ctags"
 
 tap "sqldef/sqldef"
 brew "sqldef/sqldef/mysqldef"
