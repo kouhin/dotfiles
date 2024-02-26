@@ -94,7 +94,8 @@
 (require 'init-utils)
 
 (add-to-list 'load-path (expand-file-name "lisp/copilot" user-emacs-directory))
-(require 'copilot)
+(when (depends 'f)
+  (require 'copilot))
 
 (depends 'leuven-theme)
 (if *is-gui* (load-theme 'leuven t)
