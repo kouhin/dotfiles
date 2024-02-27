@@ -75,7 +75,7 @@ export PATH=$HOME/.bin:$PATH
 zstyle ':completion:*' menu select
 
 # Alias
-alias ddup='zplug update && brew bundle --global --cleanup'
+alias ddup='zplug update && brew bundle --no-lock --global --cleanup'
 alias e='emacs -nw'
 alias ls='ls -G'
 alias l='ls -al'
