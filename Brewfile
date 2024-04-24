@@ -19,7 +19,6 @@ brew "colima"
 brew "zig"
 brew "ctags"
 
-tap "homebrew/cask"
 cask "hammerspoon"
 
 tap "sqldef/sqldef"
@@ -27,3 +26,5 @@ brew "sqldef/sqldef/mysqldef"
 
 tap "railwaycat/emacsmacport"
 cask "emacs-mac"
+
+cask "session-manager-plugin"
