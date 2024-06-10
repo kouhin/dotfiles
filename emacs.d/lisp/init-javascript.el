@@ -12,6 +12,7 @@
 (depends 'vue-mode)
 (depends 'js-doc)
 (depends 'prettier-js)
+(depends 'biomejs-format)
 (depends 'flymake-eslint)
 (require 'flymake-stylelint)
 
@@ -48,13 +49,18 @@
   (if (projectile-project-p)
     (progn (when (file-exists-p (expand-file-name ".prettierrc.json" (projectile-project-root)))
              (prettier-js-mode))))
+  (if (projectile-project-p)
+    (progn (when (file-exists-p (expand-file-name "biome.json" (projectile-project-root)))
+             (biomejs-format-mode))))
+  (if (projectile-project-p)
+    (progn (when (file-exists-p (expand-file-name ".eslintignore" (projectile-project-root)))
+             (flymake-eslint-enable))))
 
   (local-set-key (kbd "M-.") nil)
   (eglot-ensure)
   (eldoc-mode +1)
   (add-to-list 'editorconfig-indentation-alist '(sgml-basic-offset))
-  (editorconfig-apply)
-  (flymake-eslint-enable))
+  (editorconfig-apply))
 
 (add-hook 'js-mode-hook 'kouhin/js-mode-hook)
 (add-hook 'vue-mode-hook 'kouhin/js-mode-hook)
