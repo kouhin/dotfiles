@@ -91,7 +91,6 @@ export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
 export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
-export DOCKER_HOST="unix://${HOME}/.colima/docker.sock"
 
 # bun completions
 [ -s "/Users/kouhin/.bun/_bun" ] && source "/Users/kouhin/.bun/_bun"
@@ -99,3 +98,7 @@ export DOCKER_HOST="unix://${HOME}/.colima/docker.sock"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/kouhin/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
