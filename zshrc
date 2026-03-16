@@ -41,7 +41,7 @@ export MANPATH=/usr/local/man:$MANPATH
 export TERM=xterm-256color
 
 # PATH
-export PATH=/usr/local/sbin:$PATH
+export PATH=/usr/local/sbin:$HOME/.local/bin:$PATH
 ## Golang
 if [[ -x "$(command -v goenv)" ]]; then
   export GOENV_ROOT="$HOME/.goenv"
@@ -62,6 +62,12 @@ fi
 if [[ -x "$(command -v rbenv)" ]]; then
   eval "$(rbenv init - zsh)"
   export PATH=$HOME/.rbenv/bin:$PATH
+fi
+
+## Java (java_home 21)
+if [[ -x "$(command -v java)" ]]; then
+  export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+  export PATH=$JAVA_HOME/bin:$PATH
 fi
 
 ## Node.js
