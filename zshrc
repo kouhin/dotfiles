@@ -1,110 +1,82 @@
 # -*- mode: shell-script -*- #
 
-if [[ ! -d ~/.zplug ]]; then
-  git clone https://github.com/zplug/zplug ~/.zplug
-fi
-source ~/.zplug/init.zsh
-zplug "zplug/zplug"
-
-# Features
-zplug "chrissicool/zsh-256color"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-history-substring-search"
-
-# Theme
-#zplug "mafredri/zsh-async"
-#zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-
-# Tools
-zplug "rupa/z", use:z.sh
-zplug "mattberther/zsh-rbenv"
-zplug "syndbg/goenv", as:command, use:bin/goenv
-zplug "cowboyd/zsh-rust"
-
-zplug check --verbose || zplug install
-zplug load
-
+# ─── Shell Options ────────────────────────────────────────────────
 setopt AUTO_CD
 
-# History
-export HISTFILE=${HOME}/.zsh_history
-export HISTSIZE=1000
-export SAVEHIST=100000
-setopt hist_ignore_all_dups
-setopt hist_expand
-setopt share_history
+# ─── History ──────────────────────────────────────────────────────
+HISTFILE="${HOME}/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+setopt hist_ignore_all_dups hist_expand share_history
 
-# Environment Variables
+# ─── Environment ──────────────────────────────────────────────────
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export MANPATH=/usr/local/man:$MANPATH
 export TERM=xterm-256color
+export MANPATH="/usr/local/man:${MANPATH}"
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
 
-# PATH
-export PATH=/usr/local/sbin:$HOME/.local/bin:$PATH
-## Golang
-if [[ -x "$(command -v goenv)" ]]; then
-  export GOENV_ROOT="$HOME/.goenv"
-  export PATH="$GOENV_ROOT/bin:$PATH"
-  eval "$(goenv init -)"
-  export PATH="$GOROOT/bin:$PATH"
-  export PATH="$PATH:$GOPATH/bin"
-fi
-## Rust
-[[ -x "$(command -v cargo)" ]] && export PATH=$HOME/.cargo/bin:$PATH
-## Lua
-[[ -x "$(command -v luarocks)" ]] && eval `luarocks path --bin`
-## Tmux
-if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fi
-## Ruby
-if [[ -x "$(command -v rbenv)" ]]; then
-  eval "$(rbenv init - zsh)"
-  export PATH=$HOME/.rbenv/bin:$PATH
-fi
+# ─── PATH ─────────────────────────────────────────────────────────
+typeset -U path
 
-## Java (java_home 21)
-if [[ -x "$(command -v java)" ]]; then
-  export JAVA_HOME=$(/usr/libexec/java_home -v 21)
-  export PATH=$JAVA_HOME/bin:$PATH
+export GOENV_ROOT="$HOME/.goenv"
+export PNPM_HOME="$HOME/Library/pnpm"
+export BUN_INSTALL="$HOME/.bun"
+
+path=(
+  $HOME/.bin
+  $HOME/.local/bin
+  $HOME/.rd/bin
+  $HOME/.cargo/bin
+  $GOENV_ROOT/bin
+  $PNPM_HOME
+  $BUN_INSTALL/bin
+  /usr/local/sbin
+  $path
+)
+
+# ─── Bootstrap (first-run only) ──────────────────────────────────
+if ! (( $+commands[sheldon] )); then
+  curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh \
+    | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
 fi
 
-## Node.js
-if [[ -x "$(command -v fnm)" ]]; then
-  eval "$(fnm env --use-on-cd)"
+if [[ ! -e ~/.config/sheldon/plugins.toml ]]; then
+  mkdir -p ~/.config/sheldon
+  ln -sf "${${(%):-%x}:A:h}/sheldon/plugins.toml" ~/.config/sheldon/plugins.toml
 fi
 
-export PATH=$HOME/.bin:$PATH
+if [[ ! -e ~/.config/starship.toml ]]; then
+  mkdir -p ~/.config
+  curl -fsSL -o ~/.config/starship.toml https://starship.rs/presets/toml/pure-preset.toml
+fi
 
-# Completion style
-zstyle ':completion:*' menu select
+[[ ! -d $HOME/.tmux/plugins/tpm ]] && \
+  git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# Alias
-alias ddup='zplug update && brew bundle --global --cleanup'
+# ─── Plugins ──────────────────────────────────────────────────────
+eval "$(sheldon source)"
+
+# ─── Tool Initialization (deferred for fast startup) ─────────────
+if (( $+commands[goenv] )); then
+  zsh-defer -c 'eval "$(goenv init -)" && path=($GOROOT/bin $path $GOPATH/bin)'
+fi
+
+if [[ -x /usr/libexec/java_home ]] && /usr/libexec/java_home -v 21 &>/dev/null; then
+  export JAVA_HOME="$(/usr/libexec/java_home -v 21)"
+  path=($JAVA_HOME/bin $path)
+fi
+
+(( $+commands[fnm] ))      && zsh-defer -c 'eval "$(fnm env --use-on-cd)"'
+(( $+commands[rbenv] ))     && zsh-defer -c 'eval "$(rbenv init - zsh)"'
+(( $+commands[luarocks] ))  && zsh-defer -c 'eval "$(luarocks path --bin)"'
+[[ -s "$HOME/.bun/_bun" ]] && zsh-defer source "$HOME/.bun/_bun"
+
+# ─── Aliases ──────────────────────────────────────────────────────
+alias ddup='sheldon lock --update && brew bundle --global --cleanup'
 alias e='emacs -nw'
 alias ls='ls -G'
 alias l='ls -al'
 
-if [ ! -e ~/.config/starship.toml ]; then
-  mkdir -p ~/.config && curl -o ~/.config/starship.toml https://starship.rs/presets/toml/pure-preset.toml
-fi
+# ─── Prompt ───────────────────────────────────────────────────────
 eval "$(starship init zsh)"
-
-# pnpm
-export PNPM_HOME="/Users/kouhin/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-
-export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
-
-# bun completions
-[ -s "/Users/kouhin/.bun/_bun" ] && source "/Users/kouhin/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/kouhin/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

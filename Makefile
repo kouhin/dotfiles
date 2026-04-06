@@ -8,6 +8,8 @@ link:
 	ln -sf $(shell pwd)/emacs.d $(HOME)/.emacs.d
 	ln -sf $(shell pwd)/hammerspoon $(HOME)/.hammerspoon
 	ln -sf $(shell pwd)/Brewfile $(HOME)/.Brewfile
+	mkdir -p $(HOME)/.config/sheldon
+	ln -sf $(shell pwd)/sheldon/plugins.toml $(HOME)/.config/sheldon/plugins.toml
 clean:
 	unlink $(HOME)/.vimrc
 	unlink $(HOME)/.zshenv

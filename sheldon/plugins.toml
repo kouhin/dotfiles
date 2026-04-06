@@ -1,0 +1,42 @@
+shell = "zsh"
+
+[templates]
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+fpath = 'fpath=( "{{ dir }}" ${fpath} )'
+
+# ─── Core ─────────────────────────────────────────────────────────
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+apply = ["source"]
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+dir = "src"
+apply = ["fpath"]
+
+[plugins.compinit]
+inline = """
+zstyle ':completion:*' menu select
+autoload -Uz compinit && compinit -C
+"""
+
+# ─── Deferred (loaded at first prompt for fast startup) ───────────
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+apply = ["defer"]
+
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+apply = ["defer"]
+
+[plugins.zsh-history-substring-search]
+github = "zsh-users/zsh-history-substring-search"
+apply = ["defer"]
+
+# ─── Utilities ────────────────────────────────────────────────────
+
+[plugins.z]
+github = "rupa/z"
+use = ["z.sh"]
