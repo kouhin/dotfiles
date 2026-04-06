@@ -57,9 +57,12 @@ fi
 # ─── Plugins ──────────────────────────────────────────────────────
 eval "$(sheldon source)"
 
-# ─── Tool Initialization (deferred for fast startup) ─────────────
+# ─── Tool Initialization ─────────────────────────────────────────
+# Eager, not deferred — GUI apps (Fork, VS Code, etc.) spawn
+# non-interactive shells where zsh-defer hooks never fire.
 if (( $+commands[goenv] )); then
-  zsh-defer -c 'eval "$(goenv init -)" && path=($GOROOT/bin $path $GOPATH/bin)'
+  eval "$(goenv init -)"
+  path=($GOROOT/bin $path $GOPATH/bin)
 fi
 
 if [[ -x /usr/libexec/java_home ]] && /usr/libexec/java_home -v 21 &>/dev/null; then
@@ -67,10 +70,10 @@ if [[ -x /usr/libexec/java_home ]] && /usr/libexec/java_home -v 21 &>/dev/null; 
   path=($JAVA_HOME/bin $path)
 fi
 
-(( $+commands[fnm] ))      && zsh-defer -c 'eval "$(fnm env --use-on-cd)"'
-(( $+commands[rbenv] ))     && zsh-defer -c 'eval "$(rbenv init - zsh)"'
-(( $+commands[luarocks] ))  && zsh-defer -c 'eval "$(luarocks path --bin)"'
-[[ -s "$HOME/.bun/_bun" ]] && zsh-defer source "$HOME/.bun/_bun"
+(( $+commands[fnm] ))      && eval "$(fnm env --use-on-cd)"
+(( $+commands[rbenv] ))     && eval "$(rbenv init - zsh)"
+(( $+commands[luarocks] ))  && eval "$(luarocks path --bin)"
+[[ -s "$HOME/.bun/_bun" ]] && source "$HOME/.bun/_bun"
 
 # ─── Aliases ──────────────────────────────────────────────────────
 alias ddup='sheldon lock --update && brew bundle --global --cleanup'
