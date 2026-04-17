@@ -24,3 +24,5 @@ brew "sqldef/sqldef/mysqldef"
 
 tap "railwaycat/emacsmacport"
 cask "emacs-mac"
+
+cask "claude-code"
