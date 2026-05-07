@@ -31,6 +31,8 @@ path=(
   $GOENV_ROOT/bin
   $PNPM_HOME
   $BUN_INSTALL/bin
+  /opt/homebrew/bin
+  /opt/homebrew/sbin
   /usr/local/sbin
   $path
 )
