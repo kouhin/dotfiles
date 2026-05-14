@@ -37,7 +37,7 @@ spoon.SpoonInstall:andUse("Eikana", {
   repo = "Eikana",
   config = {
     userMapping = {
-      rightshift = "Wubi – Simplified"
+      rightshift = "com.apple.inputmethod.SCIM.WBX"
     },
     override = true
   },
