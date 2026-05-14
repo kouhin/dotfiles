@@ -37,7 +37,7 @@ spoon.SpoonInstall:andUse("Eikana", {
   repo = "Eikana",
   config = {
     userMapping = {
-      rightshift = "Wubi - Simplified"
+      rightshift = "Wubi – Simplified"
     },
     override = true
   },
