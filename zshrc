@@ -67,8 +67,8 @@ if (( $+commands[goenv] )); then
   path=($GOROOT/bin $path $GOPATH/bin)
 fi
 
-if [[ -x /usr/libexec/java_home ]] && /usr/libexec/java_home -v 21 &>/dev/null; then
-  export JAVA_HOME="$(/usr/libexec/java_home -v 21)"
+if [[ -x /usr/libexec/java_home ]] && /usr/libexec/java_home -v 25 &>/dev/null; then
+  export JAVA_HOME="$(/usr/libexec/java_home -v 25)"
   path=($JAVA_HOME/bin $path)
 fi
 

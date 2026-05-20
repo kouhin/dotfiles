@@ -16,6 +16,8 @@ brew "mkcert"
 brew "nss"
 brew "zig"
 brew "ctags"
+brew "docker"
+brew "colima"
 
 cask "hammerspoon"
 
