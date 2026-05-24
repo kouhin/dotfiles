@@ -1,1 +1,2 @@
-
+" Local machine-specific Vim settings.
+" This file is sourced last, after the shared configuration.

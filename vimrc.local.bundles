@@ -1,2 +1,5 @@
-Plug 'editorconfig/editorconfig-vim' 
-
+" Extra vim-plug declarations.
+" This file is sourced inside plug#begin()/plug#end().
+"
+" Example:
+" Plug 'github/copilot.vim'
