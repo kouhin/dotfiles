@@ -78,7 +78,7 @@ fi
 [[ -s "$HOME/.bun/_bun" ]] && source "$HOME/.bun/_bun"
 
 # ─── Aliases ──────────────────────────────────────────────────────
-alias ddup='sheldon lock --update && brew bundle --global --cleanup'
+alias ddup='sheldon lock --update && brew bundle install --global --cleanup --force-cleanup'
 alias e='emacs -nw'
 alias ls='ls -G'
 alias l='ls -al'
