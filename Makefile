@@ -36,6 +36,8 @@ link:
 	$(call link_dotfile,$(DOTFILES_DIR)/Brewfile,$(HOME)/.Brewfile)
 	mkdir -p "$(HOME)/.config/sheldon"
 	$(call link_dotfile,$(DOTFILES_DIR)/sheldon/plugins.toml,$(HOME)/.config/sheldon/plugins.toml)
+	mkdir -p "$(HOME)/.config/mise"
+	$(call link_dotfile,$(DOTFILES_DIR)/mise/config.toml,$(HOME)/.config/mise/config.toml)
 
 clean:
 	$(call clean_dotfile,$(HOME)/.vimrc)
@@ -48,4 +50,6 @@ clean:
 	$(call clean_dotfile,$(HOME)/.hammerspoon)
 	$(call clean_dotfile,$(HOME)/.Brewfile)
 	$(call clean_dotfile,$(HOME)/.config/sheldon/plugins.toml)
+	$(call clean_dotfile,$(HOME)/.config/mise/config.toml)
 	@rmdir "$(HOME)/.config/sheldon" 2>/dev/null || true
+	@rmdir "$(HOME)/.config/mise" 2>/dev/null || true

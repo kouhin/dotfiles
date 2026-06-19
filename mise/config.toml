@@ -1,0 +1,7 @@
+[settings]
+idiomatic_version_file_enable_tools = ["node", "ruby", "python", "java", "go"]
+
+[tools]
+go = "latest"
+java = "corretto-25"
+node = "24"

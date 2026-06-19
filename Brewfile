@@ -1,6 +1,4 @@
 brew "automake"
-brew "rbenv"
-brew "fnm"
 brew "git"
 brew "git-extras"
 brew "the_silver_searcher"
@@ -18,6 +16,7 @@ brew "zig"
 brew "ctags"
 brew "docker"
 brew "colima"
+brew "mise"
 
 cask "hammerspoon"
 

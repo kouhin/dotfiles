@@ -19,7 +19,6 @@ export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
 # ─── PATH ─────────────────────────────────────────────────────────
 typeset -U path
 
-export GOENV_ROOT="$HOME/.goenv"
 export PNPM_HOME="$HOME/Library/pnpm"
 export BUN_INSTALL="$HOME/.bun"
 
@@ -28,7 +27,6 @@ path=(
   $HOME/.local/bin
   $HOME/.rd/bin
   $HOME/.cargo/bin
-  $GOENV_ROOT/bin
   $PNPM_HOME
   $BUN_INSTALL/bin
   /opt/homebrew/bin
@@ -62,18 +60,8 @@ eval "$(sheldon source)"
 # ─── Tool Initialization ─────────────────────────────────────────
 # Eager, not deferred — GUI apps (Fork, VS Code, etc.) spawn
 # non-interactive shells where zsh-defer hooks never fire.
-if (( $+commands[goenv] )); then
-  eval "$(goenv init -)"
-  path=($GOROOT/bin $path $GOPATH/bin)
-fi
+(( $+commands[mise] ))      && eval "$(mise activate zsh)"
 
-if [[ -x /usr/libexec/java_home ]] && /usr/libexec/java_home -v 25 &>/dev/null; then
-  export JAVA_HOME="$(/usr/libexec/java_home -v 25)"
-  path=($JAVA_HOME/bin $path)
-fi
-
-(( $+commands[fnm] ))      && eval "$(fnm env --use-on-cd)"
-(( $+commands[rbenv] ))     && eval "$(rbenv init - zsh)"
 (( $+commands[luarocks] ))  && eval "$(luarocks path --bin)"
 [[ -s "$HOME/.bun/_bun" ]] && source "$HOME/.bun/_bun"
 
