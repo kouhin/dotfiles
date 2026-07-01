@@ -20,10 +20,10 @@ brew "mise"
 
 cask "hammerspoon"
 
-tap "sqldef/sqldef"
-brew "sqldef/sqldef/mysqldef"
+tap "sqldef/sqldef", trusted: true
+brew "sqldef/sqldef/mysqldef", trusted: true
 
-tap "railwaycat/emacsmacport"
-cask "emacs-mac"
+tap "railwaycat/emacsmacport", trusted: true
+cask "emacs-mac", trusted: true
 
 cask "claude-code"
