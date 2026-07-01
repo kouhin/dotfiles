@@ -66,7 +66,7 @@ eval "$(sheldon source)"
 [[ -s "$HOME/.bun/_bun" ]] && source "$HOME/.bun/_bun"
 
 # ─── Aliases ──────────────────────────────────────────────────────
-alias ddup='sheldon lock --update && brew bundle install --global --cleanup --force-cleanup'
+alias ddup='sheldon lock --update && brew bundle install --global --force-cleanup'
 alias e='emacs -nw'
 alias ls='ls -G'
 alias l='ls -al'
