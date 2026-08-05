@@ -19,6 +19,7 @@ brew "docker-compose"
 brew "colima"
 brew "socktainer"
 brew "mise"
+brew "gh"
 
 cask "hammerspoon"
 
