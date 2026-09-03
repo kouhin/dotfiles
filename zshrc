@@ -19,7 +19,6 @@ export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
 # ─── PATH ─────────────────────────────────────────────────────────
 typeset -U path
 
-export PNPM_HOME="$HOME/Library/pnpm"
 export BUN_INSTALL="$HOME/.bun"
 
 path=(
@@ -27,7 +26,6 @@ path=(
   $HOME/.local/bin
   $HOME/.rd/bin
   $HOME/.cargo/bin
-  $PNPM_HOME
   $BUN_INSTALL/bin
   /opt/homebrew/bin
   /opt/homebrew/sbin
