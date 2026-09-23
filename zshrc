@@ -56,9 +56,14 @@ fi
 eval "$(sheldon source)"
 
 # ─── Tool Initialization ─────────────────────────────────────────
-# Eager, not deferred — GUI apps (Fork, VS Code, etc.) spawn
-# non-interactive shells where zsh-defer hooks never fire.
-(( $+commands[mise] ))      && eval "$(mise activate zsh)"
+if (( $+commands[mise] )); then
+  if [[ -t 0 && -t 1 ]] && (( $+functions[zsh-defer] )); then
+    zsh-defer -m -p -r -c 'eval "$(mise activate zsh)"'
+  else
+    # Commands launched through `zsh -ic` do not enter ZLE, so activate eagerly.
+    eval "$(mise activate zsh)"
+  fi
+fi
 
 (( $+commands[luarocks] ))  && eval "$(luarocks path --bin)"
 [[ -s "$HOME/.bun/_bun" ]] && source "$HOME/.bun/_bun"

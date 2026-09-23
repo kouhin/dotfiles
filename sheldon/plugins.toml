@@ -1,7 +1,7 @@
 shell = "zsh"
 
 [templates]
-defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+defer = "{% for file in files %}zsh-defer -m -p -r source \"{{ file }}\"\n{% endfor %}"
 fpath = 'fpath=( "{{ dir }}" ${fpath} )'
 
 # ─── Core ─────────────────────────────────────────────────────────
