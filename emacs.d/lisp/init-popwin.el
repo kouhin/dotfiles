@@ -1,4 +1,4 @@
-;;; init-popwin.el --- Init popwin
+;;; init-popwin.el --- Init popwin -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;; push frames in popwin

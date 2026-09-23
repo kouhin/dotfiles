@@ -1,4 +1,4 @@
-;;; init-sws-mode.el --- Init sws-mode
+;;; init-sws-mode.el --- Init sws-mode -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

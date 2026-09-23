@@ -1,4 +1,4 @@
-;;; init-markdown-mode.el --- Init markdown-mode
+;;; init-markdown-mode.el --- Init markdown-mode -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

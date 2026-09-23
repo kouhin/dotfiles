@@ -1,4 +1,4 @@
-;;; init-eglot.el --- Init Eglot
+;;; init-eglot.el --- Init Eglot -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

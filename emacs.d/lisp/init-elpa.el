@@ -1,4 +1,4 @@
-;;; init-elpa.el --- initializes ELPA settings
+;;; init-elpa.el --- initializes ELPA settings -*- lexical-binding: t; -*-
 ;;; Commentary:
 
                                         ;Orinal source code: https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el

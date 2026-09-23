@@ -1,4 +1,4 @@
-;;; init-exec-path.el --- init exec path for mac
+;;; init-exec-path.el --- init exec path for mac -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -7,7 +7,7 @@
     (defvar exec-path-from-shell-variables)
     (dolist (var '("GOROOT" "GOPATH" "PATH" "RUST_SRC_PATH" "TERM"))
       (add-to-list 'exec-path-from-shell-variables var)))
-  (when (memq window-system '(mac ns x))
+  (when (memq window-system '(ns x))
     (exec-path-from-shell-initialize)))
 
 (provide 'init-exec-path)

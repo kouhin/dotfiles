@@ -1,4 +1,4 @@
-;;; init-flymake --- Init flymake
+;;; init-flymake --- Init flymake -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;; check file syntax
 ;;; Code:

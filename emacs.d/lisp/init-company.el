@@ -1,4 +1,4 @@
-;;; init-company.el --- Init company-mode
+;;; init-company.el --- Init company-mode -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;; setting for company-mode

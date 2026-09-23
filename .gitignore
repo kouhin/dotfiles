@@ -156,6 +156,7 @@ eshell/lastdir
 
 # elpa packages
 elpa/
+eln-cache/
 
 # reftex files
 *.rel

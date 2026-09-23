@@ -1,4 +1,4 @@
-;;; init-go-mode.el --- Init Go mode
+;;; init-go-mode.el --- Init Go mode -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;; Required:
 ;; - gopls

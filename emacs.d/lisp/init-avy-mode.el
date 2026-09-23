@@ -1,4 +1,4 @@
-;;; init-avy-mode.el --- Init avy mode
+;;; init-avy-mode.el --- Init avy mode -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;; quick jump

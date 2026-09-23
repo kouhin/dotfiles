@@ -1,4 +1,4 @@
-;;; init-http.el --- Init JavaScript Development Environment
+;;; init-http.el --- Init JavaScript Development Environment -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

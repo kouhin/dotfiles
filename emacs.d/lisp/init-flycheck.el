@@ -1,4 +1,4 @@
-;;; init-flycheck --- Init flycheck
+;;; init-flycheck --- Init flycheck -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;; check file syntax
 ;;; Code:

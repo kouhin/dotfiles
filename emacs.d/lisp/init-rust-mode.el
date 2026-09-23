@@ -1,4 +1,4 @@
-;;; init-rust-mode.el --- Init rust
+;;; init-rust-mode.el --- Init rust -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;; Required:
 ;; - rust

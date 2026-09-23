@@ -1,4 +1,4 @@
-;;; init-yasnippet.el --- Init yasnippet
+;;; init-yasnippet.el --- Init yasnippet -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

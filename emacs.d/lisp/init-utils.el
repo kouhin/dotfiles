@@ -1,4 +1,4 @@
-;;; init-utils.el --- Init some utilities
+;;; init-utils.el --- Init some utilities -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

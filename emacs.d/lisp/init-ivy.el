@@ -1,4 +1,4 @@
-;;; init-ivy.el --- Init ivy-mode
+;;; init-ivy.el --- Init ivy-mode -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;; Find text

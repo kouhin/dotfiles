@@ -1,4 +1,4 @@
-;;; init-editing-utils.el --- Init editor settings
+;;; init-editing-utils.el --- Init editor settings -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;; Some basic preferences

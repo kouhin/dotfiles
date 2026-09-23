@@ -1,4 +1,4 @@
-;;; init-ibuffer.el --- Init Ibuffer
+;;; init-ibuffer.el --- Init Ibuffer -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 

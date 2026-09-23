@@ -1,4 +1,4 @@
-;;; init.el --- bootstrap
+;;; init.el --- bootstrap -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;; This file bootstraps the configuration, which is divided into
@@ -28,6 +28,19 @@
 (defconst *is-a-mac* (eq system-type 'darwin))
 (defconst *is-gui* (display-graphic-p))
 
+;; The emacs-plus-app cask ships this outside its default load-path.
+(when (and *is-a-mac* (not (boundp 'ns-emacs-plus-version)))
+  (let ((emacs-plus-site-start
+          (expand-file-name "../site-lisp/site-start.el" data-directory)))
+    (when (file-readable-p emacs-plus-site-start)
+      (load emacs-plus-site-start nil t))))
+
+;; go-mode calls optional Eglot and lsp-mode functions without declaring them,
+;; which makes native compilation emit false-positive undefined-function warnings.
+(with-eval-after-load 'comp-run
+  (add-to-list 'native-comp-jit-compilation-deny-list
+    "/elpa/go-mode-[^/]+/go-mode\\.el\\'"))
+
 (setq user-emacs-directory "~/.emacs.d")
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -43,10 +56,7 @@
 
 (when *is-a-mac* (setq-default ns-function-modifier 'hyper)
   (setq-default ns-option-modifier 'meta)
-  (setq-default ns-command-modifier 'super)
-  (setq-default mac-function-modifier 'hyper)
-  (setq-default mac-option-modifier 'meta)
-  (setq-default mac-command-modifier 'super))
+  (setq-default ns-command-modifier 'super))
 
 (setq ring-bell-function 'ignore)
 
