@@ -177,6 +177,8 @@ recentf
 /emacs.d/projectile-bookmarks.eld
 /emacs.d/projectile.cache
 /emacs.d/eshell/
+/emacs.d/transient/
+/emacs.d/tree-sitter/
 el-get/
 url/
 SessionDesktop.el

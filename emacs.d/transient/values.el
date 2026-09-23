@@ -1,1 +1,0 @@
-((magit-fetch "--prune"))
