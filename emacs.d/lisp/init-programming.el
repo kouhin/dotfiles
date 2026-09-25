@@ -478,6 +478,17 @@ Prettier for the supported Node-related modes."
 (use-package yasnippet-snippets
   :after yasnippet)
 
+;; Copilot is loaded from a local checkout, so package.el does not install
+;; its external dependencies automatically.
+(use-package dash
+  :defer t)
+
+(use-package s
+  :defer t)
+
+(use-package f
+  :defer t)
+
 (use-package copilot
   :ensure nil
   :load-path "lisp/copilot"
