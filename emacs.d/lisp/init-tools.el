@@ -25,6 +25,18 @@
 (use-package magit
   :bind ("C-c C-g" . magit-status)
   :config
+  ;; Initialize the visible switch; it can still be toggled off before P p.
+  (with-eval-after-load 'magit-push
+    (transient-suffix-put 'magit-push "-u" :level 1)
+    (transient-suffix-put
+     'magit-push "-u" :init-value
+     (lambda (obj)
+       (let ((branch (magit-get-current-branch)))
+         ;; Check configuration, even if the upstream ref is missing locally.
+         (oset obj value
+               (and branch
+                    (not (magit-get "branch" branch "merge"))
+                    "--set-upstream"))))))
   (put 'magit-clean 'disabled nil))
 
 (use-package git-gutter
