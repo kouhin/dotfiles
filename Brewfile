@@ -19,6 +19,9 @@ brew "gh"
 
 cask "hammerspoon"
 
+tap "kouhin/dotfiles", "https://github.com/kouhin/dotfiles.git", trusted: true
+brew "kouhin/dotfiles/macism", trusted: true
+
 tap "sqldef/sqldef", trusted: true
 brew "sqldef/sqldef/mysqldef", trusted: true
 
